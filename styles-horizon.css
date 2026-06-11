@@ -78,7 +78,7 @@
 .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;}
 .bar i.hi{background:linear-gradient(90deg,rgba(91,224,232,0.5),var(--cyan));box-shadow:0 0 22px rgba(91,224,232,0.35);}
 .bar i.lo{background:rgba(255,255,255,0.22);}
-.bar .pct{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--fg-dim);}
+.bar .pct{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono",monospace;font-size:24px;color:#fff;background:rgba(10,14,26,0.66);padding:3px 12px;border-radius:7px;white-space:nowrap;}
 
 /* ---------- P55 role shift ---------- */
 .shift{flex:1;display:grid;grid-template-columns:1fr 200px 1.2fr;margin-top:30px;align-items:center;}

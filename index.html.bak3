@@ -294,7 +294,7 @@
 
   <!-- ============ P2 自我介紹 ============ -->
   <section class="slide s-intro" data-label="P02 自我介紹" data-screen-label="P02">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 開場</span><span class="pg">P2 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 開場</span><span class="pg">P02 / 64</span></div>
     <div class="frame">
       <div class="avatar-wrap anim">
         <img class="avatar" src="assets/p02.jpg" alt="migu 頭像 · 黑貓" />
@@ -315,7 +315,7 @@
 
   <!-- ============ P3 路線圖 ============ -->
   <section class="slide s-con" data-label="P03 今天的四段路" data-screen-label="P03">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 路線圖</span><span class="pg">P3 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 路線圖</span><span class="pg">P03 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>今天的四段路</h2>
@@ -371,7 +371,7 @@
   <section class="slide full" data-label="P04 一切的起點" data-screen-label="P04">
     <div class="bg" style="background-image:url('assets/p04.png')"></div>
     <div class="scrim left"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P4 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P04 / 64</span></div>
     <div class="full-body" style="max-width:1180px;">
       <div class="stamp cy anim" style="margin-bottom:30px;"><span class="k">DAY 0</span> 第一張地圖</div>
       <div class="case-label anim">起點 · KEPLER.GL</div>
@@ -385,7 +385,7 @@
   <section class="slide full" data-label="P05 Case 1 Mini Taipei" data-screen-label="P05">
     <div class="bg" style="background-image:url('assets/p05.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P5 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P05 / 64</span></div>
     <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
     <div class="full-body">
       <div class="bottom-row">
@@ -407,7 +407,7 @@
   <section class="slide full" data-label="P06 Case 2 衛星" data-screen-label="P06">
     <div class="bg" style="background-image:url('assets/p06_satellite.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P6 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P06 / 64</span></div>
     <div class="bridge-card anim" style="position:absolute;right:var(--pad-x);top:150px;width:430px;aspect-ratio:1/1;z-index:4;border-radius:12px;">
       <div class="ci" style="background-image:url('assets/p06_solar.png')"></div>
       <div class="cap" style="left:22px;bottom:18px;"><div class="m">SOLAR SYSTEM</div></div>
@@ -424,7 +424,7 @@
   <section class="slide full" data-label="P07 Case 3 船舶" data-screen-label="P07">
     <div class="bg" style="background-image:url('assets/p07.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P7 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P07 / 64</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -445,7 +445,7 @@
   <section class="slide full" data-label="P08 Case 4 Pulse" data-screen-label="P08">
     <div class="bg" style="background-image:url('assets/p08.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P8 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P08 / 64</span></div>
     <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
     <div class="full-body">
       <div class="case-label anim">CASE 4 · MINI TAIWAN PULSE</div>
@@ -463,7 +463,7 @@
   <section class="slide full" data-label="P09 整合 農×水" data-screen-label="P09">
     <div class="bg" style="background-image:url('assets/p09.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P9 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P09 / 64</span></div>
     <div class="legend anim" style="right:var(--pad-x);top:150px;">
       <div class="it"><span class="sw" style="background:#22D38C;"></span>農田範圍</div>
       <div class="it"><span class="sw" style="background:#5BE0E8;"></span>灌排溝渠 · 水系</div>
@@ -488,7 +488,7 @@
   <section class="slide full" data-label="P10 整合 醫療資源" data-screen-label="P10">
     <div class="bg" style="background-image:url('assets/p10.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P10 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P10 / 64</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -508,7 +508,7 @@
   <section class="slide full" data-label="P11 整合 大雨與災害" data-screen-label="P11">
     <div class="bg" style="background-image:url('assets/p11.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P11 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P11 / 64</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -525,19 +525,37 @@
     </div>
   </section>
 
-  <!-- ============ P12 會動的台灣 · LIVE DEMO ============ -->
-  <section class="slide s-livedemo" data-label="P12 會動的台灣 LIVE" data-screen-label="P12 Live Demo">
-    <div class="ld-bg">
-      <div style="background-image:url('assets/p08.png');"></div>
-      <div style="background-image:url('assets/p07.png');"></div>
-      <div style="background-image:url('assets/p05.png');"></div>
-    </div>
-    <div class="ld-scrim"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 動態展示</span><span class="pg">P12 / 69</span></div>
-    <div class="ld-center">
-      <div class="ld-pill anim"><span class="tri"></span>LIVE DEMO · 切換實機</div>
-      <h2 class="ld-title anim d1">會動的台灣</h2>
-      <p class="ld-sub anim d2">切換到電腦，實際展示 —— 船、公車、列車同時在地圖上跑。<br>接著，把鏡頭拉到天上 ✈</p>
+  <!-- ============ P12 會動的台灣 (bridge) ============ -->
+  <section class="slide s-bridge" data-label="P12 會動的台灣" data-screen-label="P12">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 動態展示</span><span class="pg">P12 / 64</span></div>
+    <div class="frame">
+      <div class="bridge-head anim">
+        <h2>會動的台灣</h2>
+        <p class="sub">船在海上跑、公車貼著馬路跑 —— 接下來，把鏡頭拉到天上。</p>
+      </div>
+      <div class="bridge-stage">
+        <div class="bridge-pair">
+          <div class="bridge-card anim d1">
+            <div class="ci" style="background-image:url('assets/p07.png')"></div>
+            <div class="vscrim"></div>
+            <div class="play"><span class="tri"></span></div>
+            <div class="cap"><div class="t">船舶</div><div class="m">AIS · 即時拖尾 · 數百艘同時動</div></div>
+          </div>
+          <div class="bridge-card anim d2">
+            <div class="ci" style="background-image:url('assets/p08.png')"></div>
+            <div class="vscrim"></div>
+            <div class="play"><span class="tri"></span></div>
+            <div class="cap"><div class="t">公車</div><div class="m">TDX · 5,700+ 輛 · 99.9% 路線配對</div></div>
+          </div>
+        </div>
+        <div class="bridge-converge anim d3">
+          <div class="v"></div>
+          <div class="dest">
+            <svg class="plane" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5S18 3 16.5 4.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <div class="lab">PLAN R<span class="en">航班軌跡</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -545,7 +563,7 @@
   <section class="slide full" data-label="P13 Plan R 航班軌跡" data-screen-label="P13">
     <div class="bg" style="background-image:url('assets/p13_top.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P13 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P13 / 64</span></div>
     <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
     <div class="full-body">
       <div class="case-label anim">PLAN R · 航班軌跡</div>
@@ -564,7 +582,7 @@
   <section class="slide full" data-label="P14 模式① 軌跡視覺化" data-screen-label="P14">
     <div class="bg" style="background-image:url('assets/p14.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P14 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P14 / 64</span></div>
     <div class="callout anim" style="left:55%;top:13%;align-items:flex-start;">
       <div class="lbl">東京灣迴旋進場 ↘</div>
       <div class="ln" style="width:160px;"></div>
@@ -604,7 +622,7 @@
   <section class="slide full" data-label="P14b 亞特蘭大 KATL" data-screen-label="P14b">
     <div class="bg" style="background-image:url('assets/p14b.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 軌跡畫廊</span><span class="pg">P15 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 軌跡畫廊</span><span class="pg">P14b / 64</span></div>
     <div class="full-body" style="max-width:1000px;">
       <div class="case-label anim">世界最忙機場</div>
       <h2 class="anim d1">亞特蘭大的「賽道」</h2>
@@ -617,7 +635,7 @@
   <section class="slide full" data-label="P15 模式② 跟隨模式" data-screen-label="P15">
     <div class="bg" style="background-image:url('assets/p15.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P16 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P15 / 64</span></div>
     <div class="callout anim" style="right:14%;top:28%;align-items:flex-end;">
       <div class="lbl">VIEWSHED — 高度越高、看得越遠</div>
       <div class="ln" style="width:200px;align-self:flex-end;background:linear-gradient(270deg,var(--cyan),transparent);"></div>
@@ -633,7 +651,7 @@
   <section class="slide full" data-label="P16 模式③ 進場管制區" data-screen-label="P16">
     <div class="bg" style="background-image:url('assets/p16.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P17 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P16 / 64</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -653,7 +671,7 @@
   <section class="slide full" data-label="P17 案例 倫敦機場體系" data-screen-label="P17">
     <div class="bg" style="background-image:url('assets/p17.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P17 / 64</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -673,7 +691,7 @@
   <section class="slide full" data-label="P18 案例 紐約都會三角" data-screen-label="P18">
     <div class="bg" style="background-image:url('assets/p18.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 64</span></div>
     <div class="callout anim" style="left:56%;top:31%;align-items:flex-start;"><div class="lbl" style="color:var(--magenta);border-color:rgba(217,70,239,0.5);">KLGA</div></div>
     <div class="callout anim" style="left:35%;top:43%;align-items:flex-start;"><div class="lbl" style="color:var(--sky,#80bfff);border-color:rgba(128,191,255,0.5);">KEWR</div></div>
     <div class="callout anim" style="left:61%;top:55%;align-items:flex-start;"><div class="lbl amber">KJFK</div></div>
@@ -688,7 +706,7 @@
   <section class="slide full" data-label="P19 案例 時間軸地緣事件" data-screen-label="P19">
     <div class="bg" style="background-image:url('assets/p19.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 64</span></div>
     <div class="legend anim" style="left:var(--pad-x);top:150px;">
       <div class="it"><span class="sw" style="background:var(--rose);"></span>日期 A — 戰前</div>
       <div class="it"><span class="sw" style="background:var(--sky,#80bfff);"></span>日期 B — 戰時</div>
@@ -705,7 +723,7 @@
   <section class="slide full" data-label="P20 案例 規範 vs 現實" data-screen-label="P20">
     <div class="bg" style="background-image:url('assets/p20.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P21 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 64</span></div>
     <div class="full-body" style="max-width:1050px;">
       <div class="case-label anim">案例 · 小港 RCKH</div>
       <h2 class="anim d1">實際看到禁航區可能的影響</h2>
@@ -716,7 +734,7 @@
 
   <!-- ============ P21 一支飛航 API 能長出多少 ============ -->
   <section class="slide s-hub" data-label="P21 一支飛航 API" data-screen-label="P21">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 能力收斂</span><span class="pg">P22 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 能力收斂</span><span class="pg">P21 / 64</span></div>
     <div class="frame">
       <div class="hub-head anim">
         <h2>一支飛航 API，能長出多少東西</h2>
@@ -752,7 +770,7 @@
 
   <!-- ============ P22 同一片天空，不同的資料源 ============ -->
   <section class="slide s-vs" data-label="P22 資料源對比" data-screen-label="P22">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P23 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P22 / 64</span></div>
     <div class="frame">
       <div class="vs-head anim">
         <h2>同一片天空，不同的資料源</h2>
@@ -776,7 +794,7 @@
   <section class="slide full" data-label="P23 OpenSky 空域覆蓋" data-screen-label="P23">
     <div class="bg" style="background-image:url('assets/p23.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P24 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P23 / 64</span></div>
     <div class="callout anim" style="left:55%;top:15%;align-items:flex-start;">
       <div class="lbl">過境航路 — 天上的高速公路</div>
       <div class="ln" style="width:200px;"></div>
@@ -794,7 +812,7 @@
 
   <!-- ============ P24 延伸 國籍航空比較 ============ -->
   <section class="slide s-dash s-light" data-label="P24 延伸 國籍航空" data-screen-label="P24">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P25 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P24 / 64</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -812,7 +830,7 @@
 
   <!-- ============ P25 延伸 高度剖面與燃油 ============ -->
   <section class="slide s-dash s-light" data-label="P25 延伸 高度與燃油" data-screen-label="P25">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P26 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P25 / 64</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -841,7 +859,7 @@
 
   <!-- ============ P26 延伸 天氣 × 航跡（NEW） ============ -->
   <section class="slide s-dash s-light" data-label="P26 延伸 天氣×航跡" data-screen-label="P26">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P27 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P26 / 64</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -874,25 +892,9 @@
     </div>
   </section>
 
-  <!-- ============ 飛航應用 · LIVE DEMO ============ -->
-  <section class="slide s-livedemo" data-label="P26b 飛航應用 LIVE" data-screen-label="Flight App Live Demo">
-    <div class="ld-bg">
-      <div style="background-image:url('assets/p13_top.png');"></div>
-      <div style="background-image:url('assets/p24.png');"></div>
-      <div style="background-image:url('assets/p23.png');"></div>
-    </div>
-    <div class="ld-scrim"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P28 / 69</span></div>
-    <div class="ld-center">
-      <div class="ld-pill anim"><span class="tri"></span>LIVE DEMO · 切換實機</div>
-      <h2 class="ld-title anim d1">飛航軌跡互動應用</h2>
-      <p class="ld-sub anim d2">切換到電腦，現場操作 —— 3D 航跡、航司分色、點擊看單班航班資訊。</p>
-    </div>
-  </section>
-
   <!-- ============ P27 這一整套，是一個循環 ============ -->
   <section class="slide s-cycle" data-label="P27 GIS 循環收束" data-screen-label="P27">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 收束</span><span class="pg">P29 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 收束</span><span class="pg">P27 / 64</span></div>
     <div class="frame">
       <div class="cycle-head anim">
         <h2>這一整套，是一個循環</h2>
@@ -935,12 +937,12 @@
   <!-- ============ P32 系統全景 OVERVIEW（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P32 系統全景" data-screen-label="P32 System Overview">
     <div class="bg" style="background-image:url('assets/sys-overview.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 我的這套流程</span><span class="pg">P30 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 我的這套流程</span><span class="pg">P28 / 64</span></div>
   </section>
 
   <!-- ============ P37 系統四步驟 OVERVIEW ============ -->
   <section class="slide s-con s-sys4" data-label="P37 系統四步驟" data-screen-label="P37">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 系統四步驟</span><span class="pg">P31 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 系統四步驟</span><span class="pg">P29 / 64</span></div>
     <div class="frame">
       <div class="s-sys-head anim">
         <div class="sys-eyebrow">// 我的系統長這樣</div>
@@ -1005,30 +1007,30 @@
   <!-- ============ P33 ① 資料接收（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P33 資料接收 Overview" data-screen-label="P33 Step 01">
     <div class="bg" style="background-image:url('assets/sys-step1.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 01 · 資料接收</span><span class="pg">P32 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 01 · 資料接收</span><span class="pg">P30 / 64</span></div>
   </section>
 
   <!-- ============ P34 ② 知識整合（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P34 知識整合 Overview" data-screen-label="P34 Step 02">
     <div class="bg" style="background-image:url('assets/sys-step2.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 02 · 知識整合</span><span class="pg">P33 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 02 · 知識整合</span><span class="pg">P31 / 64</span></div>
   </section>
 
   <!-- ============ P35 ③ 分析生成（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P35 分析生成 Overview" data-screen-label="P35 Step 03">
     <div class="bg" style="background-image:url('assets/sys-step3.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 03 · 分析生成</span><span class="pg">P34 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 03 · 分析生成</span><span class="pg">P32 / 64</span></div>
   </section>
 
   <!-- ============ P36 ④ 行動觸發（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P36 行動觸發 Overview" data-screen-label="P36 Step 04">
     <div class="bg" style="background-image:url('assets/sys-step4.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · STEP 04 · 行動觸發 · 自動回饋</span><span class="pg">P35 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · STEP 04 · 行動觸發 · 自動回饋</span><span class="pg">P33 / 64</span></div>
   </section>
 
   <!-- ============ P44 World Monitor 5 齒輪循環 ============ -->
   <section class="slide s-con s-monitor" data-label="P44 World Monitor" data-screen-label="P44">
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 主題巡邏</span><span class="pg">P36 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 主題巡邏</span><span class="pg">P34 / 64</span></div>
     <div class="frame">
       <div class="s-sys-head anim">
         <div class="sys-eyebrow" style="color:var(--amber);">// 未來模式 · 給目標</div>
@@ -1088,7 +1090,7 @@
 
   <!-- ============ P45 Loop Result Steps ============ -->
   <section class="slide s-con s-loop2" data-label="P45 Agent 自跑結果" data-screen-label="P45">
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · AGENT 自己跑</span><span class="pg">P37 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · AGENT 自己跑</span><span class="pg">P35 / 64</span></div>
     <div class="frame">
       <div class="s-sys-head anim">
         <div class="sys-eyebrow" style="color:var(--amber);">// 結果 · 當循環建立起來</div>
@@ -1121,20 +1123,6 @@
     </div>
   </section>
 
-  <!-- ============ 循環產出 · INFO 航運頁 ============ -->
-  <section class="slide s-con" data-label="P45b 循環產出 INFO" data-screen-label="Cycle Output">
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 循環產出</span><span class="pg">P38 / 69</span></div>
-    <div class="frame">
-      <div class="con-head anim">
-        <h2>這個循環，真的長出了東西</h2>
-        <p class="sub">用前面這套自動循環跑出來的應用 —— <strong>Mini Taiwan Info · 航運頁</strong>，全台 277 港一頁看完。</p>
-      </div>
-      <div class="dash-body anim d1" style="justify-content:center;margin-top:24px;">
-        <div class="shot-panel" style="flex:0 1 1500px;height:100%;"><img src="assets/p27.png" alt="Mini Taiwan Info 航運頁 全台 277 港" /></div>
-      </div>
-    </div>
-  </section>
-
   <!-- ════════════ SECTION 02 AI CODING 心法 ════════════ -->
 
   <!-- ============ P28 段封面 ============ -->
@@ -1154,7 +1142,7 @@
 
   <!-- ============ P29 自己取代自己（雙時間線） ============ -->
   <section class="slide s-con" data-label="P29 自己取代自己" data-screen-label="P29">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P39 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P36 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>我為什麼一直在「取代自己」</h2>
@@ -1193,7 +1181,7 @@
 
   <!-- ============ P31 四個層次（版本卡 · 沿用前作 s-gens 版式） ============ -->
   <section class="slide s-con" data-label="P31 與 AI 協作的四個層次 · 版本卡" data-screen-label="P31">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P40 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P37 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>同一件事，四個版本</h2>
@@ -1297,7 +1285,7 @@
 
   <!-- ============ P46 大問句（呼吸頁） ============ -->
   <section class="slide s-quiet" data-label="P46 先動手做" data-screen-label="P46">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P41 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P38 / 64</span></div>
     <div class="frame">
       <div class="quiet-q anim">「你最近有沒有一個<br>想做、但一直沒做的東西？」</div>
       <div class="quiet-line anim d1"></div>
@@ -1307,7 +1295,7 @@
 
   <!-- ============ P47 Harness 全貌（閉環） ============ -->
   <section class="slide s-con" data-label="P47 Harness 是什麼" data-screen-label="P47">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P42 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P39 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>Harness 是什麼</h2>
@@ -1333,7 +1321,7 @@
 
   <!-- ============ P48 最小可行集合（同圖高亮版） ============ -->
   <section class="slide s-con" data-label="P48 最小可行集合" data-screen-label="P48">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P43 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P40 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>最小可行，先用這幾個</h2>
@@ -1357,7 +1345,7 @@
 
   <!-- ============ P49 三個核心觀念（三卡口訣） ============ -->
   <section class="slide s-con" data-label="P49 三個核心觀念" data-screen-label="P49">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P44 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P41 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>三個一定要建立的觀念</h2>
@@ -1391,7 +1379,7 @@
 
   <!-- ============ P50 料從哪來（入口牆） ============ -->
   <section class="slide s-con" data-label="P50 料從哪來" data-screen-label="P50">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P45 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P42 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>料從哪來</h2>
@@ -1425,7 +1413,7 @@
 
   <!-- ============ P51 靈感從哪來（四象限清單） ============ -->
   <section class="slide s-con" data-label="P51 靈感從哪來" data-screen-label="P51">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P46 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P43 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>靈感從哪來</h2>
@@ -1480,7 +1468,7 @@
 
   <!-- ============ P53 Step 0 你想做什麼 ============ -->
   <section class="slide s-con" data-label="P53 Step 0 你想做什麼" data-screen-label="P53">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P47 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P44 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 0</div>
@@ -1519,7 +1507,7 @@
 
   <!-- ============ P54 Step 1 拆成兩塊 ============ -->
   <section class="slide s-con" data-label="P54 Step 1 拆成兩塊" data-screen-label="P54">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P48 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P45 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 1</div>
@@ -1553,7 +1541,7 @@
 
   <!-- ============ P55 Step 2-① 先讓 AI 盤點 ============ -->
   <section class="slide s-con" data-label="P55 Step 2-① AI 盤點資料源" data-screen-label="P55">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P49 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P46 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-①</div>
@@ -1580,7 +1568,7 @@
 
   <!-- ============ P56 Step 2-② 自己驗 ============ -->
   <section class="slide s-con" data-label="P56 Step 2-② 自己驗" data-screen-label="P56">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P50 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P47 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-②</div>
@@ -1609,7 +1597,7 @@
 
   <!-- ============ P57 Step 2-③ 申請、讀文件、開始試 ============ -->
   <section class="slide s-con" data-label="P57 Step 2-③ 申請開始試" data-screen-label="P57">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P51 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P48 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-③</div>
@@ -1640,7 +1628,7 @@
 
   <!-- ============ P58 Step 2-④ 我們的選擇（四象限） ============ -->
   <section class="slide s-con" data-label="P58 Step 2-④ 最後的選擇" data-screen-label="P58">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P52 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P49 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-④</div>
@@ -1665,7 +1653,7 @@
 
   <!-- ============ P59 Step 3 規格→執行 ============ -->
   <section class="slide s-con" data-label="P59 Step 3 決定處理方式" data-screen-label="P59">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P53 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P50 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 3</div>
@@ -1694,7 +1682,7 @@
 
   <!-- ============ P60 Step 4 先看到第一個東西 ============ -->
   <section class="slide s-con" data-label="P60 Step 4 第一個東西" data-screen-label="P60">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P54 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P51 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 4</div>
@@ -1722,7 +1710,7 @@
 
   <!-- ============ P61 Step 5 圖層堆疊 ============ -->
   <section class="slide s-con" data-label="P61 Step 5 功能層層疊" data-screen-label="P61">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P55 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P52 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 5</div>
@@ -1752,7 +1740,7 @@
 
   <!-- ============ P62 介面① Claude Design ============ -->
   <section class="slide s-dash" data-label="P62 介面 Claude Design" data-screen-label="P62">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P56 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P53 / 64</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -1783,7 +1771,7 @@
 
   <!-- ============ P63 介面② ChatGPT 出形狀 ============ -->
   <section class="slide s-dash" data-label="P63 介面 ChatGPT 出形狀" data-screen-label="P63">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P57 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P54 / 64</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -1801,7 +1789,7 @@
 
   <!-- ============ P64 觀念① 重做比優化快 ============ -->
   <section class="slide s-con" data-label="P64 觀念 重做比優化快" data-screen-label="P64">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P58 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P55 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>重做，常常比優化快</h2>
@@ -1830,7 +1818,7 @@
 
   <!-- ============ P65 觀念② 當同事，用講的 ============ -->
   <section class="slide s-con" data-label="P65 觀念 當同事用講的" data-screen-label="P65">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P59 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P56 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>把它當同事，用講的更快</h2>
@@ -1853,60 +1841,9 @@
     </div>
   </section>
 
-  <!-- ============ 上手建議 1 · 今天就開始 ============ -->
-  <section class="slide s-con" data-label="P65b 今天就開始" data-screen-label="Start Today">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 上手建議</span><span class="pg">P60 / 69</span></div>
-    <div class="frame">
-      <div class="con-head anim">
-        <h2>今天就可以開始，不用先學 coding</h2>
-        <p class="sub">我的建議很簡單 —— <strong>現在就去下載這些 AI 工具，動手試</strong>。</p>
-      </div>
-      <div class="anim d1" style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-content:center;">
-        <div style="border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,0.025);padding:46px 42px;">
-          <div class="mono" style="font-size:25px;color:var(--cyan);letter-spacing:0.16em;margin-bottom:20px;">不用變成工程師</div>
-          <div style="font-size:42px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:18px;">你不需要先學會寫程式</div>
-          <div style="font-size:30px;color:var(--fg-dim);line-height:1.55;font-weight:300;">真正重要的是「怎麼描述問題、怎麼驗收結果」 —— 這些<strong style="color:var(--fg);">用講的就會</strong>，不必先懂語法。</div>
-        </div>
-        <div style="border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,0.025);padding:46px 42px;">
-          <div class="mono" style="font-size:25px;color:var(--cyan);letter-spacing:0.16em;margin-bottom:20px;">名詞半衰期 &lt; 半年</div>
-          <div style="font-size:42px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:18px;">追名詞，追不完</div>
-          <div style="font-size:30px;color:var(--fg-dim);line-height:1.55;font-weight:300;">每個 AI 名詞、框架，往往<strong style="color:var(--fg);">活不過半年</strong>就被新觀念取代。與其追，不如現在動手累積手感。</div>
-        </div>
-      </div>
-      <div class="con-foot anim d2">學「怎麼用」，比學「語法」更值得。</div>
-    </div>
-  </section>
-
-  <!-- ============ 上手建議 2 · 補貼紅利 ============ -->
-  <section class="slide s-con" data-label="P65c 補貼紅利" data-screen-label="Subsidy Window">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 上手建議</span><span class="pg">P61 / 69</span></div>
-    <div class="frame">
-      <div class="con-head anim">
-        <h2>現在，是 AI 補貼最猛的紅利期</h2>
-        <p class="sub">這些公司都在<strong>砸錢補貼我們用 AI</strong> —— 趁現在，用得更好、更快。</p>
-      </div>
-      <div class="anim d1" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;">
-        <div style="display:flex;align-items:center;gap:54px;">
-          <div style="text-align:center;">
-            <div class="mono" style="font-size:30px;color:var(--fg-mute);letter-spacing:0.1em;margin-bottom:14px;">CLAUDE PRO 訂閱</div>
-            <div class="mono" style="font-size:96px;font-weight:700;color:#fff;line-height:1;">$200<span style="font-size:38px;color:var(--fg-mute);"> / 月</span></div>
-            <div style="font-size:28px;color:var(--fg-dim);margin-top:14px;">聽起來很貴</div>
-          </div>
-          <div class="mono" style="font-size:72px;color:var(--cyan);">→</div>
-          <div style="text-align:center;">
-            <div class="mono" style="font-size:30px;color:var(--cyan);letter-spacing:0.1em;margin-bottom:14px;">實際可用掉</div>
-            <div class="mono" style="font-size:96px;font-weight:700;color:var(--cyan);line-height:1;">≈ NT$8,000</div>
-            <div style="font-size:28px;color:var(--fg-dim);margin-top:14px;">的 API 額度</div>
-          </div>
-        </div>
-      </div>
-      <div class="con-foot anim d2">聽起來貴，其實是補貼 —— <strong>現在不用，才是真的虧</strong>。</div>
-    </div>
-  </section>
-
   <!-- ============ P66 ONE-SHOT 現場挑戰 ============ -->
   <section class="slide s-con" data-label="P66 One Shot 現場挑戰" data-screen-label="P66">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 現場挑戰</span><span class="pg">P62 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 現場挑戰</span><span class="pg">P57 / 64</span></div>
     <div class="frame">
       <div class="con-head anim" style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;">
         <div>
@@ -1969,7 +1906,7 @@
 
   <!-- ============ P68 兩種團隊結構 ============ -->
   <section class="slide s-con" data-label="P68 兩種團隊結構" data-screen-label="P68">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P63 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P58 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>兩種團隊結構</h2>
@@ -2025,7 +1962,7 @@
 
   <!-- ============ P69 金融 vs 新創 ============ -->
   <section class="slide s-con" data-label="P69 金融 vs 新創" data-screen-label="P69">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P64 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P59 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>金融 vs 新創</h2>
@@ -2055,7 +1992,7 @@
 
   <!-- ============ P70 角色上移 ============ -->
   <section class="slide s-con" data-label="P70 資料分析師會消失嗎" data-screen-label="P70">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P65 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P60 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>資料分析師會消失嗎？</h2>
@@ -2087,7 +2024,7 @@
 
   <!-- ============ P71 分析的民主化 ============ -->
   <section class="slide s-con" data-label="P71 分析的民主化" data-screen-label="P71">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P66 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P61 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>分析的民主化</h2>
@@ -2120,7 +2057,7 @@
 
   <!-- ============ P72 如果是你們，怎麼開始 ============ -->
   <section class="slide s-con" data-label="P72 怎麼開始" data-screen-label="P72">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P67 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P62 / 64</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>如果是你們，怎麼開始</h2>
@@ -2159,7 +2096,7 @@
   <section class="slide full" data-label="P73 離開前記得三件事" data-screen-label="P73">
     <div class="bg" style="background-image:url('assets/p23.png');"></div>
     <div style="position:absolute;inset:0;background:rgba(10,14,26,0.68);z-index:1;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · 結語</span><span class="pg">P68 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · 結語</span><span class="pg">P63 / 64</span></div>
     <div style="position:absolute;left:0;right:0;top:130px;text-align:center;z-index:3;">
       <h2 class="anim" style="font-size:60px;font-weight:700;margin:0;color:#fff;">離開前，記得三件事</h2>
     </div>
@@ -2173,13 +2110,21 @@
 
   <!-- ============ P74 Q&A ============ -->
   <section class="slide s-qa" data-label="P74 Q&A" data-screen-label="P74">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · Q&amp;A</span><span class="pg">P69 / 69</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · Q&amp;A</span><span class="pg">P64 / 64</span></div>
     <div class="frame">
       <h2 class="qa-title anim">Q &amp; A</h2>
-      <div class="qa-contact anim d1">
-        <div class="qc"><img src="assets/qr-github.png" alt="GitHub QR" /><div class="k">GITHUB</div><div class="v">ianlkl11234s</div></div>
-        <div class="qc"><img src="assets/qr-threads.png" alt="Threads QR" /><div class="k">THREADS</div><div class="v">@ianlkl1314</div></div>
-        <div class="qc"><img src="assets/qr-linkedin.png" alt="LinkedIn QR" /><div class="k">LINKEDIN</div><div class="v">Min-Hung Cheng</div></div>
+      <div class="qa-sub anim d1">謝謝長榮，我們聊聊</div>
+      <div class="qa-qr anim d2">
+        <div class="ls">
+          <span><span class="k">THREADS</span> · @migu</span>
+          <span><span class="k">EMAIL</span> · 會後提供</span>
+          <span><span class="k">PROJECT</span> · 專案連結一頁全收</span>
+        </div>
+      </div>
+      <div class="qa-chips anim d3">
+        <span class="ch">飛航 API</span>
+        <span class="ch">GIS 整合</span>
+        <span class="ch">數據團隊轉型</span>
       </div>
     </div>
     <img class="qa-cat" src="assets/p02.jpg" alt="黑貓彩蛋" />
