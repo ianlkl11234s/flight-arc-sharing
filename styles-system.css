@@ -1,0 +1,218 @@
+/* ════════ SECTION SYSTEM — 我的系統 / Agent / 應用層 / 自跑循環 ════════ */
+/* P32–P40 backbone slides re-skinned from prior deck (P16–P38) */
+
+/* ───── shared atoms ───── */
+.s-sys-head h2{font-size:72px;font-weight:700;margin:0 0 12px;letter-spacing:-0.015em;}
+.s-sys-head .sub{font-size:38px;color:var(--fg-dim);font-weight:300;margin:0;line-height:1.4;}
+.s-sys-head .sub strong{color:var(--fg);font-weight:500;}
+.sys-eyebrow{font-family:"JetBrains Mono",monospace;font-size:24px;letter-spacing:0.18em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:10px;}
+
+.sys-foot{margin-top:24px;padding:22px 32px;border:1px solid var(--line-strong);border-radius:10px;
+  display:flex;gap:28px;align-items:center;background:rgba(91,224,232,0.04);}
+.sys-foot .tag{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.14em;
+  flex:0 0 auto;text-transform:uppercase;}
+.sys-foot .txt{font-size:30px;color:var(--fg-dim);font-weight:300;line-height:1.45;}
+.sys-foot .txt strong{color:var(--fg);font-weight:500;}
+.sys-foot.amber{background:rgba(245,165,36,0.05);}
+.sys-foot.amber .tag{color:var(--amber);}
+
+/* ════════ P32 系統四步驟 ════════ */
+.s-sys4 .frame{padding:var(--pad-top) 100px var(--pad-bottom);}
+.sys4-row{flex:1;display:flex;align-items:stretch;gap:14px;margin-top:34px;min-height:0;}
+.sys4-card{flex:1;border:1px solid var(--line);border-radius:14px;padding:30px 28px 26px;
+  background:rgba(255,255,255,0.025);display:flex;flex-direction:column;gap:14px;position:relative;}
+.sys4-card .num{font-family:"JetBrains Mono",monospace;font-size:30px;color:var(--fg-mute);letter-spacing:0.14em;font-weight:700;}
+.sys4-card .glyph{height:96px;display:flex;align-items:center;justify-content:flex-start;}
+.sys4-card .glyph svg{width:96px;height:96px;}
+.sys4-card .name{font-size:48px;font-weight:700;letter-spacing:-0.01em;color:#fff;line-height:1.05;}
+.sys4-card .en{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.18em;text-transform:uppercase;}
+.sys4-card .desc{font-size:28px;color:var(--fg-dim);line-height:1.45;font-weight:300;margin-top:auto;}
+.sys4-card .desc strong{color:var(--fg);font-weight:500;}
+.sys4-arr{align-self:center;font-family:"JetBrains Mono",monospace;font-size:42px;color:var(--fg-mute);flex:0 0 auto;}
+.sys4-card.f1{border-color:rgba(91,224,232,0.4);}
+.sys4-card.f1 .glyph svg{color:var(--cyan);} .sys4-card.f1 .en{color:var(--cyan);} .sys4-card.f1 .num{color:var(--cyan);}
+.sys4-card.f2{border-color:rgba(245,165,36,0.4);}
+.sys4-card.f2 .glyph svg{color:var(--amber);} .sys4-card.f2 .en{color:var(--amber);} .sys4-card.f2 .num{color:var(--amber);}
+.sys4-card.f3{border-color:rgba(34,211,140,0.4);}
+.sys4-card.f3 .glyph svg{color:var(--green);} .sys4-card.f3 .en{color:var(--green);} .sys4-card.f3 .num{color:var(--green);}
+.sys4-card.f4{border-color:rgba(217,70,239,0.4);}
+.sys4-card.f4 .glyph svg{color:var(--magenta);} .sys4-card.f4 .en{color:var(--magenta);} .sys4-card.f4 .num{color:var(--magenta);}
+
+/* ════════ P33 資料生命週期 ════════ */
+.s-lc .frame{padding:var(--pad-top) 90px var(--pad-bottom);}
+.lc-row{flex:1;display:flex;align-items:stretch;gap:8px;margin-top:34px;min-height:0;}
+.lc-tile{flex:1;border:1px solid var(--line);border-radius:14px;padding:28px 26px;
+  background:rgba(255,255,255,0.025);display:flex;flex-direction:column;gap:12px;justify-content:space-between;}
+.lc-tile .day{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--fg-mute);letter-spacing:0.14em;}
+.lc-tile .stage{font-family:"JetBrains Mono",monospace;font-size:34px;font-weight:700;color:#fff;letter-spacing:0.02em;line-height:1.1;}
+.lc-tile .where{font-size:25px;color:var(--fg-dim);font-weight:300;line-height:1.4;}
+.lc-tile .cost{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.04em;padding-top:14px;border-top:1px solid var(--line);}
+.lc-tile .cost strong{font-size:34px;font-weight:700;letter-spacing:-0.01em;}
+.lc-tile.t1{border-color:rgba(91,224,232,0.45);background:linear-gradient(180deg,rgba(91,224,232,0.10),rgba(91,224,232,0.02));}
+.lc-tile.t1 .cost,.lc-tile.t1 .cost strong{color:var(--cyan);}
+.lc-tile.t1 .stage{color:var(--cyan);}
+.lc-tile.t2{border-color:rgba(245,165,36,0.4);}
+.lc-tile.t2 .cost,.lc-tile.t2 .cost strong{color:var(--amber);}
+.lc-tile.t3{border-color:rgba(217,70,239,0.4);}
+.lc-tile.t3 .cost,.lc-tile.t3 .cost strong{color:var(--magenta);}
+.lc-tile.t4{border-color:rgba(123,133,160,0.4);}
+.lc-tile.t4 .cost,.lc-tile.t4 .cost strong{color:var(--fg-mute);}
+.lc-arr{align-self:center;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;
+  font-size:34px;color:var(--fg-mute);flex:0 0 auto;padding:0 6px;}
+.lc-arr .lbl{display:none;}
+
+/* ════════ P34 四個 Schema ════════ */
+.s-sch .frame{padding:var(--pad-top) 90px var(--pad-bottom);}
+.sch-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:30px;min-height:0;}
+.sch-card{border:1px solid var(--line);border-radius:14px;padding:20px 24px;background:rgba(255,255,255,0.025);
+  display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden;}
+.sch-card .hd{display:flex;align-items:center;gap:14px;}
+.sch-card .ico{width:42px;height:42px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;
+  border-radius:8px;background:rgba(255,255,255,0.04);}
+.sch-card .ico svg{width:30px;height:30px;}
+.sch-card .meta{display:flex;flex-direction:column;}
+.sch-card .schname{font-family:"JetBrains Mono",monospace;font-size:30px;font-weight:700;letter-spacing:-0.005em;line-height:1.1;}
+.sch-card .scen{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--fg-mute);letter-spacing:0.16em;text-transform:uppercase;margin-top:4px;}
+.sch-card .desc{display:none;}
+.sch-card .tbls{display:flex;flex-direction:column;margin-top:auto;border-top:1px solid var(--line);padding-top:10px;gap:2px;}
+.sch-card .tr{display:flex;justify-content:space-between;align-items:baseline;font-family:"JetBrains Mono",monospace;
+  font-size:22px;color:var(--fg-dim);padding:5px 0;border-bottom:1px dashed rgba(255,255,255,0.05);}
+.sch-card .tr.hr{font-size:18px;color:var(--fg-mute);letter-spacing:0.14em;border-bottom:1px solid var(--line);text-transform:uppercase;display:none;}
+.sch-card .tr .v{color:#fff;font-weight:500;}
+.sch-card.realtime{border-color:rgba(91,224,232,0.45);background:linear-gradient(180deg,rgba(91,224,232,0.07),rgba(91,224,232,0.01));}
+.sch-card.realtime .schname{color:var(--cyan);}
+.sch-card.reference{border-color:rgba(245,165,36,0.4);}
+.sch-card.reference .schname{color:var(--amber);}
+.sch-card.spatial{border-color:rgba(34,211,140,0.4);}
+.sch-card.spatial .schname{color:var(--green);}
+.sch-card.metadata{border-color:rgba(217,70,239,0.4);}
+.sch-card.metadata .schname{color:var(--magenta);}
+
+/* ════════ P35 Agent 盤點 ════════ */
+.s-agent .frame{padding:var(--pad-top) 100px var(--pad-bottom);}
+.ag-flow{display:flex;align-items:stretch;gap:16px;margin-top:30px;}
+.ag-node{flex:1;border:1px solid var(--line);border-radius:14px;padding:22px 26px;background:rgba(255,255,255,0.025);
+  display:flex;flex-direction:column;gap:10px;}
+.ag-node .tag{font-family:"JetBrains Mono",monospace;font-size:22px;color:var(--fg-mute);letter-spacing:0.14em;text-transform:uppercase;}
+.ag-node .big{font-size:36px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:-0.005em;}
+.ag-node .sm{font-size:24px;color:var(--fg-dim);font-weight:300;line-height:1.4;}
+.ag-node.act{border-color:rgba(245,165,36,0.5);background:linear-gradient(180deg,rgba(245,165,36,0.10),rgba(245,165,36,0.02));}
+.ag-node.act .big{color:var(--amber);}
+.ag-node.act .tag{color:var(--amber);}
+.ag-arr{align-self:center;font-family:"JetBrains Mono",monospace;font-size:34px;color:var(--fg-mute);flex:0 0 auto;}
+.ag-three{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1;min-height:0;}
+.ag-card{border:1px solid var(--line);border-radius:12px;padding:28px 30px;background:rgba(255,255,255,0.025);
+  display:flex;flex-direction:column;gap:12px;justify-content:flex-start;}
+.ag-card .ic{font-family:"JetBrains Mono",monospace;font-size:54px;font-weight:700;color:var(--amber);line-height:1;}
+.ag-card h3{font-size:40px;font-weight:700;color:#fff;letter-spacing:-0.005em;line-height:1.1;margin:0;}
+.ag-card p{font-size:25px;color:var(--fg-dim);font-weight:300;line-height:1.5;margin:0;}
+.ag-card p strong{color:var(--fg);font-weight:500;}
+
+/* ════════ P36 靜態 → API ════════ */
+.s-api .frame{padding:var(--pad-top) 110px var(--pad-bottom);}
+.api-h{display:flex;align-items:center;gap:24px;font-size:78px;font-weight:700;letter-spacing:-0.02em;margin:0 0 18px;line-height:1.05;flex-wrap:wrap;}
+.api-h .from{color:var(--fg-mute);text-decoration:line-through;text-decoration-color:rgba(255,255,255,0.18);text-decoration-thickness:3px;}
+.api-h .arr{color:var(--cyan);font-family:"JetBrains Mono",monospace;font-size:64px;}
+.api-h .to{color:var(--cyan);}
+.api-sub{font-size:32px;color:var(--fg-dim);font-weight:300;line-height:1.4;margin:0;}
+.api-sub strong{color:var(--fg);font-weight:500;}
+.api-bens{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px;min-height:0;}
+.api-ben{border:1px solid var(--line);border-radius:14px;padding:32px 36px;background:rgba(255,255,255,0.025);
+  display:flex;flex-direction:column;gap:18px;}
+.api-ben .num{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.16em;text-transform:uppercase;}
+.api-ben h3{font-size:48px;font-weight:700;margin:0;letter-spacing:-0.01em;line-height:1.1;}
+.api-ben h3 .em{color:var(--cyan);}
+.api-ben p{font-size:26px;color:var(--fg-dim);font-weight:300;line-height:1.5;margin:0;}
+.api-ben p strong{color:var(--fg);font-weight:500;}
+.api-axis{margin-top:auto;padding:16px 20px;border:1px solid var(--line);border-radius:8px;background:rgba(0,0,0,0.3);}
+.api-axis .lab{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--cyan);letter-spacing:0.18em;margin-bottom:10px;text-transform:uppercase;}
+.api-axis .src{display:flex;flex-wrap:wrap;gap:8px;}
+.api-axis .src span{padding:6px 14px;border:1px solid var(--line);border-radius:6px;font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--fg);}
+.api-tags{display:flex;gap:10px;flex-wrap:wrap;}
+.api-tags span{padding:6px 14px;border:1px solid rgba(91,224,232,0.4);border-radius:30px;font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--cyan);letter-spacing:0.06em;background:rgba(91,224,232,0.06);}
+
+/* ════════ P37 架構放大器 ════════ */
+.s-multi .frame{padding:var(--pad-top) 80px var(--pad-bottom);}
+.bb-banner{display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center;padding:24px 36px;
+  border:1px solid rgba(91,224,232,0.45);border-radius:14px;
+  background:linear-gradient(180deg,rgba(91,224,232,0.08),rgba(91,224,232,0.02));margin-top:24px;}
+.bb-banner .lab{font-family:"JetBrains Mono",monospace;font-size:22px;color:var(--cyan);letter-spacing:0.14em;}
+.bb-banner .name{font-size:48px;font-weight:700;color:#fff;letter-spacing:-0.01em;line-height:1;}
+.bb-banner .meta{font-family:"JetBrains Mono",monospace;font-size:22px;color:var(--fg-mute);letter-spacing:0.06em;margin-top:6px;}
+.bb-stats{display:flex;gap:50px;justify-content:flex-end;}
+.bb-stat{display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;}
+.bb-stat .k{font-size:20px;color:var(--fg-mute);letter-spacing:0.14em;text-transform:uppercase;}
+.bb-stat .v{font-size:30px;color:#fff;font-weight:700;margin-top:4px;letter-spacing:-0.01em;}
+.bb-fan{text-align:center;color:rgba(91,224,232,0.7);font-size:36px;margin:6px 0 0;line-height:1;}
+.apps-row{flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:14px;min-height:0;}
+.app-card{border:1px solid var(--line);border-radius:12px;padding:18px 18px 20px;background:rgba(255,255,255,0.025);
+  display:flex;flex-direction:column;gap:10px;}
+.app-card .thumb{height:120px;border-radius:8px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:center;justify-content:center;padding:14px;}
+.app-card .thumb svg{width:100%;height:100%;}
+.app-card .nm{font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.005em;line-height:1.15;}
+.app-card .tg{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--cyan);letter-spacing:0.04em;}
+.app-card.future{border-style:dashed;border-color:rgba(245,165,36,0.4);}
+.app-card.future .nm{color:var(--amber);}
+.app-card.future .tg{color:var(--amber);}
+.multi-foot{margin-top:18px;display:grid;grid-template-columns:1.4fr 1fr;gap:18px;}
+.multi-foot .ml,.multi-foot .mr{padding:18px 22px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,0.02);}
+.multi-foot .ml{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+.multi-foot .ml .lab{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--fg-mute);letter-spacing:0.14em;flex:0 0 auto;text-transform:uppercase;}
+.multi-foot .ml .cell{display:flex;gap:8px;align-items:baseline;font-family:"JetBrains Mono",monospace;font-size:22px;color:var(--fg-dim);}
+.multi-foot .ml .cell .k{color:var(--fg-mute);}
+.multi-foot .ml .cell.hi .v{color:var(--cyan);font-weight:700;}
+.multi-foot .mr{display:flex;gap:20px;align-items:center;}
+.multi-foot .mr .lab{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--amber);letter-spacing:0.14em;flex:0 0 auto;text-transform:uppercase;}
+.multi-foot .mr .txt{font-size:24px;color:var(--fg-dim);font-weight:300;line-height:1.45;}
+.multi-foot .mr .txt strong{color:var(--fg);font-weight:500;}
+
+/* ════════ P38 水資源分層 ════════ */
+.s-water .frame{padding:var(--pad-top) 90px var(--pad-bottom);}
+.water-head{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;}
+.water-head .right{font-family:"JetBrains Mono",monospace;font-size:22px;color:var(--fg-mute);letter-spacing:0.14em;text-align:right;line-height:1.7;text-transform:uppercase;}
+.water-stage{margin-top:26px;flex:1;display:grid;grid-template-columns:1fr 48px 1fr;gap:0;min-height:0;}
+.water-layers{display:flex;flex-direction:column;gap:12px;padding-right:14px;min-height:0;}
+.water-layer{display:grid;grid-template-columns:80px 1fr;gap:18px;padding:16px 20px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,0.025);flex:1;min-height:0;align-items:center;}
+.water-layer .gly{width:80px;height:64px;display:flex;align-items:center;justify-content:center;}
+.water-layer .gly svg{width:100%;height:100%;}
+.water-layer .body{display:flex;flex-direction:column;gap:8px;}
+.water-layer .lab{display:flex;align-items:baseline;gap:14px;}
+.water-layer .lab .ch{font-size:36px;font-weight:700;color:#fff;letter-spacing:0.04em;}
+.water-layer .lab .en{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--fg-mute);letter-spacing:0.18em;}
+.water-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:24px;color:var(--fg-dim);font-weight:300;}
+.water-row .tg{font-family:"JetBrains Mono",monospace;font-size:18px;color:var(--fg-mute);letter-spacing:0.14em;padding:3px 9px;border:1px solid var(--line);border-radius:3px;}
+.water-row .tg.dyn{color:var(--cyan);border-color:rgba(91,224,232,0.4);background:rgba(91,224,232,0.06);}
+.water-row .item.dyn{color:var(--cyan);}
+.water-conn{display:flex;flex-direction:column;justify-content:space-around;align-items:center;color:rgba(91,224,232,0.7);}
+.water-conn span{font-family:"JetBrains Mono",monospace;font-size:24px;}
+.water-narr{display:flex;flex-direction:column;padding-left:14px;min-height:0;}
+.water-narr .nh{font-family:"JetBrains Mono",monospace;font-size:22px;color:var(--cyan);letter-spacing:0.18em;margin-bottom:12px;text-transform:uppercase;}
+.water-steps{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;}
+.water-step{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,0.025);flex:1;align-items:center;min-height:0;}
+.water-step .num{font-family:"JetBrains Mono",monospace;font-size:28px;color:var(--cyan);font-weight:700;}
+.water-step .body{display:flex;flex-direction:column;gap:4px;}
+.water-step .q{font-size:30px;color:#fff;font-weight:600;line-height:1.1;}
+.water-step .sr{font-size:22px;color:var(--fg-mute);font-weight:300;}
+.water-step .sr .pill{display:inline-block;padding:2px 10px;border:1px solid var(--line);border-radius:3px;margin-right:6px;font-family:"JetBrains Mono",monospace;font-size:17px;letter-spacing:0.12em;color:var(--fg-dim);}
+.water-narr .ft{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:24px;color:var(--fg-dim);font-weight:300;line-height:1.45;}
+.water-narr .ft strong{color:var(--fg);font-weight:600;}
+
+/* ════════ P39 World Monitor 循環 ════════ */
+.s-monitor .frame{padding:var(--pad-top) 90px var(--pad-bottom);}
+.mon-stage{flex:1;display:flex;align-items:center;justify-content:center;margin-top:28px;}
+.mon-stage svg{width:100%;height:auto;max-height:560px;}
+
+/* ════════ P40 Loop Result Steps ════════ */
+.s-loop2 .frame{padding:var(--pad-top) 110px var(--pad-bottom);}
+.loop2-flow{flex:1;display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;align-items:stretch;margin-top:40px;min-height:0;gap:0;}
+.loop2-step{padding:40px 36px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,0.025);
+  display:flex;flex-direction:column;gap:20px;justify-content:center;}
+.loop2-step.act{border-color:rgba(245,165,36,0.5);background:linear-gradient(180deg,rgba(245,165,36,0.10),rgba(245,165,36,0.02));}
+.loop2-step .num{font-family:"JetBrains Mono",monospace;font-size:60px;color:var(--cyan);font-weight:700;line-height:1;}
+.loop2-step.act .num{color:var(--amber);}
+.loop2-step .h{font-size:44px;font-weight:700;color:#fff;letter-spacing:-0.01em;line-height:1.15;}
+.loop2-step .d{font-size:27px;color:var(--fg-dim);font-weight:300;line-height:1.5;}
+.loop2-step .d strong{color:var(--fg);font-weight:500;}
+.loop2-arr{align-self:center;font-family:"JetBrains Mono",monospace;font-size:48px;color:var(--fg-mute);text-align:center;}

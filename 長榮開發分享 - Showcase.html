@@ -1,0 +1,2136 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<title>長榮開發分享 — 成果介紹 Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="deck-stage.js"></script>
+<link rel="stylesheet" href="styles-mindset.css" />
+<link rel="stylesheet" href="styles-system.css" />
+<link rel="stylesheet" href="styles-build.css" />
+<link rel="stylesheet" href="styles-horizon.css" />
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="#0A0E1A"/>
+    <g fill="none" stroke="#5BE0E8" stroke-width="2" stroke-linecap="round">
+      <path d="M20 78 Q42 30 80 24" opacity="0.9"/>
+      <path d="M24 82 Q44 44 78 40" opacity="0.5"/>
+      <path d="M30 84 Q48 58 76 56" opacity="0.3"/>
+    </g>
+    <circle cx="80" cy="24" r="4" fill="#5BE0E8"/>
+    <circle cx="80" cy="24" r="9" fill="none" stroke="#5BE0E8" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+</template>
+<style>
+  :root{
+    --ink:#0A0E1A; --ink-2:#0F1525; --ink-3:#141B30;
+    --line:rgba(255,255,255,0.08); --line-strong:rgba(255,255,255,0.16);
+    --fg:#EAEEF7; --fg-dim:#B8C0D2; --fg-mute:#7B85A0;
+    --cyan:#5BE0E8; --amber:#F5A524; --magenta:#D946EF; --green:#22D38C; --rose:#FF6B8A;
+    /* type scale */
+    --t-mega:150px; --t-title:96px; --t-title-sm:72px; --t-sub:42px;
+    --t-body:34px; --t-small:30px; --t-mono:26px; --t-micro:22px;
+    --t-num:88px;
+    --pad-x:96px; --pad-top:120px; --pad-bottom:88px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#000;font-family:"Noto Sans TC",system-ui,sans-serif;color:var(--fg);overflow:hidden;}
+  deck-stage{background:#000;}
+  section.slide{background:var(--ink);color:var(--fg);font-family:"Noto Sans TC",system-ui,sans-serif;font-weight:400;overflow:hidden;position:relative;}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;}
+  .frame{width:100%;height:100%;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;}
+
+  /* ---------- chrome ---------- */
+  .chrome-top{position:absolute;top:52px;left:var(--pad-x);right:var(--pad-x);display:flex;justify-content:space-between;align-items:center;
+    font-family:"JetBrains Mono",monospace;font-size:24px;letter-spacing:0.14em;color:var(--fg-mute);z-index:6;
+    padding-bottom:16px;border-bottom:1px solid var(--line);text-transform:uppercase;}
+  .chrome-top .mark{display:flex;align-items:center;gap:14px;}
+  .chrome-top .mark .dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);flex:0 0 10px;}
+  .chrome-top .pg{font-variant-numeric:tabular-nums;}
+  /* on full-bleed slides: a single tidy line pinned top-right, clear of the
+     product screenshots' own baked-in title overlay (which sits top-left). */
+  .full .chrome-top{left:auto;right:var(--pad-x);top:46px;width:auto;flex-direction:row;align-items:center;gap:24px;
+    border-bottom:none;padding-bottom:0;white-space:nowrap;font-size:24px;text-shadow:0 2px 16px rgba(0,0,0,0.95);}
+  .full .chrome-top .mark{white-space:nowrap;}
+  .full .chrome-top .pg{color:var(--fg-dim);}
+
+  /* ---------- shared atoms ---------- */
+  .stamp{display:inline-flex;align-items:center;gap:12px;font-family:"JetBrains Mono",monospace;font-size:24px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--fg);background:rgba(10,14,26,0.78);border:1px solid var(--line-strong);
+    border-radius:6px;padding:12px 20px;backdrop-filter:blur(8px);}
+  .stamp.cy{border-color:rgba(91,224,232,0.55);color:var(--cyan);background:rgba(91,224,232,0.08);}
+  .stamp .k{color:var(--fg-mute);}
+  .cornermono{position:absolute;right:var(--pad-x);bottom:64px;z-index:5;font-family:"JetBrains Mono",monospace;font-size:24px;
+    letter-spacing:0.1em;color:var(--fg-dim);text-shadow:0 2px 12px rgba(0,0,0,0.9);text-transform:uppercase;}
+  .demo-pill{display:inline-flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-size:24px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--cyan);border:1px solid rgba(91,224,232,0.6);background:rgba(91,224,232,0.10);
+    border-radius:40px;padding:14px 28px;backdrop-filter:blur(8px);}
+  .demo-pill .tri{width:0;height:0;border-left:18px solid var(--cyan);border-top:11px solid transparent;border-bottom:11px solid transparent;}
+
+  /* ---------- full-bleed case ---------- */
+  .full .frame{padding:0;}
+  .full .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .scrim{position:absolute;inset:0;z-index:1;}
+  .scrim.bottom{background:linear-gradient(180deg,rgba(10,14,26,0.55) 0%,rgba(10,14,26,0) 22%,rgba(10,14,26,0) 52%,rgba(10,14,26,0.92) 100%);}
+  .scrim.left{background:linear-gradient(90deg,rgba(10,14,26,0.92) 0%,rgba(10,14,26,0.55) 40%,rgba(10,14,26,0) 78%);}
+  .scrim.tl{background:linear-gradient(135deg,rgba(10,14,26,0.9) 0%,rgba(10,14,26,0.25) 45%,rgba(10,14,26,0) 70%);}
+  .full-body{position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:var(--pad-bottom);z-index:3;}
+  .case-label{font-family:"JetBrains Mono",monospace;font-size:26px;color:var(--cyan);letter-spacing:0.18em;margin-bottom:18px;}
+  .full h2{font-size:var(--t-title);font-weight:700;line-height:1.02;letter-spacing:-0.02em;margin:0 0 18px;text-wrap:balance;}
+  .full .sub{font-size:var(--t-sub);color:var(--fg-dim);font-weight:300;line-height:1.4;margin:0;max-width:1500px;}
+  .full .sub strong{color:var(--fg);font-weight:500;}
+
+  .bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:60px;}
+  .meta-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;font-family:"JetBrains Mono",monospace;
+    font-size:24px;color:var(--fg-mute);letter-spacing:0.06em;text-align:right;line-height:1.4;flex:0 0 auto;}
+  .meta-list li strong{color:var(--fg);font-weight:500;}
+
+  /* big inline numbers row */
+  .numrow{display:flex;gap:72px;align-items:flex-end;margin-top:8px;}
+  .numrow .stat .n{font-family:"JetBrains Mono",monospace;font-size:var(--t-num);font-weight:700;line-height:1;color:#fff;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,0.6);}
+  .numrow .stat .n .u{font-size:34px;color:var(--fg-dim);margin-left:8px;font-weight:400;}
+  .numrow .stat .l{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--fg-mute);letter-spacing:0.14em;text-transform:uppercase;margin-top:12px;}
+
+  /* leader callout */
+  .callout{position:absolute;z-index:4;display:flex;flex-direction:column;gap:8px;}
+  .callout .lbl{font-family:"JetBrains Mono",monospace;font-size:24px;letter-spacing:0.08em;color:var(--cyan);background:rgba(10,14,26,0.7);
+    border:1px solid rgba(91,224,232,0.45);border-radius:6px;padding:10px 16px;backdrop-filter:blur(6px);white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,0.8);}
+  .callout .lbl.amber{color:var(--amber);border-color:rgba(245,165,36,0.5);}
+  .callout .ln{height:2px;background:linear-gradient(90deg,var(--cyan),transparent);}
+  .callout .ln.amber{background:linear-gradient(90deg,var(--amber),transparent);}
+
+  /* legend */
+  .legend{position:absolute;z-index:4;background:rgba(10,14,26,0.82);border:1px solid var(--line-strong);border-radius:8px;
+    padding:18px 22px;backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:12px;}
+  .legend .it{display:flex;align-items:center;gap:14px;font-size:26px;color:var(--fg-dim);font-weight:300;}
+  .legend .it .sw{width:26px;height:6px;border-radius:3px;flex:0 0 26px;}
+
+  /* ---------- section cover ---------- */
+  .s-cover{background:radial-gradient(ellipse at 25% 55%,rgba(91,224,232,0.10) 0,transparent 55%),radial-gradient(ellipse at 80% 35%,rgba(245,165,36,0.06) 0,transparent 55%),var(--ink);}
+  .s-cover .frame{padding:130px 130px 110px;justify-content:space-between;}
+  .s-cover .num-mega{position:absolute;right:50px;bottom:0px;font-family:"JetBrains Mono",monospace;font-size:340px;font-weight:700;
+    line-height:0.85;color:rgba(255,255,255,0.045);letter-spacing:-0.05em;pointer-events:none;}
+  .s-cover .eyebrow{font-family:"JetBrains Mono",monospace;font-size:28px;letter-spacing:0.2em;color:var(--fg-mute);text-transform:uppercase;
+    display:flex;align-items:center;gap:18px;}
+  .s-cover .eyebrow::before{content:"";width:34px;height:2px;background:var(--cyan);}
+  .s-cover h2{font-size:128px;line-height:1.02;font-weight:700;margin:18px 0 0;letter-spacing:-0.02em;}
+  .s-cover .lead{font-size:40px;color:var(--fg-dim);max-width:1300px;line-height:1.5;font-weight:300;margin-top:30px;}
+  .s-cover .lead strong{color:var(--fg);font-weight:500;}
+  .s-cover .toc{display:flex;gap:54px;font-family:"JetBrains Mono",monospace;font-size:25px;color:var(--fg-mute);letter-spacing:0.1em;}
+  .s-cover .toc span.now{color:var(--cyan);}
+  .s-cover .toc span.now::before{content:"● ";}
+
+  /* ---------- concept: video bridge (P12) ---------- */
+  .s-bridge .frame{padding:var(--pad-top) 110px var(--pad-bottom);}
+  .bridge-head h2{font-size:var(--t-title);font-weight:700;margin:0 0 14px;letter-spacing:-0.02em;}
+  .bridge-head .sub{font-size:var(--t-sub);color:var(--fg-dim);font-weight:300;margin:0;}
+  .bridge-stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-top:8px;}
+  .bridge-pair{display:flex;gap:56px;width:100%;justify-content:center;}
+  .bridge-card{flex:1;max-width:760px;border-radius:14px;overflow:hidden;border:1px solid var(--line-strong);position:relative;
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);background:#000;aspect-ratio:16/9;}
+  .bridge-card .ci{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .bridge-card .vscrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.78));}
+  .bridge-card .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;
+    border:2px solid rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);}
+  .bridge-card .play .tri{width:0;height:0;border-left:30px solid #fff;border-top:19px solid transparent;border-bottom:19px solid transparent;margin-left:7px;}
+  .bridge-card .cap{position:absolute;left:28px;bottom:24px;z-index:2;}
+  .bridge-card .cap .t{font-size:36px;font-weight:700;color:#fff;}
+  .bridge-card .cap .m{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.08em;margin-top:6px;}
+  .bridge-converge{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:30px;}
+  .bridge-converge .v{width:2px;height:46px;background:linear-gradient(180deg,transparent,var(--cyan));}
+  .bridge-converge .dest{display:flex;align-items:center;gap:20px;padding:18px 34px;border:1px solid rgba(91,224,232,0.5);
+    border-radius:50px;background:rgba(91,224,232,0.08);}
+  .bridge-converge .dest .plane{color:var(--cyan);}
+  .bridge-converge .dest .lab{font-size:40px;font-weight:700;color:#fff;}
+  .bridge-converge .dest .lab .en{font-family:"JetBrains Mono",monospace;font-size:28px;color:var(--cyan);letter-spacing:0.14em;margin-left:14px;}
+
+  /* ---------- gallery (P14a) ---------- */
+  .s-gallery .frame{padding:0;}
+  .gal{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px;background:var(--ink);}
+  .gal .cell{position:relative;overflow:hidden;}
+  .gal .cell .ci{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .gal .cell .icao{position:absolute;left:30px;bottom:26px;z-index:2;font-family:"JetBrains Mono",monospace;}
+  .gal .cell .icao .code{font-size:40px;font-weight:700;color:#fff;letter-spacing:0.06em;text-shadow:0 2px 12px rgba(0,0,0,0.9);}
+  .gal .cell .icao .nm{font-size:24px;color:var(--fg-dim);letter-spacing:0.1em;margin-top:4px;text-shadow:0 2px 10px rgba(0,0,0,0.9);}
+
+  /* ---------- VS dual (P22) ---------- */
+  .s-vs .frame{padding:var(--pad-top) 110px var(--pad-bottom);}
+  .vs-head h2{font-size:var(--t-title-sm);font-weight:700;margin:0 0 12px;letter-spacing:-0.015em;}
+  .vs-head .sub{font-size:var(--t-sub);color:var(--fg-dim);font-weight:300;margin:0;}
+  .vs-stage{flex:1;display:flex;align-items:center;justify-content:center;gap:44px;margin-top:18px;position:relative;min-height:0;}
+  .vs-card{flex:0 1 600px;display:flex;flex-direction:column;gap:18px;min-height:0;}
+  .vs-card .shot{width:100%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;border:1px solid var(--line-strong);
+    box-shadow:0 24px 60px rgba(0,0,0,0.5);background:#000;}
+  .vs-card .shot .ci{width:100%;height:100%;background-size:cover;background-position:center;}
+  .vs-card .cap{display:flex;align-items:baseline;justify-content:space-between;gap:20px;}
+  .vs-card .cap .nm{font-family:"JetBrains Mono",monospace;font-size:34px;font-weight:700;color:#fff;letter-spacing:0.06em;}
+  .vs-card .cap .nm.cy{color:var(--cyan);}
+  .vs-card .cap .tag{font-size:26px;color:var(--fg-dim);font-weight:300;}
+  .vs-mid{flex:0 0 auto;font-family:"JetBrains Mono",monospace;font-size:40px;font-weight:700;color:var(--fg-mute);letter-spacing:0.1em;}
+
+  /* ---------- dashboard floating (P24/25/26) ---------- */
+  .s-dash .frame{padding:var(--pad-top) 90px var(--pad-bottom);}
+  .dash-head{display:flex;justify-content:space-between;align-items:flex-end;gap:50px;}
+  .dash-head .left h2{font-size:var(--t-title-sm);font-weight:700;margin:0;line-height:1.04;letter-spacing:-0.015em;}
+  .dash-head .left .eb{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.18em;margin-bottom:14px;text-transform:uppercase;}
+  .dash-head .left .sub{font-size:var(--t-small);color:var(--fg-dim);font-weight:300;margin-top:14px;line-height:1.4;max-width:1100px;}
+  .dash-head .right{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--fg-mute);letter-spacing:0.1em;text-align:right;line-height:1.6;white-space:nowrap;}
+  .dash-body{flex:1;display:flex;gap:54px;margin-top:30px;min-height:0;}
+  .shot-panel{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.14);box-shadow:0 0 0 1px rgba(255,255,255,0.06),0 30px 80px rgba(0,0,0,0.6),0 0 60px rgba(91,224,232,0.06);background:#fff;display:flex;align-items:center;justify-content:center;min-height:0;}
+  .shot-panel img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#fff;}
+
+  /* metric compare strip */
+  .metrics{display:flex;flex-direction:column;gap:22px;justify-content:center;}
+  .metric{border:1px solid var(--line);border-radius:12px;padding:24px 28px;background:rgba(255,255,255,0.025);}
+  .metric .ml{font-size:26px;color:var(--fg-dim);font-weight:300;margin-bottom:12px;}
+  .metric .mvrow{display:flex;align-items:baseline;gap:18px;}
+  .metric .big{font-family:"JetBrains Mono",monospace;font-size:60px;font-weight:700;line-height:1;color:var(--cyan);}
+  .metric .delta{font-family:"JetBrains Mono",monospace;font-size:28px;color:var(--rose);font-weight:500;}
+  .metric .vs{font-size:24px;color:var(--fg-mute);}
+  .metric .dry{font-family:"JetBrains Mono",monospace;font-size:34px;color:var(--fg-mute);font-weight:500;}
+
+  /* ---------- P21 capability hub ---------- */
+  .s-hub .frame{padding:var(--pad-top) 110px var(--pad-bottom);}
+  .hub-head h2{font-size:var(--t-title-sm);font-weight:700;margin:0 0 12px;letter-spacing:-0.015em;}
+  .hub-head .sub{font-size:var(--t-sub);color:var(--fg-dim);font-weight:300;margin:0;}
+  .hub-stage{flex:1;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:1fr 1fr;gap:36px 90px;align-items:center;
+    justify-items:center;margin-top:14px;position:relative;}
+  .hub-core{grid-column:2;grid-row:1/3;width:300px;height:330px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border:2px solid rgba(91,224,232,0.5);border-radius:24px;background:radial-gradient(ellipse at 50% 30%,rgba(91,224,232,0.16),rgba(91,224,232,0.02) 70%);
+    box-shadow:0 0 70px rgba(91,224,232,0.14) inset,0 0 50px rgba(91,224,232,0.1);position:relative;z-index:2;gap:10px;}
+  .hub-core .icn{color:var(--cyan);}
+  .hub-core .n{font-family:"JetBrains Mono",monospace;font-size:48px;font-weight:700;color:#fff;line-height:1;}
+  .hub-core .t{font-size:30px;color:var(--fg-dim);font-weight:300;}
+  .hub-node{width:100%;max-width:430px;border:1px solid var(--line);border-radius:14px;padding:26px 30px;background:rgba(255,255,255,0.025);z-index:2;}
+  .hub-node .hn{display:flex;align-items:center;gap:16px;margin-bottom:10px;}
+  .hub-node .hn .icn{color:var(--cyan);flex:0 0 auto;}
+  .hub-node .hn .nm{font-size:38px;font-weight:700;color:#fff;}
+  .hub-node .desc{font-size:27px;color:var(--fg-dim);font-weight:300;line-height:1.4;}
+  .hub-node .ref{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.1em;margin-top:10px;}
+  .hub-foot{text-align:center;font-size:var(--t-sub);color:var(--fg);font-weight:300;margin-top:6px;}
+  .hub-foot strong{color:var(--cyan);font-weight:600;}
+
+  /* ---------- P27 cycle ---------- */
+  .s-cycle .frame{padding:var(--pad-top) 90px var(--pad-bottom);}
+  .cycle-head h2{font-size:var(--t-title-sm);font-weight:700;margin:0 0 12px;letter-spacing:-0.015em;}
+  .cycle-head .sub{font-size:var(--t-sub);color:var(--fg-dim);font-weight:300;margin:0;}
+  .cycle-body{flex:1;display:grid;grid-template-columns:560px 1fr;gap:70px;margin-top:24px;align-items:center;}
+  .ring{position:relative;width:520px;height:520px;margin:0 auto;}
+  .ring .circ{position:absolute;inset:40px;border-radius:50%;border:2px dashed rgba(91,224,232,0.3);}
+  .ring .ctr{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:230px;height:230px;border-radius:50%;
+    background:radial-gradient(circle,rgba(91,224,232,0.12),rgba(91,224,232,0.02) 70%);border:1px solid rgba(91,224,232,0.35);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;}
+  .ring .ctr .t{font-size:32px;font-weight:700;color:#fff;line-height:1.2;}
+  .ring .ctr .m{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.12em;}
+  .ring .node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;width:160px;text-align:center;}
+  .ring .node .dot{width:22px;height:22px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan);}
+  .ring .node .nm{font-size:30px;font-weight:700;color:var(--fg);}
+  .ring .node .en{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--fg-mute);letter-spacing:0.1em;}
+  .cycle-right{display:flex;flex-direction:column;gap:26px;}
+  .cycle-info{max-width:860px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.14);box-shadow:0 24px 60px rgba(0,0,0,0.55),0 0 50px rgba(91,224,232,0.05);}
+  .cycle-info .head{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(255,255,255,0.04);border-bottom:1px solid var(--line);
+    font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--cyan);letter-spacing:0.08em;}
+  .cycle-info img{display:block;width:100%;}
+  .cycle-note{font-size:30px;color:var(--fg-dim);font-weight:300;line-height:1.5;}
+  .cycle-note strong{color:var(--fg);font-weight:600;}
+
+  /* entrance — content is ALWAYS visible (no opacity hiding, so print/PDF/export
+     always render). A gentle transform-only rise plays when the slide becomes active. */
+  @media (prefers-reduced-motion:no-preference){
+    section.slide[data-deck-active] .anim{animation:rise 0.5s cubic-bezier(0.2,0.7,0.2,1) both;}
+    section.slide[data-deck-active] .anim.d1{animation-delay:0.06s;}
+    section.slide[data-deck-active] .anim.d2{animation-delay:0.12s;}
+    section.slide[data-deck-active] .anim.d3{animation-delay:0.18s;}
+    @keyframes rise{from{transform:translateY(18px);}to{transform:none;}}
+  }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- ════════════ OPENING 開場 ════════════ -->
+
+  <!-- ============ P1 標題頁 ============ -->
+  <section class="slide full s-title" data-label="P01 標題頁" data-screen-label="P01 Title">
+    <div class="bg" style="background-image:url('assets/p13_oblique.png');"></div>
+    <div class="title-scrim"></div>
+    <div class="title-center">
+      <div class="eb anim">2026.06.12</div>
+      <h1 class="anim d1">從一架飛機的軌跡開始</h1>
+      <p class="sub anim d2">一個資料分析師，用 AI 把台灣的開放資料變成會呼吸的地圖</p>
+    </div>
+    <div class="title-meta anim d3">
+      <div class="claim">當 AI 已能自己寫 ETL，資料人不是消失 —— 是升級為<strong>系統設計者</strong></div>
+      <div class="spk">MIGU<span class="d">｜</span>資料分析師</div>
+    </div>
+    <div class="cornermono" style="bottom:60px;left:var(--pad-x);right:auto;">FR24 · 41,766 TRACKS · THREE.JS GLSL</div>
+  </section>
+
+  <!-- ============ P2 自我介紹 ============ -->
+  <section class="slide s-intro" data-label="P02 自我介紹" data-screen-label="P02">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 開場</span><span class="pg">P02 / 64</span></div>
+    <div class="frame">
+      <div class="avatar-wrap anim">
+        <img class="avatar" src="assets/p02.jpg" alt="migu 頭像 · 黑貓" />
+        <div class="avatar-ring"></div>
+      </div>
+      <div class="intro-right">
+        <h1 class="anim">Hi, 我是 migu</h1>
+        <div class="bio anim d1">資料分析師 · <strong>待過三間公司的數據團隊</strong></div>
+        <ul class="intro-pts anim d2">
+          <li>大學碰過 GIS（都計背景），出社會走資料分析，很久沒再碰</li>
+          <li>金融、新創都待過</li>
+          <li>AI 的努力嘗試者</li>
+        </ul>
+        <div class="intro-mono anim d3">DATA ANALYST · 3 TEAMS · GIS SIDE PROJECT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P3 路線圖 ============ -->
+  <section class="slide s-con" data-label="P03 今天的四段路" data-screen-label="P03">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 路線圖</span><span class="pg">P03 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>今天的四段路</h2>
+        <p class="sub">成果介紹 → 心法 → 專案示範 → 展望</p>
+      </div>
+      <div class="road anim d1">
+        <div class="cell hot">
+          <span class="wt">本場最重</span>
+          <div class="no">01</div><div class="glyph">◐</div>
+          <div class="en">SHOWCASE</div><div class="zh">成果介紹</div>
+          <div class="pp">P4–27 · 60 MIN</div>
+        </div>
+        <div class="cell">
+          <div class="no">02</div><div class="glyph">⟳</div>
+          <div class="en">AI CODING</div><div class="zh">心法</div>
+          <div class="pp">P28–36 · 22 MIN</div>
+        </div>
+        <div class="cell">
+          <div class="no">03</div><div class="glyph">▤</div>
+          <div class="en">BUILD</div><div class="zh">專案示範</div>
+          <div class="pp">P37–51 · 35 MIN</div>
+        </div>
+        <div class="cell">
+          <div class="no">04</div><div class="glyph">◇</div>
+          <div class="en">HORIZON</div><div class="zh">展望</div>
+          <div class="pp">P52–57 · 15 MIN</div>
+        </div>
+      </div>
+      <div class="undercurrent anim d2">
+        <span class="end">本業＝<strong>半放權</strong>（有掌握度，不放心放手）</span>
+        <span class="ln"></span>
+        <span class="end">GIS＝<strong>完全放權</strong>（什麼都不會，練得最徹底）</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION COVER ============ -->
+  <section class="slide s-cover" data-label="01 SHOWCASE 成果介紹" data-screen-label="SHOWCASE Cover">
+    <div class="num-mega mono">01</div>
+    <div class="frame">
+      <div>
+        <div class="eyebrow">SHOWCASE · 成果介紹</div>
+        <h2 class="title anim">成果介紹</h2>
+        <p class="lead anim d1">從一份 CSV，到一張會呼吸的台灣地圖。陸、海、空全部疊起來 —— 而<strong>飛機，是我投入最深的那一條軌跡。</strong></p>
+      </div>
+      <div class="toc">
+        <span class="now">01 SHOWCASE</span><span>02 AI CODING</span><span>03 BUILD</span><span>04 HORIZON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P4 一切的起點 ============ -->
+  <section class="slide full" data-label="P04 一切的起點" data-screen-label="P04">
+    <div class="bg" style="background-image:url('assets/p04.png')"></div>
+    <div class="scrim left"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P04 / 64</span></div>
+    <div class="full-body" style="max-width:1180px;">
+      <div class="stamp cy anim" style="margin-bottom:30px;"><span class="k">DAY 0</span> 第一張地圖</div>
+      <div class="case-label anim">起點 · KEPLER.GL</div>
+      <h2 class="anim d1">一切的起點</h2>
+      <p class="sub anim d2">把一份 CSV 拖進 Kepler.gl，就有了第一張地圖 ——「原來台灣有這麼多資料，<strong>原來我也做得到</strong>」。</p>
+    </div>
+    <div class="cornermono">KEPLER.GL · 1 CSV · 0 行程式</div>
+  </section>
+
+  <!-- ============ P5 Case 1 Mini Taipei ============ -->
+  <section class="slide full" data-label="P05 Case 1 Mini Taipei" data-screen-label="P05">
+    <div class="bg" style="background-image:url('assets/p05.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P05 / 64</span></div>
+    <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div>
+          <div class="case-label anim">CASE 1</div>
+          <h2 class="anim d1">Mini Taipei</h2>
+          <p class="sub anim d2">捷運 → 台鐵 → 高鐵，三套軌道疊成一張會動的地圖。<strong>我沒寫過任何一行 GIS 程式。</strong></p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li><strong>TDX</strong> 開放資料</li>
+          <li>6 SYSTEMS</li>
+          <li>351 TRAINS LIVE</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P6 Case 2 衛星 ============ -->
+  <section class="slide full" data-label="P06 Case 2 衛星" data-screen-label="P06">
+    <div class="bg" style="background-image:url('assets/p06_satellite.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P06 / 64</span></div>
+    <div class="bridge-card anim" style="position:absolute;right:var(--pad-x);top:150px;width:430px;aspect-ratio:1/1;z-index:4;border-radius:12px;">
+      <div class="ci" style="background-image:url('assets/p06_solar.png')"></div>
+      <div class="cap" style="left:22px;bottom:18px;"><div class="m">SOLAR SYSTEM</div></div>
+    </div>
+    <div class="full-body" style="max-width:1180px;">
+      <div class="case-label anim">CASE 2</div>
+      <h2 class="anim d1">衛星</h2>
+      <p class="sub anim d2">用公開 TLE 推算衛星軌道，再延伸到太陽系 —— <strong>同一套放權做法，可以無限延伸。</strong></p>
+    </div>
+    <div class="cornermono">CELESTRAK TLE · SGP4</div>
+  </section>
+
+  <!-- ============ P7 Case 3 船舶 ============ -->
+  <section class="slide full" data-label="P07 Case 3 船舶" data-screen-label="P07">
+    <div class="bg" style="background-image:url('assets/p07.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P07 / 64</span></div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1180px;">
+          <div class="case-label anim">CASE 3</div>
+          <h2 class="anim d1">船舶</h2>
+          <p class="sub anim d2">航港局 AIS 即時點位 —— 青藍光球 + 30 分鐘漸層拖尾，畫出台灣周邊海域的脈動。</p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li><strong>AIS</strong> 即時點位</li>
+          <li>~10 MIN 更新</li>
+          <li>台灣周邊海域</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P8 Case 4 Pulse ============ -->
+  <section class="slide full" data-label="P08 Case 4 Pulse" data-screen-label="P08">
+    <div class="bg" style="background-image:url('assets/p08.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P08 / 64</span></div>
+    <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
+    <div class="full-body">
+      <div class="case-label anim">CASE 4 · MINI TAIWAN PULSE</div>
+      <h2 class="anim d1">台灣的脈動</h2>
+      <p class="sub anim d2" style="margin-bottom:34px;">天空、海洋、大地、街道、清運 —— <strong>五脈共動</strong>，疊成同一張會呼吸的地圖。第一次從「靜態 JSON」進化成「時空間資料庫」。</p>
+      <div class="numrow anim d2">
+        <div class="stat"><div class="n">5<span class="u">脈共動</span></div><div class="l">飛機 / 船 / 列車 / 公車 / 垃圾車</div></div>
+        <div class="stat"><div class="n">23<span class="u">圖層</span></div><div class="l">十大分類 · 獨立 toggle</div></div>
+        <div class="stat"><div class="n">5,700<span class="u">+ 輛公車</span></div><div class="l">TDX · 30s polling</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P9 整合案例 農×水 ============ -->
+  <section class="slide full" data-label="P09 整合 農×水" data-screen-label="P09">
+    <div class="bg" style="background-image:url('assets/p09.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P09 / 64</span></div>
+    <div class="legend anim" style="right:var(--pad-x);top:150px;">
+      <div class="it"><span class="sw" style="background:#22D38C;"></span>農田範圍</div>
+      <div class="it"><span class="sw" style="background:#5BE0E8;"></span>灌排溝渠 · 水系</div>
+      <div class="it"><span class="sw" style="background:#F5A524;"></span>河川幹線</div>
+    </div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1150px;">
+          <div class="case-label anim">整合案例 · 農 × 水</div>
+          <h2 class="anim d1">三個部會的孤島，疊成一張圖</h2>
+          <p class="sub anim d2">農田、河川、溝渠、堤防、淹水潛勢同框 —— 這不是地圖漂亮，是<strong>把孤島 JOIN 起來</strong>。</p>
+        </div>
+        <div class="anim d2" style="text-align:right;flex:0 0 auto;">
+          <div class="mono" style="font-size:64px;font-weight:700;color:#fff;line-height:1;">400MB <span style="color:var(--cyan);">→</span> ~5MB</div>
+          <div class="mono" style="font-size:24px;color:var(--fg-mute);letter-spacing:0.12em;margin-top:14px;">PMTILES · HTTP RANGE REQUEST</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P10 整合案例 醫療 ============ -->
+  <section class="slide full" data-label="P10 整合 醫療資源" data-screen-label="P10">
+    <div class="bg" style="background-image:url('assets/p10.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P10 / 64</span></div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1180px;">
+          <div class="case-label anim">整合案例 · 醫療資源</div>
+          <h2 class="anim d1">把民生疊在人口上，缺口自己浮出來</h2>
+          <p class="sub anim d2">醫院、診所、藥局、AED、長照點位 + 等時圈 —— 看見可及性，也看見<strong>醫療沙漠</strong>。</p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li><strong>NHI + 衛福部</strong></li>
+          <li>POI × 人口 × 等時圈</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P11 整合案例 大雨 ============ -->
+  <section class="slide full" data-label="P11 整合 大雨與災害" data-screen-label="P11">
+    <div class="bg" style="background-image:url('assets/p11.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P11 / 64</span></div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1180px;">
+          <div class="case-label anim">整合案例 · 大雨與災害</div>
+          <h2 class="anim d1">一條 Timeline，全部聯動</h2>
+          <p class="sub anim d2">雷達回波、水庫、雨量、災害示警 —— 不同頻率在 RPC 層統一，<strong>一拖時間軸全部同步回放</strong>。</p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li><strong>CWA</strong> 雷達</li>
+          <li>雨量 10MIN</li>
+          <li>水庫日更 → 1 TIMELINE</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P12 會動的台灣 (bridge) ============ -->
+  <section class="slide s-bridge" data-label="P12 會動的台灣" data-screen-label="P12">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 動態展示</span><span class="pg">P12 / 64</span></div>
+    <div class="frame">
+      <div class="bridge-head anim">
+        <h2>會動的台灣</h2>
+        <p class="sub">船在海上跑、公車貼著馬路跑 —— 接下來，把鏡頭拉到天上。</p>
+      </div>
+      <div class="bridge-stage">
+        <div class="bridge-pair">
+          <div class="bridge-card anim d1">
+            <div class="ci" style="background-image:url('assets/p07.png')"></div>
+            <div class="vscrim"></div>
+            <div class="play"><span class="tri"></span></div>
+            <div class="cap"><div class="t">船舶</div><div class="m">AIS · 即時拖尾 · 數百艘同時動</div></div>
+          </div>
+          <div class="bridge-card anim d2">
+            <div class="ci" style="background-image:url('assets/p08.png')"></div>
+            <div class="vscrim"></div>
+            <div class="play"><span class="tri"></span></div>
+            <div class="cap"><div class="t">公車</div><div class="m">TDX · 5,700+ 輛 · 99.9% 路線配對</div></div>
+          </div>
+        </div>
+        <div class="bridge-converge anim d3">
+          <div class="v"></div>
+          <div class="dest">
+            <svg class="plane" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5S18 3 16.5 4.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <div class="lab">PLAN R<span class="en">航班軌跡</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P13 Plan R 航班軌跡 ============ -->
+  <section class="slide full" data-label="P13 Plan R 航班軌跡" data-screen-label="P13">
+    <div class="bg" style="background-image:url('assets/p13_top.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P13 / 64</span></div>
+    <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
+    <div class="full-body">
+      <div class="case-label anim">PLAN R · 航班軌跡</div>
+      <h2 class="anim d1">飛機的軌跡，可以是一件藝術品</h2>
+      <p class="sub anim d2" style="margin-bottom:38px;">在北美館看展時冒出的念頭。資料本來是冰冷的 JSON，用對渲染手法，<strong>它就是藝術。</strong></p>
+      <div class="numrow anim d2">
+        <div class="stat"><div class="n">41,766</div><div class="l">TRACKS 軌跡</div></div>
+        <div class="stat"><div class="n">1,356</div><div class="l">AIRPORTS 機場</div></div>
+        <div class="stat"><div class="n">48<span class="u">天</span></div><div class="l">樣本期</div></div>
+      </div>
+    </div>
+    <div class="cornermono">REACT 19 · MAPBOX · THREE.JS · GLSL</div>
+  </section>
+
+  <!-- ============ P14 模式① 軌跡視覺化 ============ -->
+  <section class="slide full" data-label="P14 模式① 軌跡視覺化" data-screen-label="P14">
+    <div class="bg" style="background-image:url('assets/p14.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P14 / 64</span></div>
+    <div class="callout anim" style="left:55%;top:13%;align-items:flex-start;">
+      <div class="lbl">東京灣迴旋進場 ↘</div>
+      <div class="ln" style="width:160px;"></div>
+    </div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1180px;">
+          <div class="case-label anim">模式 ① · 軌跡視覺化</div>
+          <h2 class="anim d1">把一段時間的所有起降，畫成一張航跡圖</h2>
+          <p class="sub anim d2">高度色變 + 光軌拖尾，一眼看出進場 / 離場的結構。疊起來，就是一張機場的<strong>「指紋」</strong>。</p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li><strong>RJTT</strong> 羽田</li>
+          <li>1,318 TRACKS</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P14a 軌跡畫廊 ============ -->
+  <section class="slide s-gallery" data-label="P14a 軌跡畫廊" data-screen-label="P14a">
+    <div class="gal">
+      <div class="cell"><div class="ci" style="background-image:url('assets/p14a_hk.png')"></div><div class="icao"><div class="code">VHHH</div><div class="nm">香港 · 海上進場的弧</div></div></div>
+      <div class="cell"><div class="ci" style="background-image:url('assets/p14a_fra.png')"></div><div class="icao"><div class="code">EDDF</div><div class="nm">法蘭克福 · 歐陸放射</div></div></div>
+      <div class="cell"><div class="ci" style="background-image:url('assets/p13_top.png')"></div><div class="icao"><div class="code">RCTP</div><div class="nm">桃園 · 金色扇形</div></div></div>
+      <div class="cell"><div class="ci" style="background-image:url('assets/p14.png')"></div><div class="icao"><div class="code">RJTT</div><div class="nm">羽田 · 灣區迴旋</div></div></div>
+    </div>
+    <div style="position:absolute;top:42px;left:50%;transform:translateX(-50%);z-index:4;display:flex;align-items:center;gap:20px;
+      background:rgba(10,14,26,0.7);border:1px solid var(--line-strong);border-radius:40px;padding:14px 32px;backdrop-filter:blur(8px);">
+      <span style="font-size:30px;font-weight:700;color:#fff;">每座機場，都有自己的指紋</span>
+      <span class="mono" style="font-size:24px;color:var(--cyan);letter-spacing:0.12em;">同一支 API · 不同的城市性格</span>
+    </div>
+    <div class="chrome-top" style="left:auto;right:var(--pad-x);top:46px;width:auto;flex-direction:row;border-bottom:none;padding-bottom:0;gap:24px;text-shadow:0 2px 16px rgba(0,0,0,0.95);font-size:24px;"><span class="pg" style="color:var(--fg-dim);">P14a / 74</span></div>
+  </section>
+
+  <!-- ============ P14b 亞特蘭大 KATL ============ -->
+  <section class="slide full" data-label="P14b 亞特蘭大 KATL" data-screen-label="P14b">
+    <div class="bg" style="background-image:url('assets/p14b.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 軌跡畫廊</span><span class="pg">P14b / 64</span></div>
+    <div class="callout anim" style="left:14%;top:44%;align-items:flex-start;">
+      <div class="lbl amber">平行跑道軸 →</div>
+      <div class="ln amber" style="width:180px;"></div>
+    </div>
+    <div class="callout anim" style="left:66%;top:26%;align-items:flex-start;">
+      <div class="lbl">等待賽道 ↙</div>
+      <div class="ln" style="width:150px;"></div>
+    </div>
+    <div class="full-body" style="max-width:1000px;">
+      <div class="case-label anim">畫廊壓軸 · 世界最忙機場</div>
+      <h2 class="anim d1">亞特蘭大的「賽道」</h2>
+      <p class="sub anim d2">五條平行跑道 + 等待航線，畫出像賽車場的幾何 —— <strong>流量本身，就是一種形狀。</strong></p>
+    </div>
+    <div class="cornermono">KATL · 1,839 TRACKS · WORLD'S BUSIEST</div>
+  </section>
+
+  <!-- ============ P15 模式② 跟隨模式 ============ -->
+  <section class="slide full" data-label="P15 模式② 跟隨模式" data-screen-label="P15">
+    <div class="bg" style="background-image:url('assets/p15.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P15 / 64</span></div>
+    <div class="callout anim" style="right:14%;top:28%;align-items:flex-end;">
+      <div class="lbl">VIEWSHED — 高度越高、看得越遠</div>
+      <div class="ln" style="width:200px;align-self:flex-end;background:linear-gradient(270deg,var(--cyan),transparent);"></div>
+    </div>
+    <div class="full-body" style="max-width:1200px;">
+      <div class="case-label anim">模式 ② · 跟隨模式</div>
+      <h2 class="anim d1">相機鎖定一架飛機，跟著它飛完全程</h2>
+      <p class="sub anim d2">顯示航司 / 機型 / 註冊號 / hex，並依高度畫出該機在空中的<strong>可見扇形（Viewshed）</strong>。</p>
+    </div>
+  </section>
+
+  <!-- ============ P16 模式③ 進場管制區 ============ -->
+  <section class="slide full" data-label="P16 模式③ 進場管制區" data-screen-label="P16">
+    <div class="bg" style="background-image:url('assets/p16.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P16 / 64</span></div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1180px;">
+          <div class="case-label anim">模式 ③ · 進場管制區（空域）</div>
+          <h2 class="anim d1">規範長什麼樣</h2>
+          <p class="sub anim d2">禁航區、限航區、管制盤的 3D 極光圖層。點限航區，顯示時段限制（如 2300–0200 UTC）。</p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li>TW eAIP <strong>（PDF 手抄）</strong></li>
+          <li>UK OpenAIP（API）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P17 案例 倫敦機場體系 ============ -->
+  <section class="slide full" data-label="P17 案例 倫敦機場體系" data-screen-label="P17">
+    <div class="bg" style="background-image:url('assets/p17.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P17 / 64</span></div>
+    <div class="full-body">
+      <div class="bottom-row">
+        <div style="max-width:1180px;">
+          <div class="case-label anim">案例 A · 倫敦機場體系</div>
+          <h2 class="anim d1">一座城市的天空，怎麼分流</h2>
+          <p class="sub anim d2">EGLL / EGKK / EGSS / EGGW + 支線約 10 場 —— Heathrow <strong>單點樞紐</strong>密集進場，周邊分流。</p>
+        </div>
+        <ul class="meta-list anim d2">
+          <li><strong>EGLL</strong> — HUB</li>
+          <li>約 10 AIRPORTS</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P18 案例 紐約都會三角 ============ -->
+  <section class="slide full" data-label="P18 案例 紐約都會三角" data-screen-label="P18">
+    <div class="bg" style="background-image:url('assets/p18.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 64</span></div>
+    <div class="callout anim" style="left:56%;top:31%;align-items:flex-start;"><div class="lbl" style="color:var(--magenta);border-color:rgba(217,70,239,0.5);">KLGA</div></div>
+    <div class="callout anim" style="left:35%;top:43%;align-items:flex-start;"><div class="lbl" style="color:var(--sky,#80bfff);border-color:rgba(128,191,255,0.5);">KEWR</div></div>
+    <div class="callout anim" style="left:61%;top:55%;align-items:flex-start;"><div class="lbl amber">KJFK</div></div>
+    <div class="full-body" style="max-width:1200px;">
+      <div class="case-label anim">案例 B · 紐約都會三角</div>
+      <h2 class="anim d1">同一個都會，三場輪轉</h2>
+      <p class="sub anim d2">KJFK / KEWR / KLGA 日間輪轉、晚間集中 —— 對照倫敦的單點樞紐，<strong>是兩種城市性格。</strong></p>
+    </div>
+  </section>
+
+  <!-- ============ P19 案例 時間軸地緣事件 ============ -->
+  <section class="slide full" data-label="P19 案例 時間軸地緣事件" data-screen-label="P19">
+    <div class="bg" style="background-image:url('assets/p19.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 64</span></div>
+    <div class="legend anim" style="left:var(--pad-x);top:150px;">
+      <div class="it"><span class="sw" style="background:var(--rose);"></span>日期 A — 戰前</div>
+      <div class="it"><span class="sw" style="background:var(--sky,#80bfff);"></span>日期 B — 戰時</div>
+    </div>
+    <div class="full-body" style="max-width:1080px;">
+      <div class="case-label anim">案例 · 時間軸下的地緣事件</div>
+      <h2 class="anim d1">戰前、戰時、戰後 —— 航跡怎麼改道</h2>
+      <p class="sub anim d2">同機場、不同日期對比。杜拜 OMDB（2,740 軌跡）+ 阿布達比 OMAA，看見<strong>迴避路線</strong>與戰後復甦。</p>
+    </div>
+    <div class="cornermono">同一支 API · 拉不同日期 · COMPARE 模式</div>
+  </section>
+
+  <!-- ============ P20 案例 規範 vs 現實 ============ -->
+  <section class="slide full" data-label="P20 案例 規範 vs 現實" data-screen-label="P20">
+    <div class="bg" style="background-image:url('assets/p20.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 64</span></div>
+    <div style="position:absolute;left:50%;top:150px;transform:translateX(-50%);z-index:4;display:flex;gap:18px;">
+      <span class="stamp" style="border-color:rgba(217,70,239,0.5);color:var(--magenta);background:rgba(217,70,239,0.10);"><span class="k">規範</span> RESTRICTED</span>
+      <span class="stamp" style="border-color:rgba(245,165,36,0.5);color:var(--amber);background:rgba(245,165,36,0.10);"><span class="k">現實</span> ACTUAL TRACKS</span>
+    </div>
+    <div class="callout anim" style="left:52%;top:38%;align-items:flex-start;">
+      <div class="lbl">軌跡在這裡繞開了 ↓</div>
+      <div class="ln" style="width:140px;"></div>
+    </div>
+    <div class="full-body" style="max-width:1050px;">
+      <div class="case-label anim">案例 · 小港 RCKH</div>
+      <h2 class="anim d1">規範是一張圖，現實是另一張圖</h2>
+      <p class="sub anim d2">禁航區圖層 × 實際軌跡疊在一起，迂迴角度肉眼可見 —— <strong>把兩張疊起來，才是情報。</strong></p>
+    </div>
+    <div class="cornermono">RCKH · 1,271 起降 · 59% 國際 / 40% 國內</div>
+  </section>
+
+  <!-- ============ P21 一支飛航 API 能長出多少 ============ -->
+  <section class="slide s-hub" data-label="P21 一支飛航 API" data-screen-label="P21">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 能力收斂</span><span class="pg">P21 / 64</span></div>
+    <div class="frame">
+      <div class="hub-head anim">
+        <h2>一支飛航 API，能長出多少東西</h2>
+        <p class="sub">同一份 FR24 軌跡資料 —— 藝術、情報、分析、整合。</p>
+      </div>
+      <div class="hub-stage">
+        <div class="hub-node anim d1" style="grid-column:1;grid-row:1;">
+          <div class="hn"><svg class="icn" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.8L18.7 9.7l-4.8 1.9L12 16.4l-1.9-4.8L5.3 9.7l4.8-1.9z"/><path d="M19 14l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><span class="nm">藝術</span></div>
+          <div class="desc">Plan R 光軌 —— 把冷資料渲染成夜空畫作</div>
+        </div>
+        <div class="hub-node anim d1" style="grid-column:3;grid-row:1;">
+          <div class="hn"><svg class="icn" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg><span class="nm">情報</span></div>
+          <div class="desc">體系對比 · 地緣時序 · 規範 vs 現實</div>
+        </div>
+        <div class="hub-core anim">
+          <svg class="icn" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+          <div class="n">41,766</div>
+          <div class="t">FR24 軌跡資料</div>
+        </div>
+        <div class="hub-node anim d2" style="grid-column:1;grid-row:2;">
+          <div class="hn"><svg class="icn" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M7 21V11M12 21V4M17 21v-7"/></svg><span class="nm">分析</span></div>
+          <div class="desc">航司效率 · 燃油 · 天氣</div>
+          <div class="ref">→ P24–26</div>
+        </div>
+        <div class="hub-node anim d2" style="grid-column:3;grid-row:2;">
+          <div class="hn"><svg class="icn" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="nm">整合</span></div>
+          <div class="desc">併進 Mini Taiwan Pulse 圖層</div>
+        </div>
+      </div>
+      <div class="hub-foot anim d3">心法 —— <strong>資料先備，機會後現</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P22 同一片天空，不同的資料源 ============ -->
+  <section class="slide s-vs" data-label="P22 資料源對比" data-screen-label="P22">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P22 / 64</span></div>
+    <div class="frame">
+      <div class="vs-head anim">
+        <h2>同一片天空，不同的資料源</h2>
+        <p class="sub">FR24 與 OpenSky，看到的東西不一樣。</p>
+      </div>
+      <div class="vs-stage">
+        <div class="vs-card anim d1">
+          <div class="shot"><div class="ci" style="background-image:url('assets/p22_fr24.png')"></div></div>
+          <div class="cap"><span class="nm cy">FR24</span><span class="tag">付費 · 細顆粒 · 進場細節漂亮</span></div>
+        </div>
+        <div class="vs-mid anim d2">VS</div>
+        <div class="vs-card anim d2">
+          <div class="shot"><div class="ci" style="background-image:url('assets/p22_opensky.png')"></div></div>
+          <div class="cap"><span class="nm">OpenSky</span><span class="tag">免費 · 粗顆粒 · 延遲 5–10 min</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P23 OpenSky 空域覆蓋 ============ -->
+  <section class="slide full" data-label="P23 OpenSky 空域覆蓋" data-screen-label="P23">
+    <div class="bg" style="background-image:url('assets/p23.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P23 / 64</span></div>
+    <div class="callout anim" style="left:55%;top:15%;align-items:flex-start;">
+      <div class="lbl">過境航路 — 天上的高速公路</div>
+      <div class="ln" style="width:200px;"></div>
+    </div>
+    <div class="callout anim" style="left:44%;top:46%;align-items:flex-start;">
+      <div class="lbl amber">起降 — 交流道</div>
+      <div class="ln amber" style="width:150px;"></div>
+    </div>
+    <div class="full-body" style="max-width:1250px;">
+      <div class="case-label anim">OpenSky 的拿手好戲 · 空域覆蓋</div>
+      <h2 class="anim d1">拉遠看，航路就像天上的高速公路</h2>
+      <p class="sub anim d2">大面積無差別覆蓋是 OpenSky 的長處 —— <strong>進場細節用 FR24、空域骨架用 OpenSky。</strong></p>
+    </div>
+  </section>
+
+  <!-- ============ P24 延伸 國籍航空比較 ============ -->
+  <section class="slide s-dash" data-label="P24 延伸 國籍航空" data-screen-label="P24">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P24 / 64</span></div>
+    <div class="frame">
+      <div class="dash-head">
+        <div class="left">
+          <div class="eb anim">延伸分析 ①</div>
+          <h2 class="anim d1">國籍航空，飛得一樣嗎？</h2>
+          <div class="sub anim d2">同一條航線、同一款飛機，不同航司的差異 —— 單一航司只看得到自家資料，公開軌跡能做<strong style="color:var(--fg);">跨航司對標</strong>。</div>
+        </div>
+        <div class="right anim d2">RCTP ↔ RJAA<br>11 AIRLINES<br>221 FLIGHTS</div>
+      </div>
+      <div class="dash-body anim d2" style="justify-content:center;">
+        <div class="shot-panel" style="flex:0 1 1560px;height:100%;"><img src="assets/p24.png" alt="3D 航跡 多角度檢視 航司比較 dashboard" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P25 延伸 高度剖面與燃油 ============ -->
+  <section class="slide s-dash" data-label="P25 延伸 高度與燃油" data-screen-label="P25">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P25 / 64</span></div>
+    <div class="frame">
+      <div class="dash-head">
+        <div class="left">
+          <div class="eb anim">延伸分析 ②</div>
+          <h2 class="anim d1">高度剖面與燃油</h2>
+          <div class="sub anim d2">x = 累積航距、y = 高度，看出階段爬升 / 巡航分層。</div>
+        </div>
+        <div class="right anim d2">OPENAP 估算<br>繞路率中位 6.8–7.6%</div>
+      </div>
+      <div class="dash-body anim d2">
+        <div class="shot-panel" style="flex:1 1 60%;height:100%;"><img src="assets/p25.png" alt="巡航高度剖面圖" /></div>
+        <div class="metrics" style="flex:0 0 480px;">
+          <div class="metric">
+            <div class="ml">同款 A321neo，三家航司巡航高度差</div>
+            <div class="mvrow"><span class="big" style="font-size:88px;">4,000</span><span class="dry" style="font-size:40px;color:var(--cyan);">FT</span></div>
+            <div class="ml" style="margin:14px 0 0;">純粹是航司策略 —— 不是天氣、不是機型。</div>
+          </div>
+          <div class="metric" style="background:rgba(245,165,36,0.05);border-color:rgba(245,165,36,0.3);">
+            <div class="ml" style="color:var(--amber);font-weight:500;margin-bottom:10px;">誠實揭露限制</div>
+            <div class="ml" style="margin:0;line-height:1.5;">軌跡稀疏 · 重量假設 0.85×MTOW · 忽略風場 → <strong style="color:var(--fg);">相對比較可信，絕對值僅參考。</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P26 延伸 天氣 × 航跡（NEW） ============ -->
+  <section class="slide s-dash" data-label="P26 延伸 天氣×航跡" data-screen-label="P26">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P26 / 64</span></div>
+    <div class="frame">
+      <div class="dash-head">
+        <div class="left">
+          <div class="eb anim">延伸分析 ③ · 跨域整合壓軸</div>
+          <h2 class="anim d1">下雨天，飛機真的會多繞</h2>
+          <div class="sub anim d2">把氣象署的雨量，疊上 FR24 的軌跡 —— 以台北/桃園日雨量分「雨天」與「乾日」，逐班比對。</div>
+        </div>
+        <div class="right anim d2">CWA 雨量站 約 218 站<br>雨天 11 天 · 58 班<br>乾日 4 天 · 20 班</div>
+      </div>
+      <div class="dash-body anim d2">
+        <div class="shot-panel" style="flex:1 1 58%;height:100%;"><img src="assets/p26.png" alt="天氣 × 航跡 雨天 vs 乾日 繞路 dashboard" /></div>
+        <div class="metrics" style="flex:0 0 500px;">
+          <div class="metric">
+            <div class="ml">繞路率（中位）</div>
+            <div class="mvrow"><span class="big">8.69<span style="font-size:34px;">%</span></span><span class="delta">+0.72 pp</span><span class="vs">vs</span><span class="dry">7.96%</span></div>
+          </div>
+          <div class="metric">
+            <div class="ml">航行時間（中位）</div>
+            <div class="mvrow"><span class="big">137<span style="font-size:34px;"> 分</span></span><span class="delta">+2 分</span><span class="vs">vs</span><span class="dry">135 分</span></div>
+          </div>
+          <div class="metric">
+            <div class="ml">盤旋等待比例 —— 雨天才有 holding</div>
+            <div class="mvrow"><span class="big">6.9<span style="font-size:34px;">%</span></span><span class="vs">vs</span><span class="dry">0.0%</span></div>
+          </div>
+          <div style="font-size:24px;color:var(--fg-mute);line-height:1.5;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;">
+            CWA 雨量（為防災收）× FR24 軌跡（為藝術收）<span style="color:var(--cyan);"> = 第三種洞察</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P27 這一整套，是一個循環 ============ -->
+  <section class="slide s-cycle" data-label="P27 GIS 循環收束" data-screen-label="P27">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 收束</span><span class="pg">P27 / 64</span></div>
+    <div class="frame">
+      <div class="cycle-head anim">
+        <h2>這一整套，是一個循環</h2>
+        <p class="sub">探索 → 收集 → 儲存 → 呈現 → 分析 → 回到探索。</p>
+      </div>
+      <div class="cycle-body">
+        <div class="ring anim d1">
+          <div class="circ"></div>
+          <div class="ctr"><div class="t">同一個<br>資料庫</div><div class="m">SUPABASE + 收集器</div></div>
+          <div class="node" style="left:50%;top:9%;"><div class="dot"></div><div class="nm">探索</div><div class="en">EXPLORE</div></div>
+          <div class="node" style="left:88%;top:38%;"><div class="dot"></div><div class="nm">收集</div><div class="en">COLLECT</div></div>
+          <div class="node" style="left:74%;top:83%;"><div class="dot"></div><div class="nm">儲存</div><div class="en">STORE</div></div>
+          <div class="node" style="left:26%;top:83%;"><div class="dot"></div><div class="nm">呈現</div><div class="en">RENDER</div></div>
+          <div class="node" style="left:12%;top:38%;"><div class="dot"></div><div class="nm">分析</div><div class="en">ANALYZE</div></div>
+        </div>
+        <div class="cycle-right">
+          <div class="cycle-info anim d2">
+            <div class="head"><span>MINI TAIWAN INFO · 航運頁</span><span style="color:var(--fg-mute);">從「我自己看」到「給別人用」</span></div>
+            <img src="assets/p27.png" alt="Mini Taiwan Info 航運頁 全台 277 港" />
+          </div>
+          <div class="cycle-note anim d3">所有作品，是<strong>同一個資料庫長出來的多個 App</strong> —— 新增一個 App 的邊際成本，趨近於零。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ SHOWCASE · 幕後系統 轉場 ════════════ -->
+  <section class="slide s-cover" data-label="P27b 幕後系統 轉場" data-screen-label="System Behind">
+    <div style="position:absolute;inset:0;background-image:url('assets/sys-overview.png');background-size:cover;background-position:center;filter:grayscale(1);opacity:0.12;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,26,0.9),rgba(10,14,26,0.35));"></div>
+    <div class="num-mega mono" style="font-size:200px;right:40px;bottom:180px;">SYSTEM</div>
+    <div class="frame" style="position:relative;z-index:2;">
+      <div>
+        <div class="eyebrow">SHOWCASE · 幕後系統</div>
+        <h2 class="title anim">系統，長這樣</h2>
+        <p class="lead anim d1">前面看到的成果，背後都來自同一套資料系統 —— <strong>接收 → 整合 → 生成 → 觸發</strong>。接下來，帶你看它怎麼一塊塊組起來。</p>
+      </div>
+      <div class="toc">
+        <span class="now">01 SHOWCASE</span><span>02 AI CODING</span><span>03 BUILD</span><span>04 HORIZON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P32 系統全景 OVERVIEW（圖頁） ============ -->
+  <section class="slide full s-sysov" data-label="P32 系統全景" data-screen-label="P32 System Overview">
+    <div class="bg" style="background-image:url('assets/sys-overview.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 我的這套流程</span><span class="pg">P28 / 64</span></div>
+    <div class="stamp cy anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="k">OVERVIEW</span> 一張圖看完</div>
+  </section>
+
+  <!-- ============ P37 系統四步驟 OVERVIEW ============ -->
+  <section class="slide s-con s-sys4" data-label="P37 系統四步驟" data-screen-label="P37">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 系統四步驟</span><span class="pg">P29 / 64</span></div>
+    <div class="frame">
+      <div class="s-sys-head anim">
+        <div class="sys-eyebrow">// 我的系統長這樣</div>
+        <h2>資料 → 整合 → 生成 → 觸發</h2>
+        <p class="sub">每一步都可以單獨抽換 —— <strong>整套不需要重蓋</strong>，加新東西也不會牽動其他層。</p>
+      </div>
+      <div class="sys4-row anim d1">
+        <div class="sys4-card f1">
+          <div class="num">01</div>
+          <div class="glyph"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 26 L82 26 L62 56 L62 76 L40 70 L40 56 Z" fill="rgba(91,224,232,0.06)"/>
+            <line x1="48" y1="6" x2="48" y2="18"/><line x1="26" y1="10" x2="32" y2="20"/><line x1="70" y1="10" x2="64" y2="20"/>
+          </svg></div>
+          <div class="name">資料接收</div>
+          <div class="en">DATA INTAKE</div>
+          <div class="desc">外部 + 開放資料源<br/>標準化、驗證、入庫</div>
+        </div>
+        <div class="sys4-arr">→</div>
+        <div class="sys4-card f2">
+          <div class="num">02</div>
+          <div class="glyph"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 30 L48 18 L76 30 L76 66 L48 78 L20 66 Z" fill="rgba(245,165,36,0.06)"/>
+            <line x1="20" y1="30" x2="48" y2="42"/><line x1="76" y1="30" x2="48" y2="42"/><line x1="48" y1="42" x2="48" y2="78"/>
+          </svg></div>
+          <div class="name">知識整合</div>
+          <div class="en">KNOWLEDGE FUSION</div>
+          <div class="desc">把零散資料變成<br/>可推理的知識結構</div>
+        </div>
+        <div class="sys4-arr">→</div>
+        <div class="sys4-card f3">
+          <div class="num">03</div>
+          <div class="glyph"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="16" y="16" width="64" height="64" rx="6" fill="rgba(34,211,140,0.06)"/>
+            <path d="M26 60 L42 42 L54 52 L70 28"/>
+            <circle cx="70" cy="28" r="3.5" fill="currentColor"/><circle cx="42" cy="42" r="3.5" fill="currentColor"/>
+          </svg></div>
+          <div class="name">分析生成</div>
+          <div class="en">ANALYZE &amp; GEN.</div>
+          <div class="desc">推理、視覺化、報告<br/>Pulse / Art / Brief</div>
+        </div>
+        <div class="sys4-arr">→</div>
+        <div class="sys4-card f4">
+          <div class="num">04</div>
+          <div class="glyph"><svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <circle cx="48" cy="48" r="24" fill="rgba(217,70,239,0.06)"/>
+            <circle cx="48" cy="48" r="7" fill="currentColor"/>
+            <line x1="48" y1="18" x2="48" y2="8"/><line x1="48" y1="78" x2="48" y2="88"/>
+            <line x1="18" y1="48" x2="8" y2="48"/><line x1="78" y1="48" x2="88" y2="48"/>
+          </svg></div>
+          <div class="name">行動觸發</div>
+          <div class="en">FEEDBACK LOOP</div>
+          <div class="desc">事件驅動 / 任務調度<br/>自動回饋 · 形成閉環</div>
+        </div>
+      </div>
+      <div class="sys-foot anim d2">
+        <div class="tag">// 接下來</div>
+        <div class="txt">逐個展開 —— 從<strong>資料接收</strong>的生命週期，到 Agent 怎麼用、應用怎麼長出來。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P33 ① 資料接收（圖頁） ============ -->
+  <section class="slide full s-sysov" data-label="P33 資料接收 Overview" data-screen-label="P33 Step 01">
+    <div class="bg" style="background-image:url('assets/sys-step1.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 01 · 資料接收</span><span class="pg">P30 / 64</span></div>
+    <div class="stamp cy anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="k">STEP 01</span> 資料接收 · 多源整合 · 標準化 · 驗證</div>
+  </section>
+
+  <!-- ============ P34 ② 知識整合（圖頁） ============ -->
+  <section class="slide full s-sysov" data-label="P34 知識整合 Overview" data-screen-label="P34 Step 02">
+    <div class="bg" style="background-image:url('assets/sys-step2.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 02 · 知識整合</span><span class="pg">P31 / 64</span></div>
+    <div class="stamp cy anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="k">STEP 02</span> 知識整合 · 多維融合 · 關聯建構 · 智慧強化</div>
+  </section>
+
+  <!-- ============ P35 ③ 分析生成（圖頁） ============ -->
+  <section class="slide full s-sysov" data-label="P35 分析生成 Overview" data-screen-label="P35 Step 03">
+    <div class="bg" style="background-image:url('assets/sys-step3.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 03 · 分析生成</span><span class="pg">P32 / 64</span></div>
+    <div class="stamp cy anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="k">STEP 03</span> 分析生成 · 多模分析 · 結果產製 · 價值輸出</div>
+  </section>
+
+  <!-- ============ P36 ④ 行動觸發（圖頁） ============ -->
+  <section class="slide full s-sysov" data-label="P36 行動觸發 Overview" data-screen-label="P36 Step 04">
+    <div class="bg" style="background-image:url('assets/sys-step4.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · STEP 04 · 行動觸發 · 自動回饋</span><span class="pg">P33 / 64</span></div>
+    <div class="stamp anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;border-color:rgba(245,165,36,0.55);color:var(--amber);background:rgba(245,165,36,0.10);"><span class="k">STEP 04</span> 行動觸發 · 事件驅動 · 任務調度 · 自動回饋</div>
+  </section>
+
+  <!-- ============ P44 World Monitor 5 齒輪循環 ============ -->
+  <section class="slide s-con s-monitor" data-label="P44 World Monitor" data-screen-label="P44">
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 主題巡邏</span><span class="pg">P34 / 64</span></div>
+    <div class="frame">
+      <div class="s-sys-head anim">
+        <div class="sys-eyebrow" style="color:var(--amber);">// 未來模式 · 給目標</div>
+        <h2>Agent 跑完整循環</h2>
+        <p class="sub">人類角色 —— <strong>給目標、收報告</strong>。中間五個齒輪自己轉。</p>
+      </div>
+      <div class="mon-stage anim d1">
+        <svg viewBox="0 0 1500 520" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrMon" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#5BE0E8"/>
+            </marker>
+          </defs>
+          <g font-family="Noto Sans TC" font-weight="700" font-size="44" fill="#EAEEF7" text-anchor="middle">
+            <g transform="translate(150,260)">
+              <circle r="120" stroke="#5BE0E8" stroke-width="2.5" fill="rgba(91,224,232,0.08)"/>
+              <text y="-10">發現</text><text y="40">主題</text>
+              <text y="92" font-family="JetBrains Mono" font-weight="500" font-size="22" fill="#7B85A0" letter-spacing="3.5">DISCOVER</text>
+            </g>
+            <g transform="translate(450,260)">
+              <circle r="120" stroke="#5BE0E8" stroke-width="2.5" fill="rgba(91,224,232,0.08)"/>
+              <text y="-10">收集</text><text y="40">資料</text>
+              <text y="92" font-family="JetBrains Mono" font-weight="500" font-size="22" fill="#7B85A0" letter-spacing="3.5">COLLECT</text>
+            </g>
+            <g transform="translate(750,260)">
+              <circle r="138" stroke="#F5A524" stroke-width="3" fill="rgba(245,165,36,0.14)"/>
+              <text y="-10" fill="#F5A524">整合</text><text y="40" fill="#F5A524">分析</text>
+              <text y="98" font-family="JetBrains Mono" font-weight="500" font-size="22" fill="#F5A524" letter-spacing="3.5">INTEGRATE</text>
+            </g>
+            <g transform="translate(1050,260)">
+              <circle r="120" stroke="#5BE0E8" stroke-width="2.5" fill="rgba(91,224,232,0.08)"/>
+              <text y="-10">產出</text><text y="40">報告</text>
+              <text y="92" font-family="JetBrains Mono" font-weight="500" font-size="22" fill="#7B85A0" letter-spacing="3.5">REPORT</text>
+            </g>
+            <g transform="translate(1350,260)">
+              <circle r="120" stroke="#5BE0E8" stroke-width="2.5" fill="rgba(91,224,232,0.08)"/>
+              <text y="-10">監測</text><text y="40">告警</text>
+              <text y="92" font-family="JetBrains Mono" font-weight="500" font-size="22" fill="#7B85A0" letter-spacing="3.5">MONITOR</text>
+            </g>
+          </g>
+          <g stroke="#5BE0E8" stroke-width="2.5" fill="none" marker-end="url(#arrMon)">
+            <line x1="272" y1="260" x2="328" y2="260"/>
+            <line x1="572" y1="260" x2="610" y2="260"/>
+            <line x1="890" y1="260" x2="928" y2="260"/>
+            <line x1="1172" y1="260" x2="1228" y2="260"/>
+          </g>
+          <path d="M 1350 138 Q 1350 40, 750 40 Q 150 40, 150 138" stroke="#5BE0E8" stroke-width="2.5" fill="none" stroke-dasharray="8 8" marker-end="url(#arrMon)"/>
+          <text x="750" y="28" text-anchor="middle" font-family="JetBrains Mono" font-weight="500" font-size="22" fill="#5BE0E8" letter-spacing="4">CONTINUOUS LOOP</text>
+        </svg>
+      </div>
+      <div class="sys-foot amber anim d2">
+        <div class="tag">// STATUS</div>
+        <div class="txt">雛形已經在跑 · <strong>還沒做完</strong> —— 但循環的形狀已經出現。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P45 Loop Result Steps ============ -->
+  <section class="slide s-con s-loop2" data-label="P45 Agent 自跑結果" data-screen-label="P45">
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · AGENT 自己跑</span><span class="pg">P35 / 64</span></div>
+    <div class="frame">
+      <div class="s-sys-head anim">
+        <div class="sys-eyebrow" style="color:var(--amber);">// 結果 · 當循環建立起來</div>
+        <h2>Agent 自己掃 · 自己分析 · <span style="color:var(--amber);">自己給結果</span></h2>
+        <p class="sub">人不用守在前面。<strong>給目標、收報告</strong> —— 其餘的事 Agent 自己排隊跑完。</p>
+      </div>
+      <div class="loop2-flow anim d1">
+        <div class="loop2-step">
+          <div class="num">01</div>
+          <div class="h">定期掃資料</div>
+          <div class="d">每週跑開放資料目錄差分，找出<strong>新增 / 更新</strong>的 dataset。</div>
+        </div>
+        <div class="loop2-arr">→</div>
+        <div class="loop2-step act">
+          <div class="num">02</div>
+          <div class="h">自己執行分析</div>
+          <div class="d">調用 Agent Orchestrator + GIS Agent，<strong>挑工具、跑空間 / 時序分析</strong>。</div>
+        </div>
+        <div class="loop2-arr">→</div>
+        <div class="loop2-step">
+          <div class="num">03</div>
+          <div class="h">定期回傳結果</div>
+          <div class="d">brief / 報告 / 圖表自動產出，<strong>事件記錄與學習</strong>滾回去。</div>
+        </div>
+      </div>
+      <div class="sys-foot amber anim d2">
+        <div class="tag">// SO WHAT</div>
+        <div class="txt">當這個 loop 跑起來，產出不需要排程 —— <strong>主題自己冒出來、報告自己送到信箱</strong>。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ SECTION 02 AI CODING 心法 ════════════ -->
+
+  <!-- ============ P28 段封面 ============ -->
+  <section class="slide s-cover" data-label="P28 MINDSET 段封面" data-screen-label="P28 MINDSET Cover">
+    <div class="num-mega mono" style="font-size:240px;right:40px;bottom:180px;">AI CODING</div>
+    <div class="frame">
+      <div>
+        <div class="eyebrow">02 AI CODING · 心法</div>
+        <h2 class="title anim">心法</h2>
+        <p class="lead anim d1">工具很少，難的是觀念。<br>「我不是裝了很多工具才開始 —— <strong>我是先開始，工具自己長出來。</strong>」</p>
+      </div>
+      <div class="toc">
+        <span>01 SHOWCASE</span><span class="now">02 AI CODING</span><span>03 BUILD</span><span>04 HORIZON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P29 自己取代自己（雙時間線） ============ -->
+  <section class="slide s-con" data-label="P29 自己取代自己" data-screen-label="P29">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P36 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>我為什麼一直在「取代自己」</h2>
+        <p class="sub">資料分析師，是 AI 海嘯的第一排 —— 從 ChatGPT 剛出，就在想怎麼<strong>自己取代自己</strong>。</p>
+      </div>
+      <div class="tl-stage anim d1" style="position:relative;height:620px;margin-top:50px;flex:none;">
+        <svg viewBox="0 0 1700 620" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+          <path d="M1370,185 C1480,185 1500,310 1535,310" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"></path>
+          <path d="M1370,435 C1480,435 1500,310 1535,310" fill="none" stroke="#5BE0E8" stroke-width="3" opacity="0.8"></path>
+        </svg>
+        <div class="tl-row biz" style="position:absolute;left:0;right:0;top:90px;">
+          <div class="name"><div class="t">本業 · 資料分析</div><div class="e" style="color:var(--fg-mute);">SEMI-DELEGATION 半放權</div></div>
+          <div class="lane">
+            <div class="tl-dot" style="left:10%;"><i></i><span class="yr">2022 · CHATGPT</span><span class="lb">懷疑</span></div>
+            <div class="tl-dot" style="left:46%;"><i></i><span class="lb">介入</span></div>
+            <div class="tl-dot" style="left:80%;"><i></i><span class="lb">驗證</span></div>
+          </div>
+        </div>
+        <span class="stamp" style="position:absolute;left:360px;top:8px;"><span class="k">上線</span> TRUST ISSUES — 有掌握度，就會懷疑 AI</span>
+        <div class="tl-row gis" style="position:absolute;left:0;right:0;top:340px;">
+          <div class="name"><div class="t">GIS · SIDE PROJECT</div><div class="e" style="color:var(--cyan);">FULL DELEGATION 完全放權</div></div>
+          <div class="lane">
+            <div class="tl-dot cy" style="left:25%;"><i></i><span class="yr">2025 · 啟動</span><span class="lb" style="color:var(--fg);">什麼都不會，只能放權</span></div>
+          </div>
+        </div>
+        <span class="stamp cy" style="position:absolute;left:360px;top:258px;"><span class="k">下線</span> FULL DELEGATION — 不會，反而敢全放</span>
+        <div style="position:absolute;right:135px;top:310px;transform:translate(50%,-50%);width:30px;height:30px;border-radius:50%;background:var(--cyan);box-shadow:0 0 30px var(--cyan),0 0 80px rgba(91,224,232,0.5);"></div>
+        <div style="position:absolute;right:0;top:345px;width:330px;text-align:center;">
+          <div style="font-size:34px;font-weight:700;color:#fff;">AI 原生工作流</div>
+          <div class="mono" style="font-size:24px;color:var(--cyan);letter-spacing:0.14em;margin-top:8px;">AI-NATIVE</div>
+        </div>
+      </div>
+      <div class="con-foot anim d2" style="margin-top:auto;">GIS 成了試驗場 —— <strong>兩條線，最後交會在同一個工作方式</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P31 四個層次（版本卡 · 沿用前作 s-gens 版式） ============ -->
+  <section class="slide s-con" data-label="P31 與 AI 協作的四個層次 · 版本卡" data-screen-label="P31">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P37 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>同一件事，四個版本</h2>
+        <p class="sub">與 AI 協作的演化 —— 從你給「問題」，到你給「方向」，<strong>你交付的層級在變</strong>。</p>
+      </div>
+
+      <div class="gens-row anim d1">
+        <!-- 0.0 問答 -->
+        <div class="gen-card">
+          <div class="gen-give">你給「問題」</div>
+          <div class="gen-num">0.0</div>
+          <div class="gen-name">問答</div>
+          <div class="gen-quote">// 進階版 Google</div>
+          <div class="gen-desc">問一句、答一句 —— 用來查語法、想思路、寫一段範例。</div>
+          <div class="gen-svg" aria-hidden="true">
+            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="12" width="80" height="30" rx="15" fill="none" stroke="#7B85A0" stroke-width="1.5"/>
+              <text x="46" y="32" font-family="JetBrains Mono" font-size="13" fill="#7B85A0" text-anchor="middle">Q</text>
+              <rect x="114" y="40" width="80" height="30" rx="15" fill="none" stroke="#A4ADC2" stroke-width="1.5"/>
+              <text x="154" y="60" font-family="JetBrains Mono" font-size="13" fill="#A4ADC2" text-anchor="middle">A</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 1.0 任務交辦 -->
+        <div class="gen-card">
+          <div class="gen-give">你給「任務」</div>
+          <div class="gen-num">1.0</div>
+          <div class="gen-name">任務交辦</div>
+          <div class="gen-quote">// 它做一部分</div>
+          <div class="gen-desc">給檔案、補 SQL、畫圖、寫 component —— 你交一份規格，它交一份產出。</div>
+          <div class="gen-svg" aria-hidden="true">
+            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="22" width="50" height="36" rx="4" fill="none" stroke="#A4ADC2" stroke-width="1.5"/>
+              <rect x="75" y="22" width="50" height="36" rx="4" fill="none" stroke="#A4ADC2" stroke-width="1.5"/>
+              <rect x="142" y="22" width="50" height="36" rx="4" fill="none" stroke="#A4ADC2" stroke-width="1.5"/>
+              <line x1="58" y1="40" x2="75" y2="40" stroke="#7B85A0" stroke-width="1.2"/>
+              <line x1="125" y1="40" x2="142" y2="40" stroke="#7B85A0" stroke-width="1.2"/>
+              <circle cx="33" cy="40" r="4" fill="#A4ADC2"/>
+              <circle cx="100" cy="40" r="4" fill="#A4ADC2"/>
+              <circle cx="167" cy="40" r="4" fill="#A4ADC2"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 2.0 Agent 化  -->
+        <div class="gen-card now">
+          <div class="gen-give">你給「目標」</div>
+          <div class="gen-num">2.0</div>
+          <div class="gen-name">Agent 化</div>
+          <div class="gen-quote">// 不給步驟，只看結果</div>
+          <div class="gen-desc">給目標、不給步驟 —— 它自己決定怎麼做，<strong>你驗收只看目標有沒有達成</strong>。</div>
+          <div class="gen-svg" aria-hidden="true">
+            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="40" r="28" fill="none" stroke="#5BE0E8" stroke-width="1.5"/>
+              <circle cx="100" cy="40" r="5" fill="#5BE0E8"/>
+              <path d="M 128 40 A 28 28 0 0 1 100 68" stroke="#5BE0E8" stroke-width="2" fill="none"/>
+              <polygon points="100,66 95,74 105,74" fill="#5BE0E8"/>
+              <circle cx="128" cy="40" r="3" fill="#5BE0E8"/>
+              <circle cx="72" cy="40" r="3" fill="#5BE0E8"/>
+              <circle cx="100" cy="12" r="3" fill="#5BE0E8"/>
+              <!-- goal flag -->
+              <line x1="166" y1="22" x2="166" y2="58" stroke="#5BE0E8" stroke-width="1.5"/>
+              <path d="M 166 22 L 184 28 L 166 34 Z" fill="#5BE0E8"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 3.0 全自動 Agent -->
+        <div class="gen-card now">
+          <div class="gen-give">你給「方向」</div>
+          <div class="gen-num">3.0</div>
+          <div class="gen-name">全自動 Agent</div>
+          <div class="gen-quote">// 你只剩驗收</div>
+          <div class="gen-desc">給長期方向，它<strong>持續想辦法滿足</strong> —— 自己排程、自己迭代、自己長大。</div>
+          <div class="gen-svg" aria-hidden="true">
+            <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+              <!-- big orbit -->
+              <ellipse cx="100" cy="40" rx="78" ry="28" fill="none" stroke="#5BE0E8" stroke-width="1.2" stroke-dasharray="3 5" opacity="0.55"/>
+              <!-- core -->
+              <circle cx="100" cy="40" r="9" fill="none" stroke="#5BE0E8" stroke-width="1.8"/>
+              <circle cx="100" cy="40" r="3" fill="#5BE0E8"/>
+              <!-- 3 satellites -->
+              <circle cx="22" cy="40" r="4" fill="#5BE0E8"/>
+              <circle cx="178" cy="40" r="4" fill="#5BE0E8"/>
+              <circle cx="100" cy="12" r="4" fill="#5BE0E8"/>
+              <!-- forward direction arrow -->
+              <line x1="40" y1="68" x2="170" y2="68" stroke="#5BE0E8" stroke-width="1.5" opacity="0.7"/>
+              <polygon points="170,64 178,68 170,72" fill="#5BE0E8" opacity="0.85"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="gens-foot anim d2">
+        <div class="q">你現在在哪個版本？</div>
+        <div class="me">GIS SIDE PROJECT → 大多在 <strong>2.0 / 3.0</strong>　·　本業 → 還在 <strong>1.0 → 2.0</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P46 大問句（呼吸頁） ============ -->
+  <section class="slide s-quiet" data-label="P46 先動手做" data-screen-label="P46">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P38 / 64</span></div>
+    <div class="frame">
+      <div class="quiet-q anim">「你最近有沒有一個<br>想做、但一直沒做的東西？」</div>
+      <div class="quiet-line anim d1"></div>
+      <div class="quiet-a anim d2">不要先裝備，先動手 —— 直接跟 AI 說，<strong>開始就對了</strong>。</div>
+    </div>
+  </section>
+
+  <!-- ============ P47 Harness 全貌（閉環） ============ -->
+  <section class="slide s-con" data-label="P47 Harness 是什麼" data-screen-label="P47">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P39 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>Harness 是什麼</h2>
+        <p class="sub">為開發打造的一個好環境 —— 由這些零件組成。</p>
+      </div>
+      <div class="harness anim d1">
+        <svg class="hz-ring" viewBox="0 0 1700 610" preserveAspectRatio="none" style="width:100%;height:100%;left:50%;top:50%;">
+          <ellipse cx="850" cy="305" rx="600" ry="245" fill="none" stroke="rgba(91,224,232,0.3)" stroke-width="2" stroke-dasharray="10 12"></ellipse>
+          <path d="M1450,295 l12,18 l-24,2 z" fill="rgba(91,224,232,0.7)"></path>
+          <path d="M260,315 l-12,-18 l24,-2 z" fill="rgba(91,224,232,0.7)"></path>
+        </svg>
+        <div class="hz-node" style="left:50%;top:10%;"><div class="nm">CLAUDE.md</div><div class="duty">憲法 —— 原則與紀律</div></div>
+        <div class="hz-node" style="left:86%;top:29%;"><div class="nm">Skills</div><div class="duty">可複用能力</div></div>
+        <div class="hz-node" style="left:86%;top:80%;"><div class="nm">Hooks</div><div class="duty">時機觸發</div></div>
+        <div class="hz-node" style="left:50%;top:88%;"><div class="nm">Agents</div><div class="duty">任務分流</div></div>
+        <div class="hz-node" style="left:14%;top:80%;"><div class="nm">Agent Browser</div><div class="duty">讓 AI 看螢幕</div></div>
+        <div class="hz-node" style="left:14%;top:29%;"><div class="nm">Git</div><div class="duty">版控存檔</div></div>
+        <div class="hz-you"><div class="t">你</div><div class="m">給大方向 → 驗收產出</div></div>
+      </div>
+      <div class="con-foot anim d2">Harness = 把零件組起來 —— <strong>你下大方向，系統自己跑</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P48 最小可行集合（同圖高亮版） ============ -->
+  <section class="slide s-con" data-label="P48 最小可行集合" data-screen-label="P48">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P40 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>最小可行，先用這幾個</h2>
+        <p class="sub">憲法 + 技能 + 一雙眼睛 + 存檔 —— 其他的，<strong>需要時再長</strong>。</p>
+      </div>
+      <div class="harness anim d1">
+        <svg class="hz-ring" viewBox="0 0 1700 610" preserveAspectRatio="none" style="width:100%;height:100%;left:50%;top:50%;">
+          <ellipse cx="850" cy="305" rx="600" ry="245" fill="none" stroke="rgba(91,224,232,0.18)" stroke-width="2" stroke-dasharray="10 12"></ellipse>
+        </svg>
+        <div class="hz-node on" style="left:50%;top:10%;"><div class="nm">CLAUDE.md</div><div class="duty">先記 —— 專案的憲法</div></div>
+        <div class="hz-node on" style="left:86%;top:29%;"><div class="nm">Skills</div><div class="duty">先記 —— 可複用能力</div></div>
+        <div class="hz-node off" style="left:86%;top:80%;"><div class="nm">Hooks</div><div class="duty">進階 · 先放一邊</div></div>
+        <div class="hz-node off" style="left:50%;top:88%;"><div class="nm">Agents</div><div class="duty">進階 · 先放一邊</div></div>
+        <div class="hz-node on" style="left:14%;top:80%;"><div class="nm">Agent Browser</div><div class="duty">一定要裝 —— AI 的眼睛</div></div>
+        <div class="hz-node on" style="left:14%;top:29%;"><div class="nm">Git</div><div class="duty">一定要有 —— 敢放手的保險</div></div>
+        <div class="hz-you"><div class="t">你</div><div class="m">給大方向 → 驗收產出</div></div>
+      </div>
+      <div class="con-foot anim d2" style="font-size:38px;">這 4 個，<strong>今天就能開工</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P49 三個核心觀念（三卡口訣） ============ -->
+  <section class="slide s-con" data-label="P49 三個核心觀念" data-screen-label="P49">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P41 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>三個一定要建立的觀念</h2>
+        <p class="sub">相信它 · 版控它 · 守住費用與資安 —— <strong>這頁可以拍照帶走</strong>。</p>
+      </div>
+      <div class="trio">
+        <div class="card3 anim d1">
+          <div class="stampno">01 TRUST</div>
+          <svg class="icn" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+          <h3>讓 AI 完全做好一件事</h3>
+          <p class="ds">別「你一半、它一半」—— 半放權兩邊都累，責任也切不乾淨。</p>
+          <div class="motto">能不能全自動？</div>
+        </div>
+        <div class="card3 anim d2">
+          <div class="stampno">02 VERSION</div>
+          <svg class="icn" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v6"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+          <h3>版控 + 沙盒</h3>
+          <p class="ds">怕東西被刪的解法是 Git，不是不放權 —— 還要叫他檢查資安資料有沒有誤上傳。</p>
+          <div class="motto">叫他開 Git、叫他 Commit</div>
+        </div>
+        <div class="card3 anim d3">
+          <div class="stampno">03 GUARD</div>
+          <svg class="icn" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+          <h3>費用與資安</h3>
+          <p class="ds">會不會產生費用？私鑰有沒有暴露？—— 答案其實 AI 自己就能告訴你。</p>
+          <div class="motto">不確定，就直接問 AI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P50 料從哪來（入口牆） ============ -->
+  <section class="slide s-con" data-label="P50 料從哪來" data-screen-label="P50">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P42 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>料從哪來</h2>
+        <p class="sub">開放資料的幾個入口 —— <strong>不用一開始找齊，邊做邊補</strong>。</p>
+      </div>
+      <div class="wall">
+        <div class="src anim d1">
+          <svg class="icn" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>
+          <div><h3>Twinkle <span class="zh">全國開放資料鏡像</span></h3><div class="ds">開放資料整套鏡像，可以直接下 query。</div></div>
+          <div class="scale">MIRROR · QUERYABLE</div>
+        </div>
+        <div class="src anim d1">
+          <svg class="icn" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          <div><h3>data.gov.tw <span class="zh">政府資料開放平臺</span></h3><div class="ds">中央 + 各縣市門戶的總入口。</div></div>
+          <div class="scale">52,891 筆</div>
+        </div>
+        <div class="src anim d2">
+          <svg class="icn" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><circle cx="8.5" cy="14.5" r="0.5"/><circle cx="15.5" cy="14.5" r="0.5"/><path d="M8 21l2-4M16 21l-2-4"/></svg>
+          <div><h3>TDX <span class="zh">交通資料流通服務</span></h3><div class="ds">公車 / 捷運 / 台鐵 / 高鐵 —— 即時與靜態都有。</div></div>
+          <div class="scale">交通 · REALTIME</div>
+        </div>
+        <div class="src anim d2">
+          <svg class="icn" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5S18 3 16.5 4.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+          <div><h3>Flight API <span class="zh">航班軌跡</span></h3><div class="ds">FR24 看細節、OpenSky 看尺度。</div></div>
+          <div class="scale">FR24 / OPENSKY</div>
+        </div>
+      </div>
+      <div class="con-foot anim d3">技術已幫你避掉大部分坑 —— <strong>善用 Git，先求覆蓋、先動手</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P51 靈感從哪來（四象限清單） ============ -->
+  <section class="slide s-con" data-label="P51 靈感從哪來" data-screen-label="P51">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P43 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>靈感從哪來</h2>
+        <p class="sub">我固定追的 AI 電子報 —— 心法：<strong>找靈感 &gt; 找教學</strong>，看別人做到什麼程度，再回來實作。</p>
+      </div>
+      <div class="quad">
+        <div class="grp anim d1">
+          <div class="gt">中文報紙型</div>
+          <div class="it"><span class="n">Brief AI</span><span class="u">ai.briefnewsletter.com</span></div>
+          <div class="it"><span class="n">知識複利週報｜朱騏</span><span class="u">知識整理 × AI</span></div>
+        </div>
+        <div class="grp anim d1">
+          <div class="gt">英文報紙型</div>
+          <div class="it"><span class="n">The Rundown AI</span><span class="u">therundown.ai</span></div>
+          <div class="it"><span class="n">Lenny's Newsletter</span><span class="u">PM × AI · 免費版就夠</span></div>
+        </div>
+        <div class="grp anim d2">
+          <div class="gt">中國視角</div>
+          <div class="it"><span class="n">增长黑客 AI 周报</span><span class="u">zengzhang.ai</span></div>
+          <div class="it"><span class="n">AIGC Weekly</span><span class="u">quaily.com/op7418</span></div>
+        </div>
+        <div class="grp anim d2">
+          <div class="gt">技術 / 學術</div>
+          <div class="it"><span class="n">愛好 AI Engineer｜ihower</span><span class="u">月更 · 追臉書更快</span></div>
+          <div class="it"><span class="n">Agentic AI Weekly · RDI</span><span class="u">BERKELEY · 看看就好</span></div>
+        </div>
+      </div>
+      <div class="anim d3" style="margin-top:30px;">
+        <div class="con-foot" style="text-align:left;">講了這麼多觀念 —— 不如直接帶你看，<strong>航班追蹤怎麼一步步做出來</strong> →</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ SECTION 03 BUILD 專案示範 ════════════ -->
+
+  <!-- ============ P52 段封面 ============ -->
+  <section class="slide s-cover" data-label="P52 BUILD 段封面" data-screen-label="P52 BUILD Cover">
+    <div style="position:absolute;inset:0;background-image:url('assets/p14.png');background-size:cover;background-position:center;filter:grayscale(1);opacity:0.13;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,26,0.85),rgba(10,14,26,0.3));"></div>
+    <div class="num-mega mono" style="font-size:300px;right:40px;bottom:180px;">BUILD</div>
+    <div class="frame" style="position:relative;z-index:2;">
+      <div>
+        <div class="eyebrow">03 BUILD · 專案示範</div>
+        <h2 class="title anim">專案示範</h2>
+        <p class="lead anim d1">航班追蹤，從零到飛起來。<br>「前面看的是成果，這段我把蓋子打開 —— <strong>你照著走，也做得出來。</strong>」</p>
+      </div>
+      <div class="toc">
+        <span>01 SHOWCASE</span><span>02 AI CODING</span><span class="now">03 BUILD</span><span>04 HORIZON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P53 Step 0 你想做什麼 ============ -->
+  <section class="slide s-con" data-label="P53 Step 0 你想做什麼" data-screen-label="P53">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P44 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 0</div>
+        <h2>你想做什麼？</h2>
+        <p class="sub">我的念頭很單純 —— <strong>把台灣機場的飛行軌跡用三維畫出來</strong>。</p>
+      </div>
+      <div class="sketch-stage anim d1">
+        <svg viewBox="0 0 1100 560" style="position:absolute;left:0;top:10px;width:1050px;height:540px;" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+          <!-- runway (hand-drawn feel) -->
+          <path d="M120,470 L520,438 M150,500 L552,466"></path>
+          <path d="M205,478 l40,-3 M295,471 l40,-3 M385,464 l40,-3" stroke-dasharray="none" opacity="0.6"></path>
+          <!-- rising 3D arc with jitter -->
+          <path d="M500,448 C610,440 660,420 730,370 C790,328 822,290 868,228 C900,184 930,150 968,118" stroke-width="3"></path>
+          <!-- altitude drop lines -->
+          <path d="M730,370 L730,452 M868,228 L868,440 M968,118 L968,430" stroke-dasharray="4 10" opacity="0.4" stroke-width="1.5"></path>
+          <!-- plane -->
+          <path d="M968,118 l34,-26 m-34,26 l40,-6 m-40,6 l10,-38" stroke-width="3"></path>
+          <!-- little tower -->
+          <path d="M180,468 l0,-46 m-14,0 l28,0 m-24,-16 l20,0 l-2,16 l-16,0 z" opacity="0.7"></path>
+        </svg>
+        <div class="sketch-note" style="left:200px;top:30px;">A SKETCH IN MY HEAD</div>
+        <div class="sketch-note" style="left:620px;top:480px;color:var(--fg-mute);">RCTP · 3D FLIGHT ARC</div>
+        <svg viewBox="0 0 360 200" style="position:absolute;right:430px;bottom:150px;width:330px;height:185px;" fill="none">
+          <path d="M20,40 C140,20 240,60 330,150" stroke="#5BE0E8" stroke-width="2.5" stroke-dasharray="3 12" stroke-linecap="round"></path>
+          <path d="M330,150 l-26,-4 m26,4 l-8,-25" stroke="#5BE0E8" stroke-width="2.5" stroke-linecap="round"></path>
+        </svg>
+        <div class="sketch-note" style="right:560px;bottom:330px;color:var(--cyan);">18 個月</div>
+        <div class="sketch-panel">
+          <img src="assets/p13_top.png" alt="Plan R 桃園光軌成品" />
+          <div class="cap">成品 · PLAN R</div>
+        </div>
+      </div>
+      <div class="con-foot anim d2">好起點不是規格書，是<strong>一個具體到能想像畫面的念頭</strong> —— 太抽象，AI 也接不住</div>
+    </div>
+  </section>
+
+  <!-- ============ P54 Step 1 拆成兩塊 ============ -->
+  <section class="slide s-con" data-label="P54 Step 1 拆成兩塊" data-screen-label="P54">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P45 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 1</div>
+        <h2>拆成兩塊</h2>
+        <p class="sub">跟 AI 把專案拆開：<strong>資料</strong>，以及<strong>你要怎麼操作它</strong>。</p>
+      </div>
+      <div class="branch anim d1">
+        <svg viewBox="0 0 1700 560" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+          <path d="M850,130 L850,185 M850,185 L476,185 L476,222 M850,185 L1224,185 L1224,222" fill="none" stroke="rgba(91,224,232,0.4)" stroke-width="2.5"></path>
+          <path d="M476,222 l-10,-16 l20,0 z M1224,222 l-10,-16 l20,0 z" fill="rgba(91,224,232,0.6)"></path>
+        </svg>
+        <div class="br-node idea" style="left:50%;top:0;">
+          <div class="t">✈ 3D 航跡（念頭）</div>
+        </div>
+        <div class="br-node data" style="left:28%;top:232px;">
+          <div class="no">①</div>
+          <div class="t">資料 DATA</div>
+          <ul><li>去哪拿？</li><li>什麼格式？</li><li>要多少錢？</li></ul>
+          <div class="pg">先解 → P40–43</div>
+        </div>
+        <div class="br-node ui" style="left:72%;top:232px;">
+          <div class="no">②</div>
+          <div class="t">介面 UI</div>
+          <ul><li>怎麼呈現？</li><li>怎麼互動？</li></ul>
+          <div class="pg">後解 → P45–48</div>
+        </div>
+      </div>
+      <div class="con-foot anim d2"><strong>先資料、後呈現</strong> —— 順序不要反</div>
+    </div>
+  </section>
+
+  <!-- ============ P55 Step 2-① 先讓 AI 盤點 ============ -->
+  <section class="slide s-con" data-label="P55 Step 2-① AI 盤點資料源" data-screen-label="P55">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P46 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 2-①</div>
+        <h2>先讓 AI 盤點資料源</h2>
+        <p class="sub">不要自己埋頭 Google —— <strong>請它先列出可能的選項</strong>。</p>
+      </div>
+      <div class="chat">
+        <div class="bubble me anim d1">
+          <div class="who">你</div>
+          <div class="say">「我想拉台灣機場的航班軌跡，有哪些資料源？各有什麼取捨？」</div>
+        </div>
+        <div class="chat-arrow anim d1"></div>
+        <div class="bubble ai anim d2">
+          <div class="who">AI · 候選清單</div>
+          <div class="opt"><span class="id">①</span><span class="nm">TDX</span><span class="ds">官方 · 只有基礎航班資料</span><span class="tag free">免費</span></div>
+          <div class="opt"><span class="id">②</span><span class="nm">OpenSky</span><span class="ds">大面積覆蓋 · 有延遲</span><span class="tag free">免費</span></div>
+          <div class="opt"><span class="id">③</span><span class="nm">FR24 API</span><span class="ds">軌跡精細 · 進場漂亮</span><span class="tag paid">付費</span></div>
+          <div class="opt"><span class="id">④</span><span class="nm">FR24 爬蟲</span><span class="ds">能拿到 · 但別碰</span><span class="tag gray">灰色地帶</span></div>
+        </div>
+      </div>
+      <div class="con-foot anim d3" style="margin-top:10px;">你只要先拿到<strong>可能選項清單</strong> —— 不用馬上決定</div>
+    </div>
+  </section>
+
+  <!-- ============ P56 Step 2-② 自己驗 ============ -->
+  <section class="slide s-con" data-label="P56 Step 2-② 自己驗" data-screen-label="P56">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P47 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 2-②</div>
+        <h2>自己驗一遍：內容與品質</h2>
+        <p class="sub">AI 給的清單要落地，<strong>你得親手確認</strong>。</p>
+      </div>
+      <div class="verify anim d1">
+        <div class="vf-card">
+          <div class="vt">驗內容 — CHECKLIST</div>
+          <div class="ck"><span class="bx"></span>有哪些欄位<span class="sm">SCHEMA</span></div>
+          <div class="ck"><span class="bx"></span>涵蓋範圍<span class="sm">COVERAGE</span></div>
+          <div class="ck"><span class="bx"></span>更新頻率<span class="sm">FREQUENCY</span></div>
+          <div style="margin-top:auto;font-size:28px;color:var(--fg-mute);font-weight:300;line-height:1.5;border-top:1px solid var(--line);padding-top:22px;">盤點交給 AI ——「值不值得用」自己驗。</div>
+        </div>
+        <div class="vf-card">
+          <div class="vt">驗品質 — 拉一小段樣本看</div>
+          <div class="vf-shot"><img src="assets/p22_opensky.png" alt="OpenSky 樣本軌跡" /></div>
+          <div class="vf-verdict">
+            <span class="ok">✓ 大面積覆蓋 OK</span>
+            <span class="bad">✗ 降落顆粒度不夠 —— 拉下來才知道</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P57 Step 2-③ 申請、讀文件、開始試 ============ -->
+  <section class="slide s-con" data-label="P57 Step 2-③ 申請開始試" data-screen-label="P57">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P48 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 2-③</div>
+        <h2>申請、讀文件、開始試</h2>
+        <p class="sub">把 API 文件直接丟給 AI，它幫你接 —— <strong>你只動手一步</strong>。</p>
+      </div>
+      <div class="flow4 anim d1">
+        <div class="flow4-row">
+          <div class="f4"><div class="no">01</div><div class="t">申請 KEY</div><span class="who">AI 教你去哪申請</span></div>
+          <div class="f4-arrow">→</div>
+          <div class="f4"><div class="no">02</div><div class="t">丟 API 文件</div><span class="who">AI 讀懂</span></div>
+          <div class="f4-arrow">→</div>
+          <div class="f4"><div class="no">03</div><div class="t">設 .env</div><span class="who you">你動手 · 10 秒</span></div>
+          <div class="f4-arrow">→</div>
+          <div class="f4" style="border-color:rgba(91,224,232,0.5);background:rgba(91,224,232,0.05);"><div class="no">04</div><div class="t">「試拉一天，<br>注意費用」</div><span class="who">AI 開跑</span></div>
+        </div>
+        <div class="flow4-out">
+          <div class="v"></div>
+          <div class="file">
+            <svg class="icn" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            RCTP_0611.jsonl
+          </div>
+        </div>
+      </div>
+      <div class="con-foot anim d2">放權，但守門 ——<strong>「注意費用」一定要對 AI 講</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P58 Step 2-④ 我們的選擇（四象限） ============ -->
+  <section class="slide s-con" data-label="P58 Step 2-④ 最後的選擇" data-screen-label="P58">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P49 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 2-④</div>
+        <h2>我真的把四個都試了</h2>
+        <p class="sub">TDX / OpenSky / FR24 / 爬蟲 —— 落在同一張取捨圖上。</p>
+      </div>
+      <div class="quadplot anim d1">
+        <div class="axis" style="left:0;right:0;top:50%;height:2px;"></div>
+        <div class="axis" style="top:0;bottom:0;left:50%;width:2px;"></div>
+        <div class="ax-lab" style="right:0;top:50%;transform:translateY(-160%);">付費 →</div>
+        <div class="ax-lab" style="left:0;top:50%;transform:translateY(-160%);">← 免費</div>
+        <div class="ax-lab" style="left:50%;top:-8px;transform:translateX(20px);">↑ 細顆粒</div>
+        <div class="ax-lab" style="left:50%;bottom:-8px;transform:translateX(20px);">↓ 粗顆粒</div>
+        <div class="qp-pt" style="left:20%;top:80%;"><span class="mk"></span><span class="nm">TDX</span><span class="ds">免費 · 只有基礎資料 → 不符</span></div>
+        <div class="qp-pt" style="left:34%;top:62%;"><span class="mk"></span><span class="nm">OpenSky</span><span class="ds">大面積可 · 降落不夠漂亮</span></div>
+        <div class="qp-pt" style="left:30%;top:20%;"><span class="mk" style="background:transparent;border:2px dashed var(--fg-mute);"></span><span class="nm">FR24 爬蟲</span><span class="gz">GRAY ZONE</span></div>
+        <div class="qp-pt win" style="left:78%;top:18%;"><span class="mk"></span><span class="nm">★ FR24 API</span><span class="ds" style="color:var(--fg-dim);">效果最好 · 付費 → 最終選擇</span></div>
+      </div>
+      <div class="con-foot anim d2">為了好效果，<strong>付費值得</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P59 Step 3 規格→執行 ============ -->
+  <section class="slide s-con" data-label="P59 Step 3 決定處理方式" data-screen-label="P59">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P50 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 3</div>
+        <h2>決定處理方式，就開跑</h2>
+        <p class="sub">存哪、怎麼清、怎麼切 —— 講清楚，<strong>就讓它執行</strong>。</p>
+      </div>
+      <div class="specrun anim d1">
+        <div class="sr-card">
+          <div class="vt">規格 — 你定</div>
+          <div class="row"><span class="k">存哪</span><span class="v">tracks/</span></div>
+          <div class="row"><span class="k">格式</span><span class="v">JSONL</span></div>
+          <div class="row"><span class="k">清理</span><span class="v">去重 DEDUPE</span></div>
+          <div class="row"><span class="k">切法</span><span class="v">按機場 / 區域</span></div>
+        </div>
+        <div class="freeze"><div class="bar"></div><div class="lb">規格凍結線</div></div>
+        <div class="sr-card term">
+          <div class="vt">執行 — 它跑</div>
+          <div class="ln">fetch <span class="n">165</span> 機場</div>
+          <div class="ln">去重 <span class="n">41,766</span> 筆軌跡</div>
+          <div class="ln">切成 <span class="n">1,356</span> 個機場檔</div>
+        </div>
+      </div>
+      <div class="con-foot anim d2">先把規格講定，再放手讓它跑 —— <strong>不要邊跑邊改規格</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P60 Step 4 先看到第一個東西 ============ -->
+  <section class="slide s-con" data-label="P60 Step 4 第一個東西" data-screen-label="P60">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P51 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 4</div>
+        <h2>先看到第一個東西</h2>
+        <p class="sub">開新對話，一句需求：「顯示在可 3D 轉動的地圖上，要有<strong>夜晚飛行軌跡的感覺</strong>」。</p>
+      </div>
+      <div class="ba anim d1">
+        <div class="ba-code">
+          <div class="vt">BEFORE — 冰冷的 JSONL</div>
+          <pre>{"<span class="k">lat</span>": <span class="v">25.0927</span>,
+ "<span class="k">lon</span>": <span class="v">121.2281</span>,
+ "<span class="k">alt</span>": <span class="v">2400</span>,
+ "<span class="k">ts</span>": <span class="v">1718064000</span>, …}</pre>
+          <div class="ct">× 41,766 條軌跡</div>
+        </div>
+        <div class="ba-mid"><div class="ar">──▶</div><div class="lb">一句需求</div></div>
+        <div class="ba-shot">
+          <img src="assets/p13_oblique.png" alt="第一版光軌" />
+          <div class="cap">第一個能動的版本<div class="m">FIRST LIGHT</div></div>
+        </div>
+      </div>
+      <div class="con-foot anim d2" style="margin-top:26px;">別在腦中空想規格 —— <strong>讓畫面先出來，需求會被畫面逼出來</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P61 Step 5 圖層堆疊 ============ -->
+  <section class="slide s-con" data-label="P61 Step 5 功能層層疊" data-screen-label="P61">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P52 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <div class="step-chip">STEP 5</div>
+        <h2>功能是一層層疊上去的</h2>
+        <p class="sub">不是事先列好的規格 —— <strong>做的過程中跟 AI 討論、一起疊上去</strong>。</p>
+      </div>
+      <div class="stack">
+        <div class="layers anim d1">
+          <div class="layer" style="top:60px;border-color:rgba(91,224,232,0.8);background:rgba(91,224,232,0.14);box-shadow:0 0 40px rgba(91,224,232,0.15);"></div>
+          <div class="layer-lab" style="top:84px;"><span class="no" style="color:var(--cyan);">L5</span><span class="t">時間軸</span><span class="s">最新的最亮</span></div>
+          <div class="layer" style="top:170px;border-color:rgba(91,224,232,0.55);background:rgba(91,224,232,0.09);"></div>
+          <div class="layer-lab" style="top:194px;"><span class="no" style="color:rgba(91,224,232,0.8);">L4</span><span class="t">航區 POLYGON</span></div>
+          <div class="layer" style="top:280px;border-color:rgba(255,255,255,0.45);background:rgba(255,255,255,0.07);"></div>
+          <div class="layer-lab" style="top:304px;"><span class="no" style="color:var(--fg-dim);">L3</span><span class="t">顏色（按高度）</span></div>
+          <div class="layer" style="top:390px;border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.045);"></div>
+          <div class="layer-lab" style="top:414px;"><span class="no" style="color:var(--fg-mute);">L2</span><span class="t">多機場</span></div>
+          <div class="layer" style="top:500px;border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.03);"></div>
+          <div class="layer-lab" style="top:524px;"><span class="no" style="color:var(--fg-mute);">L1</span><span class="t">底圖 + 單機場軌跡</span><span class="s">第一版</span></div>
+        </div>
+        <div class="stack-side anim d2">
+          <div class="shot"><img src="assets/p23.png" alt="疊完的樣子 — Plan R 全景" /></div>
+          <div class="cap">疊完的樣子 —— 多機場 → 高度配色 → 航區 → 時間軸，<strong>每一層都是做的時候才冒出來的</strong>。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P62 介面① Claude Design ============ -->
+  <section class="slide s-dash" data-label="P62 介面 Claude Design" data-screen-label="P62">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P53 / 64</span></div>
+    <div class="frame">
+      <div class="dash-head">
+        <div class="left">
+          <div class="eb anim">介面 ① · CLAUDE DESIGN</div>
+          <h2 class="anim d1">一句話，畫出真的介面</h2>
+          <div class="sub anim d2">功能多了才處理美感，順序對 —— P27 那個 Info 儀表板，<strong style="color:var(--fg);">就是這樣長出來的</strong>。</div>
+        </div>
+        <div class="right anim d2">真實工作畫面<br>未經剪輯</div>
+      </div>
+      <div class="dash-body anim d2" style="justify-content:center;">
+        <div class="shot-panel" style="flex:0 1 820px;height:100%;position:relative;">
+          <img src="assets/p47.png" alt="Claude Design 對話與介面成品" />
+        </div>
+        <div class="metrics" style="flex:0 0 520px;">
+          <div class="metric">
+            <div class="ml" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:24px;">一句話需求</div>
+            <div style="font-size:32px;color:var(--fg);line-height:1.55;">「請依據文件與過往的分頁，產生醫療頁面的介面設計」</div>
+            <div class="ml" style="margin:14px 0 0;font-family:'JetBrains Mono',monospace;font-size:24px;">PROMPT 全文就這 24 個字</div>
+          </div>
+          <div class="metric">
+            <div class="ml" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:24px;">介面成品</div>
+            <div style="font-size:30px;color:var(--fg-dim);line-height:1.5;font-weight:300;">右側整頁 Mini Taiwan Info 醫療頁 —— 元件、版面、配色一次出來，可再客製。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P63 介面② ChatGPT 出形狀 ============ -->
+  <section class="slide s-dash" data-label="P63 介面 ChatGPT 出形狀" data-screen-label="P63">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P54 / 64</span></div>
+    <div class="frame">
+      <div class="dash-head">
+        <div class="left">
+          <div class="eb anim">介面 ② · CHATGPT</div>
+          <h2 class="anim d1">出形狀、出案例、出名字</h2>
+          <div class="sub anim d2">丟 README 問「給我儀表板的幾個介面設計方向」—— <strong style="color:var(--fg);">一次出好幾個方向，挑著用</strong>。</div>
+        </div>
+        <div class="right anim d2">CHATGPT 出點子<br>CLAUDE DESIGN 落地</div>
+      </div>
+      <div class="dash-body anim d2" style="justify-content:center;">
+        <div class="shot-panel" style="flex:0 1 1100px;height:100%;"><img src="assets/p48.png" alt="ChatGPT 介面發想對話" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P64 觀念① 重做比優化快 ============ -->
+  <section class="slide s-con" data-label="P64 觀念 重做比優化快" data-screen-label="P64">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P55 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>重做，常常比優化快</h2>
+        <p class="sub">在 AI 的世界，<strong>推導比迭代更便宜</strong> —— 你帶走的是經驗，不是程式碼。</p>
+      </div>
+      <div class="paths anim d1">
+        <div class="row-lab" style="top:80px;"><div class="t">路徑 A · 持續優化</div><div class="m">PATCH ON PATCH</div></div>
+        <div class="row-lab" style="top:380px;"><div class="t">路徑 B · 重新推導</div><div class="m" style="color:var(--cyan);">EXPERIENCE PACKED</div></div>
+        <svg viewBox="0 0 1700 560" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;">
+          <path d="M360,130 C460,70 520,210 610,150 C690,96 720,40 790,140 C840,210 900,230 950,130 C1000,40 1060,60 1100,160 C1135,245 1230,250 1270,150 C1300,80 1330,110 1360,140" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3.5" stroke-linecap="round"></path>
+          <path d="M700,120 C780,180 850,90 920,180 M980,90 C1050,180 1130,80 1200,190" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M360,430 L1360,430" stroke="rgba(91,224,232,0.25)" stroke-width="10" stroke-linecap="round"></path>
+          <path d="M360,430 L1360,430" stroke="#5BE0E8" stroke-width="3.5" stroke-linecap="round"></path>
+          <path d="M360,180 C360,280 360,330 360,420" stroke="rgba(91,224,232,0.45)" stroke-width="2.5" stroke-dasharray="4 12" fill="none"></path>
+          <circle cx="360" cy="130" r="8" fill="rgba(255,255,255,0.5)"></circle>
+          <circle cx="360" cy="430" r="9" fill="#5BE0E8"></circle>
+          <circle cx="1360" cy="430" r="9" fill="#5BE0E8"></circle>
+        </svg>
+        <div class="endnote" style="left:1395px;top:118px;color:var(--rose);">✕ 越補越亂</div>
+        <div class="endnote" style="left:1395px;top:408px;color:var(--cyan);">● 帶著經驗重開</div>
+        <div class="endnote" style="left:360px;top:470px;color:var(--fg-mute);font-family:'JetBrains Mono',monospace;font-size:24px;">開新對話 · 開新資料夾 · 已知需求和規格</div>
+      </div>
+      <div class="con-foot anim d2"><strong>不要捨不得砍掉重練</strong> —— Plan R 就是這樣重生的</div>
+    </div>
+  </section>
+
+  <!-- ============ P65 觀念② 當同事，用講的 ============ -->
+  <section class="slide s-con" data-label="P65 觀念 當同事用講的" data-screen-label="P65">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P56 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>把它當同事，用講的更快</h2>
+        <p class="sub">描述問題、給可接受範圍，甚至<strong>反問它</strong>。</p>
+      </div>
+      <div class="talk">
+        <div class="tb bad anim d1">
+          <div class="mark">✕</div>
+          <div class="say">「幫我撈經過空域上的所有飛機。」</div>
+          <div class="cnt">14 個字 · 沒有脈絡</div>
+        </div>
+        <div class="tb good anim d2">
+          <div class="mark">✓</div>
+          <div class="mic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18v4"/></svg></div>
+          <div class="say">用講的：背景是我在做航班追蹤、資料每 10 分鐘更新；限制是只有經緯度和高度；我能接受 5 分鐘延遲——<strong>要做這件事，我還有哪些東西要先思考？</strong></div>
+          <div class="cnt">200 字脈絡 · 語音轉文字 60 秒倒完</div>
+        </div>
+      </div>
+      <div class="con-foot anim d3" style="margin-top:30px;">你對同事不會只丟一句「幫我想辦法」——<strong>對 AI 也別這樣</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P66 ONE-SHOT 現場挑戰 ============ -->
+  <section class="slide s-con" data-label="P66 One Shot 現場挑戰" data-screen-label="P66">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 現場挑戰</span><span class="pg">P57 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim" style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;">
+        <div>
+          <h2>現場挑戰｜One Shot</h2>
+          <p class="sub">你們說一個航點，<strong>現在就把它變成一個會顯示軌跡的網頁</strong>。</p>
+        </div>
+        <div class="demo-pill" style="flex:0 0 auto;"><span class="tri"></span>LIVE</div>
+      </div>
+      <div class="oneshot">
+        <div class="os-card anim d1">
+          <div class="qrow">
+            <div class="qmark">?</div>
+            <div><div class="t">航點 —— 觀眾出題</div><div class="s">說一個機場，我們現場做</div></div>
+          </div>
+          <div class="prompt">
+            <span class="c"># oneshot prompt</span><br>
+            取 <span class="hl">＿＿＿＿</span> 一天的航班軌跡，<br>
+            渲染在開放地圖上，<span class="hl">航司分色</span>、<br>
+            點擊看航班資訊，做成單頁網頁。
+          </div>
+          <div class="os-flow">
+            <span class="ch">拆解</span><span class="ar">→</span>
+            <span class="ch">取資料</span><span class="ar">→</span>
+            <span class="ch">渲染</span><span class="ar">→</span>
+            <span class="ch">上色</span><span class="ar">→</span>
+            <span class="ch">互動</span>
+          </div>
+        </div>
+        <div class="os-side anim d2">
+          <div class="shot">
+            <img src="assets/p13_oblique.png" alt="彩排畫面 — 預期產出" />
+            <div class="cap">彩排畫面 · 預期產出</div>
+          </div>
+          <div class="close">重點不是完美 ——<br>「<strong>從一句話到能動，比你想的快。</strong>」</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ SECTION 04 HORIZON 展望 ════════════ -->
+
+  <!-- ============ P67 段封面 ============ -->
+  <section class="slide s-cover" data-label="P67 HORIZON 段封面" data-screen-label="P67 HORIZON Cover">
+    <div class="num-mega mono" style="font-size:280px;right:40px;bottom:180px;">HORIZON</div>
+    <div class="frame">
+      <div>
+        <div class="eyebrow">04 HORIZON · 展望</div>
+        <h2 class="title anim">展望</h2>
+        <p class="lead anim d1">我待過三間公司的數據團隊，站在第一線看到很不一樣的樣貌 —— 也看到<strong>同一股力量正在重塑它們</strong>。</p>
+        <div class="cover-dots anim d2">
+          <span class="d"></span><span class="l"></span><span class="d"></span><span class="l"></span><span class="d"></span>
+          <span class="cap">3 TEAMS · 第一線觀察</span>
+        </div>
+      </div>
+      <div class="toc">
+        <span>01 SHOWCASE</span><span>02 AI CODING</span><span>03 BUILD</span><span class="now">04 HORIZON</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P68 兩種團隊結構 ============ -->
+  <section class="slide s-con" data-label="P68 兩種團隊結構" data-screen-label="P68">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P58 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>兩種團隊結構</h2>
+        <p class="sub">集中型 vs 分散型 —— 第一線看到的取捨，<strong>中立、不評斷</strong>。</p>
+      </div>
+      <div class="duo anim d1">
+        <div class="half">
+          <div class="ht">集中型<span class="e">CENTRALIZED</span></div>
+          <svg width="520" height="250" viewBox="0 0 520 250" fill="none">
+            <line x1="260" y1="78" x2="115" y2="180" stroke="rgba(91,224,232,0.4)" stroke-width="2"></line>
+            <line x1="260" y1="78" x2="260" y2="180" stroke="rgba(91,224,232,0.4)" stroke-width="2"></line>
+            <line x1="260" y1="78" x2="405" y2="180" stroke="rgba(91,224,232,0.4)" stroke-width="2"></line>
+            <circle cx="260" cy="55" r="34" fill="rgba(91,224,232,0.15)" stroke="#5BE0E8" stroke-width="2.5"></circle>
+            <text x="260" y="64" text-anchor="middle" font-size="25" fill="#5BE0E8" font-family="Noto Sans TC">分析</text>
+            <rect x="50" y="180" width="130" height="56" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <rect x="195" y="180" width="130" height="56" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <rect x="340" y="180" width="130" height="56" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <text x="115" y="216" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+            <text x="260" y="216" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+            <text x="405" y="216" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+          </svg>
+          <div class="pcb">
+            <div class="row"><span class="tag p">優</span><span>交流多、<strong>跨團隊問題早發現</strong></span></div>
+            <div class="row"><span class="tag c">缺</span><span>離業務遠、仰賴個人特質</span></div>
+            <div class="row"><span class="tag f">補</span><span>輪調 + 固定對接</span></div>
+          </div>
+        </div>
+        <div class="half">
+          <div class="ht">分散型<span class="e">EMBEDDED</span></div>
+          <svg width="520" height="250" viewBox="0 0 520 250" fill="none">
+            <rect x="70" y="30" width="170" height="88" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <rect x="280" y="30" width="170" height="88" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <rect x="70" y="140" width="170" height="88" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <rect x="280" y="140" width="170" height="88" rx="8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></rect>
+            <text x="130" y="82" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+            <text x="340" y="82" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+            <text x="130" y="192" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+            <text x="340" y="192" text-anchor="middle" font-size="25" fill="#B8C0D2" font-family="Noto Sans TC">業務</text>
+            <rect x="186" y="58" width="30" height="30" transform="rotate(45 201 73)" fill="rgba(91,224,232,0.18)" stroke="#5BE0E8" stroke-width="2"></rect>
+            <rect x="396" y="58" width="30" height="30" transform="rotate(45 411 73)" fill="rgba(91,224,232,0.18)" stroke="#5BE0E8" stroke-width="2"></rect>
+            <rect x="186" y="168" width="30" height="30" transform="rotate(45 201 183)" fill="rgba(91,224,232,0.18)" stroke="#5BE0E8" stroke-width="2"></rect>
+            <rect x="396" y="168" width="30" height="30" transform="rotate(45 411 183)" fill="rgba(91,224,232,0.18)" stroke="#5BE0E8" stroke-width="2"></rect>
+          </svg>
+          <div class="pcb">
+            <div class="row"><span class="tag p">優</span><span>節奏一致、需求快、<strong>領域熟</strong></span></div>
+            <div class="row"><span class="tag c">缺</span><span>孤立、少外部動態</span></div>
+            <div class="row"><span class="tag f">補</span><span>平行結構 + 定期交流</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P69 金融 vs 新創 ============ -->
+  <section class="slide s-con" data-label="P69 金融 vs 新創" data-screen-label="P69">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P59 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>金融 vs 新創</h2>
+        <p class="sub">拿到的資料、能動的彈性，<strong>差很多</strong>。</p>
+      </div>
+      <div class="bars anim d1">
+        <div class="bar-head"><span></span><span class="corp">金融</span><span class="corp">新創</span></div>
+        <div class="bar-row">
+          <span class="lab">資料乾淨度</span>
+          <div class="bar"><i class="hi" style="width:85%;"></i><span class="pct">高 — 時間花在找洞察</span></div>
+          <div class="bar"><i class="lo" style="width:35%;"></i><span class="pct">要自己處理</span></div>
+        </div>
+        <div class="bar-row">
+          <span class="lab">彈性</span>
+          <div class="bar"><i class="lo" style="width:35%;"></i><span class="pct">編制完整、流程固定</span></div>
+          <div class="bar"><i class="hi" style="width:85%;"></i><span class="pct">高 — 跟業務一起討論達標</span></div>
+        </div>
+        <div class="bar-row">
+          <span class="lab">決策速度</span>
+          <div class="bar"><i class="lo" style="width:45%;"></i><span class="pct">看流程</span></div>
+          <div class="bar"><i class="hi" style="width:75%;"></i><span class="pct">交付快 → 決策快</span></div>
+        </div>
+      </div>
+      <div class="con-foot anim d2" style="margin-top:34px;">差異不是優劣，<strong>是階段</strong></div>
+    </div>
+  </section>
+
+  <!-- ============ P70 角色上移 ============ -->
+  <section class="slide s-con" data-label="P70 資料分析師會消失嗎" data-screen-label="P70">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P60 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>資料分析師會消失嗎？</h2>
+        <p class="sub">坦白說，可能是第一批被取代的領域 —— 但不是消失，<strong>是上移</strong>。</p>
+      </div>
+      <div class="shift anim d1">
+        <div class="blk">
+          <div class="bt">過去 — 人做全部</div>
+          <ul><li>寫 SQL</li><li>出報表</li><li>給結論</li></ul>
+          <div class="cap">一人一案、線性產出</div>
+        </div>
+        <div class="shift-mid"><div class="ar">⟶</div><div class="lb">角色上移</div></div>
+        <div class="future">
+          <div class="lay human">
+            <div class="lt">維護系統結構 · 語義層</div>
+            <div class="ls">確保分析 Agent 的正確性 · 處理複雜分析</div>
+            <div class="who">人 · 少數</div>
+          </div>
+          <div class="lay ai">
+            <div class="lt">分析 Agent</div>
+            <div class="ls">SQL / 報表 / 結論 —— 大量、全自動</div>
+            <div class="who">AI · 大量</div>
+          </div>
+        </div>
+      </div>
+      <div class="con-foot anim d2">人數變少，<strong>每個人的槓桿變大</strong> —— 第 1 頁說的「系統設計者」，在這裡收口</div>
+    </div>
+  </section>
+
+  <!-- ============ P71 分析的民主化 ============ -->
+  <section class="slide s-con" data-label="P71 分析的民主化" data-screen-label="P71">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P61 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>分析的民主化</h2>
+        <p class="sub">不是去找分析師 —— <strong>是去問你自己的 Agent</strong>。</p>
+      </div>
+      <div class="radial anim d1">
+        <svg viewBox="0 0 1700 640" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+          <line x1="850" y1="320" x2="476" y2="96" stroke="rgba(91,224,232,0.25)" stroke-width="2"></line>
+          <line x1="850" y1="320" x2="1224" y2="96" stroke="rgba(91,224,232,0.25)" stroke-width="2"></line>
+          <line x1="850" y1="320" x2="170" y2="320" stroke="rgba(91,224,232,0.25)" stroke-width="2"></line>
+          <line x1="850" y1="320" x2="1530" y2="320" stroke="rgba(91,224,232,0.25)" stroke-width="2"></line>
+          <line x1="850" y1="320" x2="476" y2="550" stroke="rgba(91,224,232,0.25)" stroke-width="2"></line>
+          <line x1="850" y1="320" x2="1224" y2="550" stroke="rgba(91,224,232,0.25)" stroke-width="2"></line>
+        </svg>
+        <div class="rad-node" style="left:28%;top:15%;"><div class="av"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="gear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></div><div class="nm">PM</div></div>
+        <div class="rad-node" style="left:72%;top:15%;"><div class="av"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="gear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></div><div class="nm">業務</div></div>
+        <div class="rad-node" style="left:10%;top:50%;"><div class="av"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="gear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></div><div class="nm">行銷</div></div>
+        <div class="rad-node" style="left:90%;top:50%;"><div class="av"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="gear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></div><div class="nm">營運</div></div>
+        <div class="rad-node" style="left:28%;top:86%;"><div class="av"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="gear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></div><div class="nm">財務</div></div>
+        <div class="rad-node" style="left:72%;top:86%;"><div class="av"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="gear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span></div><div class="nm">工程</div></div>
+        <div class="rad-core">
+          <svg class="icn" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+          <div class="t">語義層 + 資料庫</div>
+          <div class="m">ANALYST AS DESIGNER</div>
+        </div>
+      </div>
+      <div class="con-foot anim d2">分析師的價值：從「做分析」→「<strong>設計 Agent、保證可靠</strong>」</div>
+    </div>
+  </section>
+
+  <!-- ============ P72 如果是你們，怎麼開始 ============ -->
+  <section class="slide s-con" data-label="P72 怎麼開始" data-screen-label="P72">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P62 / 64</span></div>
+    <div class="frame">
+      <div class="con-head anim">
+        <h2>如果是你們，怎麼開始</h2>
+        <p class="sub">三個可以<strong>馬上做</strong>的選擇。</p>
+      </div>
+      <div class="trio">
+        <div class="card3 anim d1">
+          <div class="stampno">01 START</div>
+          <h3>先動手做一個小東西</h3>
+          <p class="ds">選一個內部痛點，用最小集合試一輪 —— CLAUDE.md + Skills + Browser + Git。</p>
+          <div class="motto">本週就能開工</div>
+          <div class="mono" style="font-size:24px;color:var(--fg-mute);letter-spacing:0.1em;">↩ 呼應 P33</div>
+        </div>
+        <div class="card3 anim d2">
+          <div class="stampno">02 EXHAUST</div>
+          <h3>把一份資料源用到底</h3>
+          <p class="ds">像 FR24 —— 資料先備，長出藝術、情報、分析、整合多種應用。</p>
+          <div class="motto">新應用邊際成本 ≈ 0</div>
+          <div class="mono" style="font-size:24px;color:var(--fg-mute);letter-spacing:0.1em;">↩ 呼應 P21</div>
+        </div>
+        <div class="card3 anim d3">
+          <div class="stampno">03 DESIGN</div>
+          <h3>往「設計 Agent」移</h3>
+          <p class="ds">把重複的分析抽成可複用的 Agent / Skill，讓別人自己問。</p>
+          <div class="motto">槓桿放大</div>
+          <div class="mono" style="font-size:24px;color:var(--fg-mute);letter-spacing:0.1em;">↩ 呼應 P55–56</div>
+        </div>
+      </div>
+      <div class="con-foot anim d3" style="margin-top:30px;">先求覆蓋、先求動手 —— <strong>問題與 ROI 會自己浮出來</strong></div>
+    </div>
+  </section>
+
+  <!-- ════════════ CLOSING 結語 ════════════ -->
+
+  <!-- ============ P73 三關鍵詞 ============ -->
+  <section class="slide full" data-label="P73 離開前記得三件事" data-screen-label="P73">
+    <div class="bg" style="background-image:url('assets/p23.png');"></div>
+    <div style="position:absolute;inset:0;background:rgba(10,14,26,0.68);z-index:1;"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · 結語</span><span class="pg">P63 / 64</span></div>
+    <div style="position:absolute;left:0;right:0;top:130px;text-align:center;z-index:3;">
+      <h2 class="anim" style="font-size:60px;font-weight:700;margin:0;color:#fff;">離開前，記得三件事</h2>
+    </div>
+    <div class="kw-row">
+      <div class="kw anim d1"><div class="no">01</div><div class="t">先動手</div><div class="s">開始就對了</div></div>
+      <div class="kw anim d2"><div class="no">02</div><div class="t">完全放權</div><div class="s">只做架構 + 驗收</div></div>
+      <div class="kw anim d3"><div class="no">03</div><div class="t">資料先備</div><div class="s">機會後現</div></div>
+    </div>
+    <div class="kw-q anim d3">「如果你們也有一支這樣的 API，你最想先看見台灣的哪一塊？」</div>
+  </section>
+
+  <!-- ============ P74 Q&A ============ -->
+  <section class="slide s-qa" data-label="P74 Q&A" data-screen-label="P74">
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · Q&amp;A</span><span class="pg">P64 / 64</span></div>
+    <div class="frame">
+      <h2 class="qa-title anim">Q &amp; A</h2>
+      <div class="qa-sub anim d1">謝謝長榮，我們聊聊</div>
+      <div class="qa-qr anim d2">
+        <div class="ls">
+          <span><span class="k">THREADS</span> · @migu</span>
+          <span><span class="k">EMAIL</span> · 會後提供</span>
+          <span><span class="k">PROJECT</span> · 專案連結一頁全收</span>
+        </div>
+      </div>
+      <div class="qa-chips anim d3">
+        <span class="ch">飛航 API</span>
+        <span class="ch">GIS 整合</span>
+        <span class="ch">數據團隊轉型</span>
+      </div>
+    </div>
+    <img class="qa-cat" src="assets/p02.jpg" alt="黑貓彩蛋" />
+  </section>
+
+</deck-stage>
+</body>
+</html>
