@@ -74,11 +74,11 @@
 .bar-head .corp{font-family:"JetBrains Mono",monospace;letter-spacing:0.1em;}
 .bar-row{display:grid;grid-template-columns:280px 1fr 1fr;gap:50px;align-items:center;}
 .bar-row .lab{font-size:34px;color:var(--fg);font-weight:500;}
-.bar{height:38px;border-radius:6px;background:rgba(255,255,255,0.06);position:relative;overflow:hidden;}
+.bar{height:38px;border-radius:6px;background:rgba(255,255,255,0.06);position:relative;overflow:visible;}
 .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;}
 .bar i.hi{background:linear-gradient(90deg,rgba(91,224,232,0.5),var(--cyan));box-shadow:0 0 22px rgba(91,224,232,0.35);}
 .bar i.lo{background:rgba(255,255,255,0.22);}
-.bar .pct{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono",monospace;font-size:24px;color:#fff;background:rgba(10,14,26,0.66);padding:3px 12px;border-radius:7px;white-space:nowrap;}
+.bar .pct{position:absolute;right:4px;top:calc(100% + 9px);transform:none;font-family:"JetBrains Mono",monospace;font-size:23px;color:var(--fg-dim);white-space:nowrap;}
 
 /* ---------- P55 role shift ---------- */
 .shift{flex:1;display:grid;grid-template-columns:1fr 200px 1.2fr;margin-top:30px;align-items:center;}
