@@ -851,24 +851,11 @@
     </div>
   </section>
 
-  <!-- ============ P20 案例 規範 vs 現實 ============ -->
-  <section class="slide full" data-label="P20 案例 規範 vs 現實" data-screen-label="P20">
-    <div class="bg" style="background-image:url('assets/p20.png')"></div>
-    <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 81</span></div>
-    <div class="full-body" style="max-width:1050px;">
-      <div class="case-label anim">案例 · 小港 RCKH</div>
-      <h2 class="anim d1">實際看到禁航區可能的影響</h2>
-      <p class="sub anim d2">禁航區圖層 × 實際軌跡疊在一起，迂迴角度肉眼可見 —— <strong>把兩張疊起來，才是情報。</strong></p>
-    </div>
-    <div class="cornermono">RCKH · 1,271 起降 · 59% 國際 / 40% 國內</div>
-  </section>
-
   <!-- ============ P17 案例 倫敦機場體系 ============ -->
   <section class="slide full" data-label="P17 案例 倫敦機場體系" data-screen-label="P17">
     <div class="bg" style="background-image:url('assets/p17.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 81</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -888,7 +875,7 @@
   <section class="slide full" data-label="P18 案例 紐約都會三角" data-screen-label="P18">
     <div class="bg" style="background-image:url('assets/p18.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 81</span></div>
     <div class="callout anim" style="left:56%;top:31%;align-items:flex-start;"><div class="lbl" style="color:var(--magenta);border-color:rgba(217,70,239,0.5);">KLGA</div></div>
     <div class="callout anim" style="left:35%;top:43%;align-items:flex-start;"><div class="lbl" style="color:var(--sky,#80bfff);border-color:rgba(128,191,255,0.5);">KEWR</div></div>
     <div class="callout anim" style="left:61%;top:55%;align-items:flex-start;"><div class="lbl amber">KJFK</div></div>
@@ -903,7 +890,7 @@
   <section class="slide full" data-label="P19 案例 時間軸地緣事件" data-screen-label="P19">
     <div class="bg" style="background-image:url('assets/p19.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P21 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 81</span></div>
     <div class="legend anim" style="left:var(--pad-x);top:150px;">
       <div class="it"><span class="sw" style="background:var(--rose);"></span>日期 A — 戰前</div>
       <div class="it"><span class="sw" style="background:var(--sky,#80bfff);"></span>日期 B — 戰時</div>
@@ -914,6 +901,19 @@
       <p class="sub anim d2">同機場、不同日期對比。杜拜 OMDB（2,740 軌跡），看見<strong>迴避路線</strong>與戰後復甦。</p>
     </div>
     <div class="cornermono">同一支 API · 拉不同日期 · COMPARE 模式</div>
+  </section>
+
+  <!-- ============ P20 案例 規範 vs 現實 ============ -->
+  <section class="slide full" data-label="P20 案例 規範 vs 現實" data-screen-label="P20">
+    <div class="bg" style="background-image:url('assets/p20.png')"></div>
+    <div class="scrim bottom"></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P21 / 81</span></div>
+    <div class="full-body" style="max-width:1050px;">
+      <div class="case-label anim">案例 · 小港 RCKH</div>
+      <h2 class="anim d1">實際看到禁航區可能的影響</h2>
+      <p class="sub anim d2">禁航區圖層 × 實際軌跡疊在一起，迂迴角度肉眼可見 —— <strong>把兩張疊起來，才是情報。</strong></p>
+    </div>
+    <div class="cornermono">RCKH · 1,271 起降 · 59% 國際 / 40% 國內</div>
   </section>
 
   <!-- ============ P21 一支飛航 API 能長出多少 ============ -->
