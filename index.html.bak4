@@ -270,208 +270,6 @@
     @keyframes rise{from{transform:translateY(18px);}to{transform:none;}}
   }
 </style>
-<style>
-/* ===== ported from 數據人之夜 (scoped .pj) ===== */
-/* ===== Shared helpers (eyebrow / title / subtitle) ===== */
-  .pj .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-mute); margin-bottom: 28px; display: flex; align-items: center; gap: 18px; }
-  .pj .eyebrow::before { content: ""; width: 32px; height: 2px; background: var(--fg-mute); display: inline-block; }
-  .pj h1.title { font-size: 104px; line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 28px; text-wrap: balance; }
-  .pj h2.title { font-size: 84px; line-height: 1.08; letter-spacing: -0.015em; font-weight: 700; margin: 0 0 24px; text-wrap: balance; }
-  .pj .subtitle { font-size: 42px; color: var(--fg-dim); font-weight: 300; line-height: 1.4; margin: 0; }
-
-/* ---- slide 19: Knowledge Base (s-kb) ---- */
-  .s-kb .frame { padding: 110px 80px 95px; }
-  .kb-stages { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; position: relative; align-items: stretch; min-height: 0; }
-  .kb-stages::before { content: ""; position: absolute; left: 8%; right: 8%; top: 14px; height: 2px; background: linear-gradient(90deg, rgba(123,133,160,0.3), rgba(245,165,36,0.5), rgba(91,224,232,0.85)); z-index: 0; }
-  .kb-stage:not(.now)::after { content: "→"; position: absolute; right: -22px; top: 50%; transform: translateY(-50%); font-family: "JetBrains Mono", monospace; font-size: 28px; color: var(--fg-mute); z-index: 2; }
-  .kb-stage { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 12px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; min-height: 0; overflow: hidden; }
-  .kb-stage.now { background: linear-gradient(180deg, rgba(91,224,232,0.10), rgba(91,224,232,0.02)); border-color: rgba(91,224,232,0.45); }
-  .kb-stage .head { display: flex; align-items: center; gap: 18px; }
-  .kb-stage .badge { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--fg-mute); display: flex; align-items: center; justify-content: center; font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--fg-mute); font-size: 24px; }
-  .kb-stage.now .badge { border-color: var(--cyan); color: var(--cyan); }
-  .kb-stage .stage-name { font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--fg-mute); letter-spacing: 0.16em; text-transform: uppercase; }
-  .kb-stage.now .stage-name { color: var(--cyan); }
-  .kb-stage h3 { font-size: 46px; font-weight: 700; margin: 0; color: var(--fg); line-height: 1.1; letter-spacing: -0.01em; }
-  .kb-stage .desc { font-size: 28px; color: var(--fg-dim); line-height: 1.5; font-weight: 300; }
-  .kb-stage .desc strong { color: var(--fg); font-weight: 500; }
-  .kb-meta-table { margin-top: 16px; padding: 22px 24px; border-radius: 8px; background: #050B16; border: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--fg-dim); line-height: 1.6; }
-  .kb-meta-table.first { margin-top: auto; }
-  .kb-stage > .kb-meta-table:nth-of-type(1) { margin-top: auto; }
-  .kb-meta-table .row { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: baseline; padding: 4px 0; }
-  .kb-meta-table .k { color: var(--cyan); font-size: 22px; }
-  .kb-meta-table .t { color: var(--fg); font-size: 22px; }
-  .kb-meta-table .sub { color: var(--fg-mute); font-size: 22px; padding-left: 14px; }
-  .kb-meta-table.pros .pro { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; font-size: 22px; }
-  .kb-meta-table.pros .pro .ic { color: var(--green); }
-  .kb-meta-table.pros .pro .tx { color: var(--fg); }
-
-  /* ---- slide 20: 30 collectors + telegram ---- */
-  .s-collectors .frame { padding: 120px 90px 140px; }
-  .coll2-grid { flex: 1; display: grid; grid-template-columns: 1.25fr 1fr; gap: 50px; margin-top: 40px; align-items: stretch; min-height: 0; }
-  .coll2-left { display: flex; flex-direction: column; gap: 28px; min-height: 0; }
-  .coll2-label { font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--cyan); letter-spacing: 0.16em; }
-  .coll2-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .coll2-cat { padding: 20px 22px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,0.025); display: flex; flex-direction: column; gap: 10px; }
-  .coll2-cat .cd { width: 14px; height: 14px; border-radius: 50%; }
-  .coll2-cat .cn { font-size: 32px; font-weight: 700; color: var(--fg); letter-spacing: 0.02em; line-height: 1.05; }
-  .coll2-cat .ci { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--fg-dim); line-height: 1.45; letter-spacing: 0.02em; }
-  .coll2-feats { display: flex; flex-direction: column; gap: 14px; padding: 22px 28px; border: 1px solid var(--line-strong); border-radius: 10px; background: rgba(245,165,36,0.06); border-left: 3px solid var(--amber); margin-top: auto; }
-  .coll2-feats .cf { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: baseline; }
-  .coll2-feats .cf-i { font-size: 26px; }
-  .coll2-feats .cf-t { font-size: 22px; color: var(--fg); line-height: 1.4; font-weight: 300; }
-  .coll2-feats .cf-t strong { color: var(--amber); font-weight: 700; }
-  .coll2-right { display: flex; flex-direction: column; gap: 16px; }
-  .coll2-tg-cap { font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--cyan); letter-spacing: 0.14em; }
-  .coll2-tg-img { flex: 1; min-height: 0; border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: #0F1115; display: flex; align-items: center; justify-content: center; padding: 12px; }
-  .coll2-tg-img img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
-  .coll2-feats .cf { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: baseline; }
-  .coll2-feats .cf-i { font-size: 24px; }
-  .coll2-feats .cf-t { font-size: 24px; color: var(--fg-dim); line-height: 1.45; font-weight: 300; }
-  .coll2-feats .cf-t strong { color: var(--amber); font-weight: 600; }
-  .coll2-right { display: flex; flex-direction: column; padding: 0; border: 1px solid var(--line-strong); border-radius: 16px; background: #0f1620; overflow: hidden; }
-
-/* ---- slide 24: Scale Curse (s-scale) ---- */
-  .s-scale .frame { padding: 120px 90px 90px; align-items: center; text-align: center; }
-  .s-scale .eyebrow { text-align: center; }
-  .s-scale .title { text-align: center; font-size: 76px !important; }
-  .s-scale .subtitle { text-align: center; font-size: 30px !important; margin-top: 6px; }
-  .scale-mega { margin-top: 40px; font-family: "JetBrains Mono", monospace; font-size: 320px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--amber); text-shadow: 0 0 80px rgba(245,165,36,0.4); }
-  .scale-stack-add { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; align-items: center; font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--fg-dim); letter-spacing: 0.06em; }
-  .scale-stack-add .row { display: flex; align-items: center; gap: 14px; }
-  .scale-stack-add .plus { color: var(--amber); font-weight: 700; }
-  .scale-stack-add .eq { font-size: 28px; color: var(--fg); font-weight: 600; padding: 14px 28px; border: 1px solid var(--amber); border-radius: 6px; background: rgba(245,165,36,0.05); margin-top: 12px; letter-spacing: 0.04em; }
-
-/* ---- slide 25: Agent Inventory (s-agent2) ---- */
-  .s-agent2 .frame { padding: 120px 90px 95px; }
-  .ag2-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 24px; align-items: stretch; margin-top: 48px; }
-  .ag2-node { padding: 32px 28px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.02); display: flex; flex-direction: column; gap: 12px; }
-  .ag2-node.src { border-color: rgba(91,224,232,0.4); }
-  .ag2-node.act { border-color: rgba(245,165,36,0.5); background: rgba(245,165,36,0.04); }
-  .ag2-node.out { border-color: rgba(217,70,239,0.4); }
-  .ag2-node .hd { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--fg-dim); letter-spacing: 0.12em; }
-  .ag2-node .big { font-size: 36px; font-weight: 700; color: var(--fg); line-height: 1.25; }
-  .ag2-node .sm { font-size: 20px; color: var(--fg-dim); }
-  .ag2-arrow { font-family: "JetBrains Mono", monospace; font-size: 56px; color: var(--fg-dim); align-self: center; }
-  .ag2-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-  .ag2-card { padding: 28px 26px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.025); display: flex; flex-direction: column; gap: 10px; }
-  .ag2-card .ic { font-size: 28px; color: var(--amber); font-weight: 700; }
-  .ag2-card h3 { font-size: 36px; font-weight: 700; margin: 0; }
-  .ag2-card p { font-size: 22px; line-height: 1.55; color: var(--fg-dim); margin: 0; }
-  .ag2-card p strong { color: var(--cyan); }
-  .ag2-foot { margin-top: 36px; padding: 22px 28px; border: 1px solid var(--line); border-radius: 8px; background: rgba(91,224,232,0.04); display: flex; gap: 22px; align-items: baseline; }
-  .ag2-foot .lbl { font-family: "JetBrains Mono", monospace; font-size: 16px; color: var(--cyan); letter-spacing: 0.1em; flex-shrink: 0; }
-  .ag2-foot .text { font-size: 26px; color: var(--fg); }
-  .ag2-foot .text strong { color: var(--amber); font-weight: 700; }
-
-  /* ---- new P27: Fire (big-text redesign) ---- */
-  .s-fire2 .frame { padding: 110px 80px 95px; gap: 0; }
-  .s-fire2 .eyebrow { font-size: 22px !important; }
-  .s-fire2 .title { font-size: 64px !important; line-height: 1.1; margin-top: 4px; }
-  .fire2-quote { margin-top: 12px; padding: 14px 24px; border-left: 5px solid var(--amber); background: rgba(245,165,36,0.07); font-size: 36px; font-weight: 700; color: var(--fg); letter-spacing: 0.02em; }
-  .fire2-stack { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; flex: 1; min-height: 0; }
-  .fire2-pool { padding: 14px 22px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.025); }
-  .fire2-pool .lbl, .fire2-stages .lbl { font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--fg-dim); letter-spacing: 0.12em; }
-  .fire2-pool .pool-row { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
-  .fire2-pool .step { flex: 1; padding: 12px 18px; border: 1px solid var(--line); border-radius: 8px; text-align: center; }
-  .fire2-pool .step .n { font-family: "JetBrains Mono", monospace; font-size: 52px; font-weight: 700; color: var(--amber); line-height: 1; }
-  .fire2-pool .step .d { margin-top: 6px; font-size: 26px; color: var(--fg-dim); }
-  .fire2-pool .arrow { font-family: "JetBrains Mono", monospace; font-size: 40px; color: var(--fg-dim); }
-  .fire2-pool .src { margin-top: 10px; font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--cyan); letter-spacing: 0.1em; text-align: right; }
-  .fire2-stages { padding: 14px 22px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.025); }
-  .fire2-stages .six { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 8px; }
-  .fire2-stages .stg { padding: 10px 8px; border: 1px solid var(--line); border-radius: 8px; text-align: center; background: rgba(245,165,36,0.04); }
-  .fire2-stages .stg .t { font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--amber); font-weight: 700; }
-  .fire2-stages .stg .n { margin-top: 2px; font-size: 28px; font-weight: 700; color: var(--fg); }
-  .fire2-stages .cov { margin-top: 10px; font-size: 22px; color: var(--fg-dim); text-align: right; }
-  .fire2-bottom { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 14px; }
-  .fire2-bottom .col { padding: 12px 18px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.025); display: flex; flex-direction: column; gap: 4px; }
-  .fire2-bottom .col .lbl { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--fg-dim); letter-spacing: 0.12em; }
-  .fire2-bottom .col .hit { font-size: 24px; color: var(--fg); }
-  .fire2-bottom .col .hit strong { color: var(--amber); font-weight: 700; }
-  .fire2-bottom .col.gaps { background: rgba(255,138,76,0.06); border-color: rgba(255,138,76,0.4); }
-  .fire2-bottom .col.gaps .hit { color: #FFB4B4; }
-  .fire2-bottom .col.stamp { background: rgba(91,224,232,0.05); border-color: rgba(91,224,232,0.4); justify-content: center; align-items: center; text-align: center; }
-  .fire2-bottom .col.stamp .big { font-size: 32px; font-weight: 700; color: var(--cyan); letter-spacing: 0.04em; line-height: 1.15; }
-  .fire2-bottom .col.stamp .sub { margin-top: 6px; font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--fg); letter-spacing: 0.16em; }
-
-  /* ---- new P28/P29: Big screenshot pair ---- */
-  .s-shots2 .frame { padding: 110px 80px 95px; gap: 0; }
-  .s-shots2 .eyebrow { font-size: 22px !important; }
-  .s-shots2 .title { font-size: 52px !important; margin-top: 4px; line-height: 1.15; }
-  .shots2-row { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 22px; min-height: 0; }
-  .shots2-row figure { margin: 0; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
-  .shots2-row figure figcaption { font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--cyan); letter-spacing: 0.04em; flex-shrink: 0; }
-  .shots2-row figure img { flex: 1; min-height: 0; width: 100%; height: 100%; object-fit: contain; object-position: top; border: 1px solid var(--line); border-radius: 10px; background: #0a1018; }
-
-/* ---- slide 32: Water Layers (s-matrix) ---- */
-  .s-matrix .frame { padding: 120px 90px 95px; }
-  .matrix-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 60px; }
-  .matrix-head .left h2 { font-size: 72px; margin: 0; line-height: 1.05; }
-  .matrix-head .left .eyebrow-hd { font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--cyan); letter-spacing: 0.2em; margin-bottom: 16px; }
-  .matrix-head .left .sub { font-size: 28px; color: var(--fg-dim); margin-top: 16px; font-weight: 300; line-height: 1.45; max-width: 1240px; }
-  .matrix-head .right { font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--fg-mute); letter-spacing: 0.14em; text-align: right; line-height: 1.7; }
-
-  .water-stage { margin-top: 28px; display: grid; grid-template-columns: 1fr 50px 1fr; gap: 0; flex: 1; min-height: 0; align-items: stretch; }
-
-  /* layers */
-  .layers-col { position: relative; display: flex; flex-direction: column; gap: 12px; padding-right: 18px; min-height: 0; }
-  .layer { position: relative; display: grid; grid-template-columns: 70px 1fr; gap: 16px; align-items: center; padding: 14px 18px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); border-radius: 10px; flex: 1; min-height: 0; }
-  .layer-glyph { width: 70px; height: 56px; display: flex; align-items: center; justify-content: center; }
-  .layer-glyph svg { width: 100%; height: 100%; }
-  .layer-body { display: flex; flex-direction: column; gap: 6px; }
-  .layer-label { display: flex; align-items: baseline; gap: 14px; }
-  .layer-label .ch { font-size: 36px; font-weight: 700; color: var(--fg); letter-spacing: 0.04em; }
-  .layer-label .en { font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--fg-mute); letter-spacing: 0.18em; }
-  .static-tag { color: var(--fg-mute); font-family: "JetBrains Mono", monospace; font-size: 17px; letter-spacing: 0.16em; padding: 3px 9px; border: 1px solid var(--line); border-radius: 3px; align-self: center; }
-  .dyn-tag { color: var(--cyan); font-family: "JetBrains Mono", monospace; font-size: 17px; letter-spacing: 0.16em; padding: 3px 9px; border: 1px solid rgba(91,224,232,0.4); border-radius: 3px; background: rgba(91,224,232,0.06); align-self: center; }
-
-  .layer-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 25px; color: var(--fg-dim); font-weight: 300; }
-  .layer-row + .layer-row { margin-top: 4px; }
-  .layer-row .item { font-size: 25px; }
-  .layer-row .item.dyn { color: var(--cyan); }
-
-  /* connector */
-  .connector { position: relative; }
-  .connector svg { width: 100%; height: 100%; display: block; }
-
-  /* narrative */
-  .narrative-col { display: flex; flex-direction: column; padding-left: 18px; min-height: 0; }
-  .narrative-head { font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--cyan); letter-spacing: 0.22em; margin-bottom: 18px; }
-  .narrative-flow { display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .narr-step { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: center; padding: 12px 16px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.02); flex: 1; min-height: 0; }
-  .narr-step .num { font-family: "JetBrains Mono", monospace; font-size: 26px; color: var(--cyan); font-weight: 600; }
-  .narr-step .body { display: flex; flex-direction: column; gap: 6px; }
-  .narr-step .body .q { font-size: 30px; color: var(--fg); font-weight: 600; }
-  .narr-step .body .src { font-size: 22px; color: var(--fg-mute); font-weight: 300; }
-  .narr-step .body .src .pill { display: inline-block; padding: 2px 10px; border: 1px solid var(--line); border-radius: 3px; margin-right: 6px; font-family: "JetBrains Mono", monospace; font-size: 17px; letter-spacing: 0.14em; color: var(--fg-dim); }
-  .narrative-foot { margin-top: 12px; padding: 12px 18px 0; border-top: 1px solid var(--line); font-size: 22px; color: var(--fg-dim); font-weight: 300; line-height: 1.45; }
-  .narrative-foot strong { color: var(--fg); font-weight: 600; }
-
-  /* ---- NEW slide 31: Fire case ---- */
-  .s-firecase .frame { padding: 120px 90px 95px; }
-  .s-firecase .fcase-head { display: flex; align-items: baseline; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-  .s-firecase .fcase-head h2 { font-size: 60px; font-weight: 700; margin: 0; line-height: 1.1; letter-spacing: -0.015em; }
-  .s-firecase .fcase-head h2 .acc { color: var(--amber); }
-  .s-firecase .fcase-meta { font-family: "JetBrains Mono", monospace; font-size: 20px; color: var(--fg-mute); letter-spacing: 0.06em; line-height: 1.5; }
-  .s-firecase .fcase-meta .dot { color: var(--cyan); margin: 0 8px; }
-  .s-firecase .fcase-row { flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; margin-top: 22px; min-height: 0; }
-  .s-firecase figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-height: 0; }
-  .s-firecase figure figcaption { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--cyan); letter-spacing: 0.05em; flex-shrink: 0; }
-  .s-firecase figure img { flex: 1; min-height: 0; width: 100%; height: 100%; object-fit: contain; object-position: top; border: 1px solid var(--line); border-radius: 10px; background: #0a1018; }
-  .s-firecase .fcase-bot { margin-top: 18px; padding: 18px 24px; border: 1px solid rgba(245,165,36,0.35); border-radius: 10px; background: rgba(245,165,36,0.05); display: flex; gap: 24px; align-items: center; }
-  .s-firecase .fcase-bot .lab { font-family: "JetBrains Mono", monospace; font-size: 16px; color: var(--amber); letter-spacing: 0.16em; flex: 0 0 auto; }
-  .s-firecase .fcase-bot .txt { font-size: 22px; color: var(--fg); font-weight: 300; line-height: 1.45; }
-  .s-firecase .fcase-bot .txt strong { color: var(--amber); font-weight: 600; }
-
-  /* ---- Weekly brief full-bleed ---- */
-  .s-weekly { background: #000; }
-  .s-weekly .frame { display: none; }
-  .weekly-bg { position: absolute; inset: 0; background-image: url("assets/weekly-brief.png"); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #0a0d18; }
-  .weekly-overlay { position: absolute; top: 32px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 18px; padding: 12px 22px; background: rgba(15,21,37,0.85); border: 1px solid var(--amber); border-radius: 8px; backdrop-filter: blur(8px); z-index: 5; }
-  .weekly-overlay .weekly-badge { font-family: "JetBrains Mono", monospace; font-size: 16px; color: var(--amber); letter-spacing: 0.18em; padding: 4px 10px; border: 1px solid var(--amber); border-radius: 4px; }
-  .weekly-overlay > span:last-child { font-size: 18px; color: var(--fg); font-weight: 600; }
-
-</style>
 </head>
 <body>
 <deck-stage width="1920" height="1080">
@@ -496,7 +294,7 @@
 
   <!-- ============ P2 自我介紹 ============ -->
   <section class="slide s-intro" data-label="P02 自我介紹" data-screen-label="P02">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 開場</span><span class="pg">P2 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 開場</span><span class="pg">P2 / 69</span></div>
     <div class="frame">
       <div class="avatar-wrap anim">
         <img class="avatar" src="assets/p02.jpg" alt="migu 頭像 · 黑貓" />
@@ -517,7 +315,7 @@
 
   <!-- ============ P3 路線圖 ============ -->
   <section class="slide s-con" data-label="P03 今天的四段路" data-screen-label="P03">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 路線圖</span><span class="pg">P3 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>OPENING · 路線圖</span><span class="pg">P3 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>今天的四段路</h2>
@@ -573,7 +371,7 @@
   <section class="slide full" data-label="P04 一切的起點" data-screen-label="P04">
     <div class="bg" style="background-image:url('assets/p04.png')"></div>
     <div class="scrim left"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P4 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P4 / 69</span></div>
     <div class="full-body" style="max-width:1180px;">
       <div class="stamp cy anim" style="margin-bottom:30px;"><span class="k">DAY 0</span> 第一張地圖</div>
       <div class="case-label anim">起點 · KEPLER.GL</div>
@@ -587,7 +385,7 @@
   <section class="slide full" data-label="P05 Case 1 Mini Taipei" data-screen-label="P05">
     <div class="bg" style="background-image:url('assets/p05.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P5 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P5 / 69</span></div>
     <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
     <div class="full-body">
       <div class="bottom-row">
@@ -609,7 +407,7 @@
   <section class="slide full" data-label="P06 Case 2 衛星" data-screen-label="P06">
     <div class="bg" style="background-image:url('assets/p06_satellite.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P6 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P6 / 69</span></div>
     <div class="bridge-card anim" style="position:absolute;right:var(--pad-x);top:150px;width:430px;aspect-ratio:1/1;z-index:4;border-radius:12px;">
       <div class="ci" style="background-image:url('assets/p06_solar.png')"></div>
       <div class="cap" style="left:22px;bottom:18px;"><div class="m">SOLAR SYSTEM</div></div>
@@ -626,7 +424,7 @@
   <section class="slide full" data-label="P07 Case 3 船舶" data-screen-label="P07">
     <div class="bg" style="background-image:url('assets/p07.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P7 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P7 / 69</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -647,7 +445,7 @@
   <section class="slide full" data-label="P08 Case 4 Pulse" data-screen-label="P08">
     <div class="bg" style="background-image:url('assets/p08.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P8 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 成果介紹</span><span class="pg">P8 / 69</span></div>
     <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
     <div class="full-body">
       <div class="case-label anim">CASE 4 · MINI TAIWAN PULSE</div>
@@ -665,7 +463,7 @@
   <section class="slide full" data-label="P09 整合 農×水" data-screen-label="P09">
     <div class="bg" style="background-image:url('assets/p09.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P9 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P9 / 69</span></div>
     <div class="legend anim" style="right:var(--pad-x);top:150px;">
       <div class="it"><span class="sw" style="background:#22D38C;"></span>農田範圍</div>
       <div class="it"><span class="sw" style="background:#5BE0E8;"></span>灌排溝渠 · 水系</div>
@@ -690,7 +488,7 @@
   <section class="slide full" data-label="P10 整合 醫療資源" data-screen-label="P10">
     <div class="bg" style="background-image:url('assets/p10.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P10 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P10 / 69</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -710,7 +508,7 @@
   <section class="slide full" data-label="P11 整合 大雨與災害" data-screen-label="P11">
     <div class="bg" style="background-image:url('assets/p11.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P11 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 整合案例</span><span class="pg">P11 / 69</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -735,7 +533,7 @@
       <div style="background-image:url('assets/p05.png');"></div>
     </div>
     <div class="ld-scrim"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 動態展示</span><span class="pg">P12 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 動態展示</span><span class="pg">P12 / 69</span></div>
     <div class="ld-center">
       <div class="ld-pill anim"><span class="tri"></span>LIVE DEMO · 切換實機</div>
       <h2 class="ld-title anim d1">會動的台灣</h2>
@@ -747,7 +545,7 @@
   <section class="slide full" data-label="P13 Plan R 航班軌跡" data-screen-label="P13">
     <div class="bg" style="background-image:url('assets/p13_top.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P13 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P13 / 69</span></div>
     <div class="demo-pill anim" style="position:absolute;left:var(--pad-x);top:140px;z-index:4;"><span class="tri"></span>LIVE DEMO</div>
     <div class="full-body">
       <div class="case-label anim">PLAN R · 航班軌跡</div>
@@ -766,7 +564,7 @@
   <section class="slide full" data-label="P14 模式① 軌跡視覺化" data-screen-label="P14">
     <div class="bg" style="background-image:url('assets/p14.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P14 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P14 / 69</span></div>
     <div class="callout anim" style="left:55%;top:13%;align-items:flex-start;">
       <div class="lbl">東京灣迴旋進場 ↘</div>
       <div class="ln" style="width:160px;"></div>
@@ -806,7 +604,7 @@
   <section class="slide full" data-label="P14b 亞特蘭大 KATL" data-screen-label="P14b">
     <div class="bg" style="background-image:url('assets/p14b.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 軌跡畫廊</span><span class="pg">P15 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 軌跡畫廊</span><span class="pg">P15 / 69</span></div>
     <div class="full-body" style="max-width:1000px;">
       <div class="case-label anim">世界最忙機場</div>
       <h2 class="anim d1">亞特蘭大的「賽道」</h2>
@@ -819,7 +617,7 @@
   <section class="slide full" data-label="P15 模式② 跟隨模式" data-screen-label="P15">
     <div class="bg" style="background-image:url('assets/p15.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P16 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P16 / 69</span></div>
     <div class="callout anim" style="right:14%;top:28%;align-items:flex-end;">
       <div class="lbl">VIEWSHED — 高度越高、看得越遠</div>
       <div class="ln" style="width:200px;align-self:flex-end;background:linear-gradient(270deg,var(--cyan),transparent);"></div>
@@ -835,7 +633,7 @@
   <section class="slide full" data-label="P16 模式③ 進場管制區" data-screen-label="P16">
     <div class="bg" style="background-image:url('assets/p16.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P17 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P17 / 69</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -855,7 +653,7 @@
   <section class="slide full" data-label="P17 案例 倫敦機場體系" data-screen-label="P17">
     <div class="bg" style="background-image:url('assets/p17.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P18 / 69</span></div>
     <div class="full-body">
       <div class="bottom-row">
         <div style="max-width:1180px;">
@@ -875,7 +673,7 @@
   <section class="slide full" data-label="P18 案例 紐約都會三角" data-screen-label="P18">
     <div class="bg" style="background-image:url('assets/p18.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P19 / 69</span></div>
     <div class="callout anim" style="left:56%;top:31%;align-items:flex-start;"><div class="lbl" style="color:var(--magenta);border-color:rgba(217,70,239,0.5);">KLGA</div></div>
     <div class="callout anim" style="left:35%;top:43%;align-items:flex-start;"><div class="lbl" style="color:var(--sky,#80bfff);border-color:rgba(128,191,255,0.5);">KEWR</div></div>
     <div class="callout anim" style="left:61%;top:55%;align-items:flex-start;"><div class="lbl amber">KJFK</div></div>
@@ -890,7 +688,7 @@
   <section class="slide full" data-label="P19 案例 時間軸地緣事件" data-screen-label="P19">
     <div class="bg" style="background-image:url('assets/p19.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P20 / 69</span></div>
     <div class="legend anim" style="left:var(--pad-x);top:150px;">
       <div class="it"><span class="sw" style="background:var(--rose);"></span>日期 A — 戰前</div>
       <div class="it"><span class="sw" style="background:var(--sky,#80bfff);"></span>日期 B — 戰時</div>
@@ -907,7 +705,7 @@
   <section class="slide full" data-label="P20 案例 規範 vs 現實" data-screen-label="P20">
     <div class="bg" style="background-image:url('assets/p20.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P21 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 案例</span><span class="pg">P21 / 69</span></div>
     <div class="full-body" style="max-width:1050px;">
       <div class="case-label anim">案例 · 小港 RCKH</div>
       <h2 class="anim d1">實際看到禁航區可能的影響</h2>
@@ -918,7 +716,7 @@
 
   <!-- ============ P21 一支飛航 API 能長出多少 ============ -->
   <section class="slide s-hub" data-label="P21 一支飛航 API" data-screen-label="P21">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 能力收斂</span><span class="pg">P22 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 能力收斂</span><span class="pg">P22 / 69</span></div>
     <div class="frame">
       <div class="hub-head anim">
         <h2>一支飛航 API，能長出多少東西</h2>
@@ -954,7 +752,7 @@
 
   <!-- ============ P22 同一片天空，不同的資料源 ============ -->
   <section class="slide s-vs" data-label="P22 資料源對比" data-screen-label="P22">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P23 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P23 / 69</span></div>
     <div class="frame">
       <div class="vs-head anim">
         <h2>同一片天空，不同的資料源</h2>
@@ -978,7 +776,7 @@
   <section class="slide full" data-label="P23 OpenSky 空域覆蓋" data-screen-label="P23">
     <div class="bg" style="background-image:url('assets/p23.png')"></div>
     <div class="scrim bottom"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P24 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 資料源對比</span><span class="pg">P24 / 69</span></div>
     <div class="callout anim" style="left:55%;top:15%;align-items:flex-start;">
       <div class="lbl">過境航路 — 天上的高速公路</div>
       <div class="ln" style="width:200px;"></div>
@@ -996,7 +794,7 @@
 
   <!-- ============ P24 延伸 國籍航空比較 ============ -->
   <section class="slide s-dash s-light" data-label="P24 延伸 國籍航空" data-screen-label="P24">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P25 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P25 / 69</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -1014,7 +812,7 @@
 
   <!-- ============ P25 延伸 高度剖面與燃油 ============ -->
   <section class="slide s-dash s-light" data-label="P25 延伸 高度與燃油" data-screen-label="P25">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P26 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P26 / 69</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -1043,7 +841,7 @@
 
   <!-- ============ P26 延伸 天氣 × 航跡（NEW） ============ -->
   <section class="slide s-dash s-light" data-label="P26 延伸 天氣×航跡" data-screen-label="P26">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P27 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 延伸分析</span><span class="pg">P27 / 69</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -1084,7 +882,7 @@
       <div style="background-image:url('assets/p23.png');"></div>
     </div>
     <div class="ld-scrim"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P28 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · PLAN R</span><span class="pg">P28 / 69</span></div>
     <div class="ld-center">
       <div class="ld-pill anim"><span class="tri"></span>LIVE DEMO · 切換實機</div>
       <h2 class="ld-title anim d1">飛航軌跡互動應用</h2>
@@ -1094,7 +892,7 @@
 
   <!-- ============ P27 這一整套，是一個循環 ============ -->
   <section class="slide s-cycle" data-label="P27 GIS 循環收束" data-screen-label="P27">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 收束</span><span class="pg">P29 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SHOWCASE · 收束</span><span class="pg">P29 / 69</span></div>
     <div class="frame">
       <div class="cycle-head anim">
         <h2>這一整套，是一個循環</h2>
@@ -1137,12 +935,12 @@
   <!-- ============ P32 系統全景 OVERVIEW（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P32 系統全景" data-screen-label="P32 System Overview">
     <div class="bg" style="background-image:url('assets/sys-overview.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 我的這套流程</span><span class="pg">P30 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 我的這套流程</span><span class="pg">P30 / 69</span></div>
   </section>
 
   <!-- ============ P37 系統四步驟 OVERVIEW ============ -->
   <section class="slide s-con s-sys4" data-label="P37 系統四步驟" data-screen-label="P37">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 系統四步驟</span><span class="pg">P31 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · 系統四步驟</span><span class="pg">P31 / 69</span></div>
     <div class="frame">
       <div class="s-sys-head anim">
         <div class="sys-eyebrow">// 我的系統長這樣</div>
@@ -1207,487 +1005,30 @@
   <!-- ============ P33 ① 資料接收（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P33 資料接收 Overview" data-screen-label="P33 Step 01">
     <div class="bg" style="background-image:url('assets/sys-step1.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 01 · 資料接收</span><span class="pg">P32 / 81</span></div>
-  </section>  <!-- Slide 19: Knowledge base evolution -->
-  <section class="slide s-kb pj" data-label="19 Knowledge Base">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot"></span>SYSTEM · STEP 01 · 知識庫</span>
-      <span class="pg">P33 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">資料接收　·　第一步</div>
-      <h2 class="title" style="font-size: 76px;">手動下載 → 上網找 → 系統化建構</h2>
-      <div class="kb-stages">
-        <div class="kb-stage">
-          <div class="head">
-            <div class="badge">A</div>
-            <div class="stage-name">// 最早期</div>
-          </div>
-          <h3>手動下載</h3>
-          <div class="desc">data.gov.tw 點 Excel<br/>自己讀、自己存、自己想。</div>
-          <div class="kb-meta-table">
-            <div class="row"><span class="k">format</span><span class="t">.xlsx / .csv</span></div>
-            <div class="row"><span class="k">where</span><span class="t">~/Downloads</span></div>
-            <div class="row"><span class="k">limit</span><span class="t">人腦記憶</span></div>
-          </div>
-        </div>
-        <div class="kb-stage">
-          <div class="head">
-            <div class="badge">B</div>
-            <div class="stage-name">// 中期</div>
-          </div>
-          <h3>上網找</h3>
-          <div class="desc">API、PDF 報告、各縣市開放平台<br/>—— <strong>散落各處</strong>。</div>
-          <div class="kb-meta-table">
-            <div class="row"><span class="k">sources</span><span class="t">22 縣市平台</span></div>
-            <div class="row"><span class="k">extra</span><span class="t">NGO + 學術 + 民間</span></div>
-            <div class="row"><span class="k">problem</span><span class="t">沒有索引</span></div>
-          </div>
-        </div>
-        <div class="kb-stage now">
-          <div class="head">
-            <div class="badge">C</div>
-            <div class="stage-name">// NOW</div>
-          </div>
-          <h3>結構化知識庫</h3>
-          <div class="desc">每筆 metadata 標準化<br/>存進 <strong>SQLite catalog</strong>。</div>
-          <div class="kb-meta-table">
-            <div class="row"><span class="k">sources</span><span class="t">data.gov.tw</span></div>
-            <div class="sub">+ 所有縣市平台</div>
-            <div class="sub">+ 各部會平台</div>
-          </div>
-          <div class="kb-meta-table pros">
-            <div class="pro"><span class="ic">✓</span><span class="tx">queryable　可自動化查詢</span></div>
-            <div class="pro"><span class="ic">✓</span><span class="tx">scalable　可自動化拓展</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 21: 30 collectors + telegram report -->
-  <section class="slide s-collectors pj" data-label="20 Data Collectors">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot"></span>SYSTEM · STEP 02 · COLLECTORS</span>
-      <span class="pg">P34 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">資料接收　·　第二步</div>
-      <h2 class="title" style="font-size: 72px;">30 個 Collector，每天早上一份 Review</h2>
-      <div class="coll2-grid">
-        <div class="coll2-left">
-          <div class="coll2-label">// 來源涵蓋</div>
-          <div class="coll2-cats">
-            <div class="coll2-cat"><span class="cd" style="background: #5BE0E8;"></span><span class="cn">陸運</span><span class="ci">YouBike · Bus · VD · Freeway</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #F5A524;"></span><span class="cn">鐵路</span><span class="ci">TRA Train (live) · Timetable</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #FF8A4C;"></span><span class="cn">航運</span><span class="ci">Ship AIS · Ship TDX</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #D946EF;"></span><span class="cn">航空</span><span class="ci">FR24 · OpenSky</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #22D38C;"></span><span class="cn">氣象</span><span class="ci">Weather · CWA Satellite · Rain</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #FF5252;"></span><span class="cn">災害</span><span class="ci">Earthquake · NCDR Alerts</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #B388FF;"></span><span class="cn">太空</span><span class="ci">Satellite TLE · Launch</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #5BE0E8;"></span><span class="cn">水文</span><span class="ci">Reservoir · River · Ground</span></div>
-            <div class="coll2-cat"><span class="cd" style="background: #F5A524;"></span><span class="cn">空品</span><span class="ci">AQI · MicroSensor</span></div>
-          </div>
-          <div class="coll2-feats">
-            <div class="cf"><span class="cf-i">⚠</span><span class="cf-t"><strong>連錯 3 次</strong>　立即發 Telegram 告警</span></div>
-            <div class="cf"><span class="cf-i">📊</span><span class="cf-t">每天早上 <strong>09:00 推送 Daily Review</strong></span></div>
-            <div class="cf"><span class="cf-i">⏱</span><span class="cf-t">每分鐘 tick · skip-if-running 防疊加</span></div>
-          </div>
-        </div>
-        <div class="coll2-right">
-          <div class="coll2-tg-cap">// 每天 09:00 推送 Daily Review · Telegram</div>
-          <div class="coll2-tg-img"><img src="assets/telegram-report.png" alt="Telegram daily report"/></div>
-        </div>
-      </div>
-    </div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 01 · 資料接收</span><span class="pg">P32 / 69</span></div>
   </section>
 
   <!-- ============ P34 ② 知識整合（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P34 知識整合 Overview" data-screen-label="P34 Step 02">
     <div class="bg" style="background-image:url('assets/sys-step2.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 02 · 知識整合</span><span class="pg">P35 / 81</span></div>
-  </section>  <!-- Slide 25: Scale curse -->
-  <section class="slide s-scale pj" data-label="24 Scale Curse">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot" style="background: var(--amber); box-shadow: 0 0 14px var(--amber);"></span>SYSTEM · AGENT · 規模的詛咒</span>
-      <span class="pg">P36 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">為什麼要 Agentic OSINT</div>
-      <h2 class="title">規模的詛咒</h2>
-      <div class="subtitle">data.gov.tw · 各縣市 · 民間 — 人類掃不完</div>
-      <div class="scale-mega">52,891</div>
-      <div class="scale-stack-add">
-        <div class="row"><span class="plus">+</span><span>22 縣市平台 ~6–7 萬筆（含重疊）</span></div>
-        <div class="row"><span class="plus">+</span><span>民間 / NGO / 學術　還沒算</span></div>
-        <div class="eq">= 你的人腦掃不完　→　這就是 LLM 該介入的地方</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 26: Agent inventory & relations -->
-  <section class="slide s-agent2 pj" data-label="25 Agent Inventory">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot" style="background: var(--amber); box-shadow: 0 0 14px var(--amber);"></span>SYSTEM · AGENT · 盤點 × 關聯</span>
-      <span class="pg">P37 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">把資料轉成 LLM 可觸及的形式之後</div>
-      <h2 class="title" style="font-size: 84px;">交給 Agent，盤點 → 關聯 → 產出</h2>
-
-      <div class="ag2-flow">
-        <div class="ag2-node src">
-          <div class="hd">// 前置條件</div>
-          <div class="big">資料 → LLM 可讀</div>
-          <div class="sm">統一目錄 · metadata · 結構化欄位</div>
-        </div>
-        <div class="ag2-arrow">→</div>
-        <div class="ag2-node act">
-          <div class="hd">// AGENT 動腦</div>
-          <div class="big">大量關係　×　跨主題</div>
-          <div class="sm">人腦無法逐筆比對的搜尋空間</div>
-        </div>
-        <div class="ag2-arrow">→</div>
-        <div class="ag2-node out">
-          <div class="hd">// 產出</div>
-          <div class="big">應該互相影響的資料集</div>
-          <div class="sm">自動拉出 · 互相關聯 · 可被驗收</div>
-        </div>
-      </div>
-
-      <div class="ag2-three">
-        <div class="ag2-card">
-          <div class="ic">①</div>
-          <h3>盤點</h3>
-          <p>跨平台、跨主題、跨格式　<strong>逐筆 vetting</strong>　不再只是關鍵字搜尋</p>
-        </div>
-        <div class="ag2-card">
-          <div class="ic">②</div>
-          <h3>關係抽取</h3>
-          <p>抓出資料集之間<strong>應該會有的影響關係</strong>　時間 · 空間 · 主題</p>
-        </div>
-        <div class="ag2-card">
-          <div class="ic">③</div>
-          <h3>互相關聯</h3>
-          <p>把零散資料拉成<strong>可被推理的網絡</strong>　Agent 自己跑下一步</p>
-        </div>
-      </div>
-
-      <div class="ag2-foot">
-        <span class="lbl">// 一句話</span>
-        <span class="text">資料能被 LLM 看見，Agent 才能<strong>幫你發現「哪些資料應該放在一起看」</strong>。</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 27: Fire Case Study (redesigned, big text) -->
-  <section class="slide s-fire2 pj" data-label="26 Fire Case Study">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot" style="background: var(--amber); box-shadow: 0 0 14px var(--amber);"></span>SYSTEM · AGENT · 火災主題報告</span>
-      <span class="pg">P38 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">Pipeline 跑完一次的真實產出</div>
-      <h2 class="title">輸入一句話，產出整套盤點報告</h2>
-      <div class="fire2-quote">「分析台灣火災相關公開資料」</div>
-
-      <div class="fire2-stack">
-        <div class="fire2-pool">
-          <div class="lbl">// 候選池逐輪擴張</div>
-          <div class="pool-row">
-            <div class="step"><div class="n">582</div><div class="d">關鍵字命中</div></div>
-            <div class="arrow">→</div>
-            <div class="step"><div class="n">1,945</div><div class="d">同義詞 + 主題擴張</div></div>
-            <div class="arrow">→</div>
-            <div class="step"><div class="n">2,404</div><div class="d">FTS5 補搜 + 去重</div></div>
-          </div>
-          <div class="src">21 平台 · 73,900 筆 統一目錄</div>
-        </div>
-
-        <div class="fire2-stages">
-          <div class="lbl">// 一條龍 6 階段（自動拆解）</div>
-          <div class="six">
-            <div class="stg"><div class="t">A</div><div class="n">預防</div></div>
-            <div class="stg"><div class="t">B</div><div class="n">應變</div></div>
-            <div class="stg"><div class="t">C</div><div class="n">通報</div></div>
-            <div class="stg"><div class="t">D</div><div class="n">起火分析</div></div>
-            <div class="stg"><div class="t">E</div><div class="n">損失</div></div>
-            <div class="stg"><div class="t">F</div><div class="n">報表</div></div>
-          </div>
-          <div class="cov">22 縣市 × 6 階段 — 自動產出覆蓋矩陣</div>
-        </div>
-
-        <div class="fire2-bottom">
-          <div class="col">
-            <div class="lbl">// 獨家盤點</div>
-            <div class="hit"><strong>新竹</strong>　火災潛勢圖</div>
-            <div class="hit"><strong>臺北</strong>　搶救困難地區</div>
-            <div class="hit"><strong>桃園</strong>　埤塘救援</div>
-          </div>
-          <div class="col gaps">
-            <div class="lbl">// GAPS</div>
-            <div class="hit">× 沒有即時火災 API</div>
-            <div class="hit">× 事件級座標稀缺</div>
-            <div class="hit">× 災後追蹤不公開</div>
-          </div>
-          <div class="col stamp">
-            <div class="big">Pipeline 自動產出</div>
-            <div class="sub">我　沒　寫　一　個　字</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 28: Claude actually running (screenshots) -->
-  <section class="slide s-shots2 pj" data-label="27 Claude In Action">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot" style="background: var(--amber); box-shadow: 0 0 14px var(--amber);"></span>SYSTEM · AGENT · 實際運作 · 動腦</span>
-      <span class="pg">P39 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">案例 · 垃圾清運主題盤點</div>
-      <h2 class="title">Claude 自己拆主題　·　自己分層</h2>
-      <div class="shots2-row">
-        <figure>
-          <img src="assets/agent-claude-op-2.png" alt="Claude layered datasets"/>
-          <figcaption>① Layer 1 / 2 / 3 自動分層 · 點線面 × 動靜</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/agent-claude-op-1.png" alt="Claude listing pipelines"/>
-          <figcaption>② 統一目錄 + Pipeline 狀態 + Gap 分析</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 29: Query results (screenshots) -->
-  <section class="slide s-shots2 pj" data-label="28 Query Results">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot" style="background: var(--amber); box-shadow: 0 0 14px var(--amber);"></span>SYSTEM · AGENT · 實際運作 · 查詢結果</span>
-      <span class="pg">P40 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="eyebrow">案例 · 加油站 / 用電統計合成策略</div>
-      <h2 class="title">Agent 直接回　·　可落地的合成方案</h2>
-      <div class="shots2-row">
-        <figure>
-          <img src="assets/agent-result-1.png" alt="gas_stations schema"/>
-          <figcaption>① gas_stations schema · 中油 + 台塑 + OSM 補洞策略</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/agent-result-2.png" alt="electricity stats by township"/>
-          <figcaption>② 用電統計到鄉鎮？粒度 × 更新頻率 × 可用性對表</figcaption>
-        </figure>
-      </div>
-    </div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 02 · 知識整合</span><span class="pg">P33 / 69</span></div>
   </section>
 
   <!-- ============ P35 ③ 分析生成（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P35 分析生成 Overview" data-screen-label="P35 Step 03">
     <div class="bg" style="background-image:url('assets/sys-step3.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 03 · 分析生成</span><span class="pg">P41 / 81</span></div>
-  </section>  <!-- Water Layers (moved here, after Architecture Multiplier) -->
-  <section class="slide s-matrix pj" data-label="32 Water Layers">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot"></span>SYSTEM · 應用層 · 系統化分層</span>
-      <span class="pg">P42 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="matrix-head">
-        <div class="left">
-          <div class="eyebrow-hd">// CASE STUDY · WATER</div>
-          <h2>以「水資源」為例</h2>
-          <div class="sub">政府兩三百筆水資料，先依<strong style="color: var(--fg);">點 / 線 / 面</strong>盤點，再依<strong style="color: var(--fg);">怎麼來 → 怎麼留 → 怎麼用 → 何時警示</strong>重組。</div>
-        </div>
-        <div class="right">// LAYERED GIS<br/>POINT · LINE · AREA<br/>→ NARRATIVE</div>
-      </div>
-
-      <div class="water-stage">
-        <!-- LEFT: stacked layers -->
-        <div class="layers-col">
-          <div class="layer">
-            <div class="layer-glyph">
-              <svg viewBox="0 0 88 72" fill="none">
-                <rect x="2" y="2" width="84" height="68" rx="4" stroke="rgba(91,224,232,0.25)" stroke-dasharray="3 4"/>
-                <circle cx="22" cy="24" r="5" fill="#5BE0E8"/>
-                <circle cx="48" cy="18" r="4" fill="#5BE0E8" opacity="0.85"/>
-                <circle cx="68" cy="32" r="5" fill="#5BE0E8"/>
-                <circle cx="30" cy="46" r="4" fill="#5BE0E8" opacity="0.7"/>
-                <circle cx="58" cy="52" r="5" fill="#5BE0E8"/>
-                <circle cx="22" cy="24" r="9" stroke="#5BE0E8" stroke-width="1" opacity="0.4"/>
-                <circle cx="68" cy="32" r="9" stroke="#5BE0E8" stroke-width="1" opacity="0.4"/>
-              </svg>
-            </div>
-            <div class="layer-body">
-              <div class="layer-label"><span class="ch">點</span><span class="en">POINT · 站點</span></div>
-              <div class="layer-row">
-                <span class="static-tag">STATIC</span>
-                <span class="item">水庫位置</span>
-                <span class="item">雨量站</span>
-                <span class="item">地下水位站</span>
-              </div>
-              <div class="layer-row">
-                <span class="dyn-tag">DYNAMIC</span>
-                <span class="item dyn">即時雨量</span>
-                <span class="item dyn">水庫水位（hr）</span>
-                <span class="item dyn">河川水位即時</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="layer">
-            <div class="layer-glyph">
-              <svg viewBox="0 0 88 72" fill="none">
-                <rect x="2" y="2" width="84" height="68" rx="4" stroke="rgba(91,224,232,0.25)" stroke-dasharray="3 4"/>
-                <path d="M 6 18 Q 22 8, 36 22 T 64 24 Q 76 26, 84 14" stroke="#5BE0E8" stroke-width="2" fill="none"/>
-                <path d="M 6 42 Q 24 36, 38 48 T 70 50 Q 80 52, 84 60" stroke="#5BE0E8" stroke-width="2" fill="none" opacity="0.7"/>
-                <path d="M 38 22 Q 36 32, 38 48" stroke="#5BE0E8" stroke-width="1.4" fill="none" opacity="0.6"/>
-                <path d="M 64 24 Q 66 36, 70 50" stroke="#5BE0E8" stroke-width="1.4" fill="none" opacity="0.6"/>
-              </svg>
-            </div>
-            <div class="layer-body">
-              <div class="layer-label"><span class="ch">線</span><span class="en">LINE · 河川 / 水道</span></div>
-              <div class="layer-row">
-                <span class="static-tag">STATIC</span>
-                <span class="item">河川流域</span>
-                <span class="item">水道網路</span>
-                <span class="item">OSM Waterway</span>
-              </div>
-              <div class="layer-row">
-                <span class="dyn-tag">DYNAMIC</span>
-                <span class="item dyn">流量推估</span>
-                <span class="item dyn" style="color: var(--fg-mute);">（少量、可推算）</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="layer">
-            <div class="layer-glyph">
-              <svg viewBox="0 0 88 72" fill="none">
-                <rect x="2" y="2" width="84" height="68" rx="4" stroke="rgba(91,224,232,0.25)" stroke-dasharray="3 4"/>
-                <polygon points="8,12 36,8 50,30 28,46 10,38" fill="rgba(91,224,232,0.14)" stroke="#5BE0E8" stroke-width="1.4"/>
-                <polygon points="50,30 78,16 84,42 64,58 42,52" fill="rgba(91,224,232,0.08)" stroke="#5BE0E8" stroke-width="1.4" opacity="0.8"/>
-                <g opacity="0.5">
-                  <line x1="14" y1="16" x2="84" y2="16" stroke="#5BE0E8" stroke-width="0.5" stroke-dasharray="2 3"/>
-                  <line x1="14" y1="30" x2="84" y2="30" stroke="#5BE0E8" stroke-width="0.5" stroke-dasharray="2 3"/>
-                  <line x1="14" y1="44" x2="84" y2="44" stroke="#5BE0E8" stroke-width="0.5" stroke-dasharray="2 3"/>
-                  <line x1="14" y1="58" x2="84" y2="58" stroke="#5BE0E8" stroke-width="0.5" stroke-dasharray="2 3"/>
-                </g>
-              </svg>
-            </div>
-            <div class="layer-body">
-              <div class="layer-label"><span class="ch">面</span><span class="en">AREA · 邊界 / 網格</span></div>
-              <div class="layer-row">
-                <span class="static-tag">STATIC</span>
-                <span class="item">集水區邊界</span>
-                <span class="item">水利分區</span>
-                <span class="item">行政區</span>
-              </div>
-              <div class="layer-row">
-                <span class="dyn-tag">DYNAMIC</span>
-                <span class="item dyn">降雨網格</span>
-                <span class="item dyn">災害示警 polygon</span>
-                <span class="item dyn">土壤含水量</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- MIDDLE: connector arrows -->
-        <div class="connector">
-          <svg viewBox="0 0 60 720" preserveAspectRatio="none">
-            <defs>
-              <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto">
-                <path d="M0 0 L8 4 L0 8 Z" fill="#5BE0E8"/>
-              </marker>
-            </defs>
-            <line x1="6" y1="80" x2="50" y2="80" stroke="#5BE0E8" stroke-width="1.4" marker-end="url(#arr)" opacity="0.85"/>
-            <line x1="6" y1="270" x2="50" y2="270" stroke="#5BE0E8" stroke-width="1.4" marker-end="url(#arr)" opacity="0.85"/>
-            <line x1="6" y1="460" x2="50" y2="460" stroke="#5BE0E8" stroke-width="1.4" marker-end="url(#arr)" opacity="0.85"/>
-            <line x1="6" y1="640" x2="50" y2="640" stroke="#5BE0E8" stroke-width="1.4" marker-end="url(#arr)" opacity="0.85"/>
-          </svg>
-        </div>
-
-        <!-- RIGHT: narrative -->
-        <div class="narrative-col">
-          <div class="narrative-head">// 重組為故事性架構</div>
-          <div class="narrative-flow">
-            <div class="narr-step">
-              <div class="num">01</div>
-              <div class="body">
-                <div class="q">怎麼來？</div>
-                <div class="src"><span class="pill">FACE</span>降雨網格<span style="margin: 0 8px; color: var(--fg-mute);">+</span><span class="pill">FACE</span>集水區邊界</div>
-              </div>
-            </div>
-            <div class="narr-step">
-              <div class="num">02</div>
-              <div class="body">
-                <div class="q">怎麼留？</div>
-                <div class="src"><span class="pill">POINT</span>水庫水位<span style="margin: 0 8px; color: var(--fg-mute);">+</span><span class="pill">FACE</span>土壤含水量</div>
-              </div>
-            </div>
-            <div class="narr-step">
-              <div class="num">03</div>
-              <div class="body">
-                <div class="q">怎麼用？</div>
-                <div class="src"><span class="pill">LINE</span>河川流量<span style="margin: 0 8px; color: var(--fg-mute);">+</span><span class="pill">POINT</span>地下水位</div>
-              </div>
-            </div>
-            <div class="narr-step">
-              <div class="num">04</div>
-              <div class="body">
-                <div class="q">何時警示？</div>
-                <div class="src"><span class="pill">FACE</span>網格水量趨勢<span style="margin: 0 8px; color: var(--fg-mute);">+</span><span class="pill">FACE</span>災害示警</div>
-              </div>
-            </div>
-          </div>
-          <div class="narrative-foot">先<strong>盤點圖層</strong>，再依邏輯<strong>串成敘事</strong>——同一批資料，組裝出一個能講故事的系統。</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide 31: Case 01 - Fire analysis (NEW) -->
-  <section class="slide s-firecase pj" data-label="33 Case Fire Analysis">
-    <div class="chrome-top">
-      <span class="mark"><span class="dot"></span>SYSTEM · 應用層 · CASE 01 · 火災分析</span>
-      <span class="pg">P43 / 81</span>
-    </div>
-    <div class="frame">
-      <div class="fcase-head">
-        <h2><span class="acc">113 年</span>火災事件　·　全國 15,405 筆<br/>從 datagov:13764 一路打到「縣市 × 起火原因」</h2>
-        <div class="fcase-meta">
-          datagov:13764　<span class="dot">·</span>　TGOS street-level 9,226 筆<br/>
-          鄉鎮 fallback 6,179 筆　<span class="dot">·</span>　空間用精確點位、時序用全量
-        </div>
-      </div>
-      <div class="fcase-row">
-        <figure>
-          <img src="assets/fire-case-1.png" alt="fire spatial ranking by city"/>
-          <figcaption>① 空間分布 · 縣市排名（總量 / 死傷 / 件每百 km²）</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/fire-case-2.png" alt="fire causes by city"/>
-          <figcaption>② 主要原因 × 縣市 × 主導起火原因</figcaption>
-        </figure>
-      </div>
-      <div class="fcase-bot">
-        <div class="lab">// SO WHAT</div>
-        <div class="txt">這份 reflect 報告完全由 Agent 串 API 跑出來。「<strong>新北市最大宗起火原因是電氣因素 30.9%</strong>」「<strong>屏東縣是菸蒂 35.2%</strong>」——資料源換成 API 之後，這種跨欄位、跨主題的描述性分析，可以被 Agent 主動產出。</div>
-      </div>
-    </div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>SYSTEM · STEP 03 · 分析生成</span><span class="pg">P34 / 69</span></div>
   </section>
 
   <!-- ============ P36 ④ 行動觸發（圖頁） ============ -->
   <section class="slide full s-sysov" data-label="P36 行動觸發 Overview" data-screen-label="P36 Step 04">
     <div class="bg" style="background-image:url('assets/sys-step4.png');background-size:contain;background-color:#000;background-repeat:no-repeat;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · STEP 04 · 行動觸發 · 自動回饋</span><span class="pg">P44 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · STEP 04 · 行動觸發 · 自動回饋</span><span class="pg">P35 / 69</span></div>
   </section>
 
   <!-- ============ P44 World Monitor 5 齒輪循環 ============ -->
   <section class="slide s-con s-monitor" data-label="P44 World Monitor" data-screen-label="P44">
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 主題巡邏</span><span class="pg">P45 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 主題巡邏</span><span class="pg">P36 / 69</span></div>
     <div class="frame">
       <div class="s-sys-head anim">
         <div class="sys-eyebrow" style="color:var(--amber);">// 未來模式 · 給目標</div>
@@ -1747,7 +1088,7 @@
 
   <!-- ============ P45 Loop Result Steps ============ -->
   <section class="slide s-con s-loop2" data-label="P45 Agent 自跑結果" data-screen-label="P45">
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · AGENT 自己跑</span><span class="pg">P46 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · AGENT 自己跑</span><span class="pg">P37 / 69</span></div>
     <div class="frame">
       <div class="s-sys-head anim">
         <div class="sys-eyebrow" style="color:var(--amber);">// 結果 · 當循環建立起來</div>
@@ -1778,19 +1119,11 @@
         <div class="txt">當這個 loop 跑起來，產出不需要排程 —— <strong>主題自己冒出來、報告自己送到信箱</strong>。</div>
       </div>
     </div>
-  </section>  <!-- NEW: Weekly brief full-bleed (after Pulse) -->
-  <section class="slide s-weekly pj" data-label="39 Weekly Brief Output">
-    <div class="weekly-bg"></div>
-    <div class="chrome-top" style="left:auto;right:var(--pad-x);top:46px;width:auto;border-bottom:none;padding-bottom:0;text-shadow:0 2px 16px rgba(0,0,0,0.95);"><span class="mark"><span class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></span>SYSTEM · AGENT · 週報產出</span><span class="pg">P47 / 81</span></div>
-    <div class="weekly-overlay">
-      <span class="weekly-badge">★ 自動產出 · 每週一份</span>
-      <span>本週新增開放資料 brief</span>
-    </div>
   </section>
 
   <!-- ============ 循環產出 · INFO 航運頁 ============ -->
   <section class="slide s-con" data-label="P45b 循環產出 INFO" data-screen-label="Cycle Output">
-    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 循環產出</span><span class="pg">P48 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot" style="background:var(--amber);box-shadow:0 0 14px var(--amber);"></i>SYSTEM · 循環產出</span><span class="pg">P38 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>這個循環，真的長出了東西</h2>
@@ -1821,7 +1154,7 @@
 
   <!-- ============ P29 自己取代自己（雙時間線） ============ -->
   <section class="slide s-con" data-label="P29 自己取代自己" data-screen-label="P29">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P49 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P39 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>我為什麼一直在「取代自己」</h2>
@@ -1860,7 +1193,7 @@
 
   <!-- ============ P31 四個層次（版本卡 · 沿用前作 s-gens 版式） ============ -->
   <section class="slide s-con" data-label="P31 與 AI 協作的四個層次 · 版本卡" data-screen-label="P31">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P50 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P40 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>同一件事，四個版本</h2>
@@ -1964,7 +1297,7 @@
 
   <!-- ============ P46 大問句（呼吸頁） ============ -->
   <section class="slide s-quiet" data-label="P46 先動手做" data-screen-label="P46">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P51 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P41 / 69</span></div>
     <div class="frame">
       <div class="quiet-q anim">「你最近有沒有一個<br>想做、但一直沒做的東西？」</div>
       <div class="quiet-line anim d1"></div>
@@ -1974,7 +1307,7 @@
 
   <!-- ============ P47 Harness 全貌（閉環） ============ -->
   <section class="slide s-con" data-label="P47 Harness 是什麼" data-screen-label="P47">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P52 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P42 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>Harness 是什麼</h2>
@@ -2000,7 +1333,7 @@
 
   <!-- ============ P48 最小可行集合（同圖高亮版） ============ -->
   <section class="slide s-con" data-label="P48 最小可行集合" data-screen-label="P48">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P53 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P43 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>最小可行，先用這幾個</h2>
@@ -2024,7 +1357,7 @@
 
   <!-- ============ P49 三個核心觀念（三卡口訣） ============ -->
   <section class="slide s-con" data-label="P49 三個核心觀念" data-screen-label="P49">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P54 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P44 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>三個一定要建立的觀念</h2>
@@ -2058,7 +1391,7 @@
 
   <!-- ============ P50 料從哪來（入口牆） ============ -->
   <section class="slide s-con" data-label="P50 料從哪來" data-screen-label="P50">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P55 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P45 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>料從哪來</h2>
@@ -2092,7 +1425,7 @@
 
   <!-- ============ P51 靈感從哪來（四象限清單） ============ -->
   <section class="slide s-con" data-label="P51 靈感從哪來" data-screen-label="P51">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P56 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>AI CODING · 心法</span><span class="pg">P46 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>靈感從哪來</h2>
@@ -2147,7 +1480,7 @@
 
   <!-- ============ P53 Step 0 你想做什麼 ============ -->
   <section class="slide s-con" data-label="P53 Step 0 你想做什麼" data-screen-label="P53">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P57 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P47 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 0</div>
@@ -2185,7 +1518,7 @@
 
   <!-- ============ P54 Step 1 拆成兩塊 ============ -->
   <section class="slide s-con" data-label="P54 Step 1 拆成兩塊" data-screen-label="P54">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P58 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P48 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 1</div>
@@ -2219,7 +1552,7 @@
 
   <!-- ============ P55 Step 2-① 先讓 AI 盤點 ============ -->
   <section class="slide s-con" data-label="P55 Step 2-① AI 盤點資料源" data-screen-label="P55">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P59 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P49 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-①</div>
@@ -2246,7 +1579,7 @@
 
   <!-- ============ P56 Step 2-② 自己驗 ============ -->
   <section class="slide s-con" data-label="P56 Step 2-② 自己驗" data-screen-label="P56">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P60 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P50 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-②</div>
@@ -2275,7 +1608,7 @@
 
   <!-- ============ P57 Step 2-③ 申請、讀文件、開始試 ============ -->
   <section class="slide s-con" data-label="P57 Step 2-③ 申請開始試" data-screen-label="P57">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P61 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P51 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-③</div>
@@ -2306,7 +1639,7 @@
 
   <!-- ============ P58 Step 2-④ 我們的選擇（四象限） ============ -->
   <section class="slide s-con" data-label="P58 Step 2-④ 最後的選擇" data-screen-label="P58">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P62 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P52 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 2-④</div>
@@ -2331,7 +1664,7 @@
 
   <!-- ============ P59 Step 3 規格→執行 ============ -->
   <section class="slide s-con" data-label="P59 Step 3 決定處理方式" data-screen-label="P59">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P63 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P53 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 3</div>
@@ -2360,7 +1693,7 @@
 
   <!-- ============ P60 Step 4 先看到第一個東西 ============ -->
   <section class="slide s-con" data-label="P60 Step 4 第一個東西" data-screen-label="P60">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P64 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P54 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 4</div>
@@ -2388,7 +1721,7 @@
 
   <!-- ============ P61 Step 5 圖層堆疊 ============ -->
   <section class="slide s-con" data-label="P61 Step 5 功能層層疊" data-screen-label="P61">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P65 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 專案示範</span><span class="pg">P55 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <div class="step-chip">STEP 5</div>
@@ -2418,7 +1751,7 @@
 
   <!-- ============ P62 介面① Claude Design ============ -->
   <section class="slide s-dash" data-label="P62 介面 Claude Design" data-screen-label="P62">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P66 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P56 / 69</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -2449,7 +1782,7 @@
 
   <!-- ============ P63 介面② ChatGPT 出形狀 ============ -->
   <section class="slide s-dash" data-label="P63 介面 ChatGPT 出形狀" data-screen-label="P63">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P67 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 介面</span><span class="pg">P57 / 69</span></div>
     <div class="frame">
       <div class="dash-head">
         <div class="left">
@@ -2467,7 +1800,7 @@
 
   <!-- ============ P64 觀念① 重做比優化快 ============ -->
   <section class="slide s-con" data-label="P64 觀念 重做比優化快" data-screen-label="P64">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P68 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P58 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>重做，常常比優化快</h2>
@@ -2496,7 +1829,7 @@
 
   <!-- ============ P65 觀念② 當同事，用講的 ============ -->
   <section class="slide s-con" data-label="P65 觀念 當同事用講的" data-screen-label="P65">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P69 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 觀念</span><span class="pg">P59 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>把它當同事，用講的更快</h2>
@@ -2521,7 +1854,7 @@
 
   <!-- ============ 上手建議 1 · 今天就開始 ============ -->
   <section class="slide s-con" data-label="P65b 今天就開始" data-screen-label="Start Today">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 上手建議</span><span class="pg">P70 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 上手建議</span><span class="pg">P60 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>今天就可以開始，不用先學 coding</h2>
@@ -2545,7 +1878,7 @@
 
   <!-- ============ 上手建議 2 · 補貼紅利 ============ -->
   <section class="slide s-con" data-label="P65c 補貼紅利" data-screen-label="Subsidy Window">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 上手建議</span><span class="pg">P71 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 上手建議</span><span class="pg">P61 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>現在，是 AI 補貼最猛的紅利期</h2>
@@ -2572,7 +1905,7 @@
 
   <!-- ============ P66 ONE-SHOT 現場挑戰 ============ -->
   <section class="slide s-con" data-label="P66 One Shot 現場挑戰" data-screen-label="P66">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 現場挑戰</span><span class="pg">P72 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 現場挑戰</span><span class="pg">P62 / 69</span></div>
     <div class="frame">
       <div class="con-head anim" style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;">
         <div>
@@ -2612,72 +1945,6 @@
     </div>
   </section>
 
-  <!-- ============ 怎麼開始 · 心態 + 技巧 ============ -->
-  <section class="slide s-con" data-label="P66b 怎麼開始" data-screen-label="How To Start">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · 怎麼開始</span><span class="pg">P73 / 81</span></div>
-    <div class="frame">
-      <div class="con-head anim">
-        <h2>真的要開始，記住這些</h2>
-        <p class="sub">三個心態先建立，再配幾個實戰技巧。</p>
-      </div>
-      <div class="anim d1" style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-content:center;margin-top:10px;">
-        <div>
-          <div class="mono" style="font-size:26px;color:var(--cyan);letter-spacing:0.16em;margin-bottom:22px;">心態 · MINDSET</div>
-          <div style="display:flex;flex-direction:column;gap:18px;">
-            <div style="border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:10px;background:rgba(255,255,255,0.025);padding:22px 26px;">
-              <div style="font-size:32px;font-weight:700;color:#fff;margin-bottom:8px;">相信 AI 做得到</div>
-              <div style="font-size:27px;color:var(--fg-dim);line-height:1.5;font-weight:300;">預設「<strong style="color:var(--fg);">AI 可以做得更好</strong>」，然後放權給它做。</div>
-            </div>
-            <div style="border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:10px;background:rgba(255,255,255,0.025);padding:22px 26px;">
-              <div style="font-size:32px;font-weight:700;color:#fff;margin-bottom:8px;">先嘗試，別被嚇到</div>
-              <div style="font-size:27px;color:var(--fg-dim);line-height:1.5;font-weight:300;">別被各種新聞嚇到 —— <strong style="color:var(--fg);">做了才知道能與不能</strong>（守好邊界）。</div>
-            </div>
-            <div style="border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:10px;background:rgba(255,255,255,0.025);padding:22px 26px;">
-              <div style="font-size:32px;font-weight:700;color:#fff;margin-bottom:8px;">不怕做錯</div>
-              <div style="font-size:27px;color:var(--fg-dim);line-height:1.5;font-weight:300;">有<strong style="color:var(--fg);">存檔就能重來</strong>，即使大錯重寫，也比你想的快。</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="mono" style="font-size:26px;color:var(--amber);letter-spacing:0.16em;margin-bottom:22px;">技巧 · TACTICS</div>
-          <div style="display:flex;flex-direction:column;gap:20px;">
-            <div style="display:flex;gap:18px;align-items:baseline;font-size:28px;color:var(--fg-dim);line-height:1.45;"><span class="mono" style="color:var(--amber);font-weight:700;flex:0 0 auto;">01</span><span>鬼打牆做不出來，就<strong style="color:var(--fg);">換 session、換更強的模型</strong>，別一直來回。</span></div>
-            <div style="display:flex;gap:18px;align-items:baseline;font-size:28px;color:var(--fg-dim);line-height:1.45;"><span class="mono" style="color:var(--amber);font-weight:700;flex:0 0 auto;">02</span><span><strong style="color:var(--fg);">先 plan 再做</strong>，成功率明顯提升。</span></div>
-            <div style="display:flex;gap:18px;align-items:baseline;font-size:28px;color:var(--fg-dim);line-height:1.45;"><span class="mono" style="color:var(--amber);font-weight:700;flex:0 0 auto;">03</span><span><strong style="color:var(--fg);">context 給足</strong> —— 只丟一句話，它也聽不懂。</span></div>
-            <div style="display:flex;gap:18px;align-items:baseline;font-size:28px;color:var(--fg-dim);line-height:1.45;"><span class="mono" style="color:var(--amber);font-weight:700;flex:0 0 auto;">04</span><span>很少一次 oneshot 完成，要<strong style="color:var(--fg);">持續來回迭代</strong>。</span></div>
-            <div style="display:flex;gap:18px;align-items:baseline;font-size:28px;color:var(--fg-dim);line-height:1.45;"><span class="mono" style="color:var(--amber);font-weight:700;flex:0 0 auto;">05</span><span>遇到問題<strong style="color:var(--fg);">先問 AI</strong>，但交叉比對、小心求證。</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Recap · 帶走三句話 ============ -->
-  <section class="slide s-con" data-label="P66c Recap" data-screen-label="Recap">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>BUILD · RECAP</span><span class="pg">P74 / 81</span></div>
-    <div class="frame">
-      <div class="con-head anim">
-        <h2>如果只帶走三句話</h2>
-        <p class="sub">有人問我踩過什麼坑 —— 其實沒有，因為是<strong>一路跟 AI 協作長出來的</strong>。真要說，記住這三句就夠。</p>
-      </div>
-      <div class="anim d1" style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-content:center;">
-        <div style="border:1px solid var(--line-strong);border-radius:16px;background:linear-gradient(180deg,rgba(91,224,232,0.10),rgba(91,224,232,0.02));padding:48px 38px;display:flex;flex-direction:column;gap:22px;">
-          <div class="mono" style="font-size:72px;font-weight:700;color:var(--cyan);line-height:1;">01</div>
-          <div style="font-size:48px;font-weight:700;color:#fff;line-height:1.2;">先做就對了</div>
-        </div>
-        <div style="border:1px solid var(--line-strong);border-radius:16px;background:linear-gradient(180deg,rgba(91,224,232,0.10),rgba(91,224,232,0.02));padding:48px 38px;display:flex;flex-direction:column;gap:22px;">
-          <div class="mono" style="font-size:72px;font-weight:700;color:var(--cyan);line-height:1;">02</div>
-          <div style="font-size:48px;font-weight:700;color:#fff;line-height:1.2;">把邊界守好再開始</div>
-        </div>
-        <div style="border:1px solid var(--line-strong);border-radius:16px;background:linear-gradient(180deg,rgba(91,224,232,0.10),rgba(91,224,232,0.02));padding:48px 38px;display:flex;flex-direction:column;gap:22px;">
-          <div class="mono" style="font-size:72px;font-weight:700;color:var(--cyan);line-height:1;">03</div>
-          <div style="font-size:48px;font-weight:700;color:#fff;line-height:1.2;">遇到問題就直接問 AI</div>
-        </div>
-      </div>
-      <div class="con-foot anim d2">掌握這幾點，就能做出不錯的成效。</div>
-    </div>
-  </section>
-
   <!-- ════════════ SECTION 04 HORIZON 展望 ════════════ -->
 
   <!-- ============ P67 段封面 ============ -->
@@ -2701,7 +1968,7 @@
 
   <!-- ============ P68 兩種團隊結構 ============ -->
   <section class="slide s-con" data-label="P68 兩種團隊結構" data-screen-label="P68">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P75 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P63 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>兩種團隊結構</h2>
@@ -2757,7 +2024,7 @@
 
   <!-- ============ P69 金融 vs 新創 ============ -->
   <section class="slide s-con" data-label="P69 金融 vs 新創" data-screen-label="P69">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P76 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P64 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>金融 vs 新創</h2>
@@ -2787,7 +2054,7 @@
 
   <!-- ============ P70 角色上移 ============ -->
   <section class="slide s-con" data-label="P70 資料分析師會消失嗎" data-screen-label="P70">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P77 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P65 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>資料分析師會消失嗎？</h2>
@@ -2819,7 +2086,7 @@
 
   <!-- ============ P71 分析的民主化 ============ -->
   <section class="slide s-con" data-label="P71 分析的民主化" data-screen-label="P71">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P78 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P66 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>分析的民主化</h2>
@@ -2852,7 +2119,7 @@
 
   <!-- ============ P72 如果是你們，怎麼開始 ============ -->
   <section class="slide s-con" data-label="P72 怎麼開始" data-screen-label="P72">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P79 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>HORIZON · 展望</span><span class="pg">P67 / 69</span></div>
     <div class="frame">
       <div class="con-head anim">
         <h2>如果是你們，怎麼開始</h2>
@@ -2891,7 +2158,7 @@
   <section class="slide full" data-label="P73 離開前記得三件事" data-screen-label="P73">
     <div class="bg" style="background-image:url('assets/p23.png');"></div>
     <div style="position:absolute;inset:0;background:rgba(10,14,26,0.68);z-index:1;"></div>
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · 結語</span><span class="pg">P80 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · 結語</span><span class="pg">P68 / 69</span></div>
     <div style="position:absolute;left:0;right:0;top:130px;text-align:center;z-index:3;">
       <h2 class="anim" style="font-size:60px;font-weight:700;margin:0;color:#fff;">離開前，記得三件事</h2>
     </div>
@@ -2905,7 +2172,7 @@
 
   <!-- ============ P74 Q&A ============ -->
   <section class="slide s-qa" data-label="P74 Q&A" data-screen-label="P74">
-    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · Q&amp;A</span><span class="pg">P81 / 81</span></div>
+    <div class="chrome-top"><span class="mark"><i class="dot"></i>CLOSING · Q&amp;A</span><span class="pg">P69 / 69</span></div>
     <div class="frame">
       <h2 class="qa-title anim">Q &amp; A</h2>
       <div class="qa-contact anim d1">
